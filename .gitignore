@@ -1,0 +1,15 @@
+#Pycharm
+.idea/
+*.iml
+
+#Python
+__pycache__/
+*.py[cod]
+
+# virtual environments
+.venv/
+venv/
+
+#Windows
+Thumbs.db
+desktop.ini
