@@ -13,3 +13,7 @@ venv/
 #Windows
 Thumbs.db
 desktop.ini
+
+.env
+*.env
+!.env*.example
