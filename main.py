@@ -17,42 +17,80 @@ from tkinter import filedialog
 input_folder = 'G:\\My Drive\\plantscan_photos_to_process'
 output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\converted_to_jpg'
 
-# convert all images at once
-def heic_to_jpg(heic_path, jpg_path):
-    img = Image.open(heic_path)
-    img.save(jpg_path, format='JPEG')
-
-def convert_multiple_heic_to_jpg(input_folder, output_folder):
-    # register HEIF opener with Pillow
-    pillow_heif.register_heif_opener()
-    # create output folder if it does not exist
-    if not os.path.exists(output_folder):
-        os.makedirs(output_folder)
-    for filename in os.listdir(input_folder):
-        if filename.lower().endswith('.heic'):
-            heic_path = os.path.join(input_folder, filename)
-            jpg_filename = f"{os.path.splitext(filename)[0]}.jpg"
+# open & save HEIC to JPG img
+def heic_to_jpg(selected_file):
+    img_to_convert = os.path.join(input_folder, selected_file)
+    pillow_heif.register_heif_opener() # to be able to open HEIC files
+    if not os.path.exists(output_folder): # if output folder does not exist
+        os.makedirs(output_folder) # create one
+    if not os.path.exists(img_to_convert): # if file does not exist
+        print(f"file {selected_file} does not exist") #display error message
+    if selected_file in os.listdir(input_folder): # if selected file is in the input folder
+        if selected_file.lower().endswith('.heic'): #and it is a HEIC file
+            jpg_filename = f"{os.path.splitext(selected_file)[0]}.jpg" # build jpg filename
             jpg_path = os.path.join(output_folder, jpg_filename)
-            heic_to_jpg(heic_path, jpg_path)
-            print(f"Converting {filename} to JPG")
+            try:
+                img = Image.open(img_to_convert)  # open img from input folder
+                img.save(jpg_path, format='JPEG')
+            except Exception as e:
+                print(f"Error occurred: {e}")
+                return
+            print(f"File extension changed from {selected_file} to JPG")
 
-convert_multiple_heic_to_jpg(input_folder, output_folder)
 
-# step 2 - colour to greyscale img
-greyscale_input_folder = 'G:\\My Drive\\plantscan_photos_to_process\\converted_to_jpg'
-greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\greyscale'
+heic_to_jpg("IMG_7762.HEIC")
 
-def colour_to_greyscale(greyscale_input_folder, greyscale_output_folder):
+greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\test2'
+def colour_to_greyscale(coloured_img):
+    # path = join input folder & selected coloured image
+    img_to_greyscale = os.path.join(output_folder, coloured_img)
     if not os.path.exists(greyscale_output_folder):
         os.makedirs(greyscale_output_folder)
-    for file in os.listdir(greyscale_input_folder):
-        colour_path = os.path.join(greyscale_input_folder, file)
-        greyscale_path = os.path.join(greyscale_output_folder, file)
-        img = cv.imread(colour_path) # read image
-        greyscale_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY) # convert to greyscale
-        cv.imwrite(greyscale_path, greyscale_img) # saving the greyscale img to the output folder
-        print(f"converting {file} to greyscale")
-colour_to_greyscale(greyscale_input_folder, greyscale_output_folder)
+    gscale_output = os.path.join(greyscale_output_folder, coloured_img)
+    gscale_filename = os.path.basename(gscale_output)
+    coloured_img = cv.imread(img_to_greyscale)
+    greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY) #convert to gscale
+    cv.imwrite(gscale_output, greyscale_img) # saving the greyscale image to the output folder
+    print(f"Greyscale conversion successful: {gscale_filename} is greyscale now.")
+colour_to_greyscale("IMG_7762.jpg")
+
+
+# # convert all images at once
+# def heic_to_jpg(heic_path, jpg_path):
+#     img = Image.open(heic_path)
+#     img.save(jpg_path, format='JPEG')
+#
+# def convert_multiple_heic_to_jpg(input_folder, output_folder):
+#     # register HEIF opener with Pillow
+#     pillow_heif.register_heif_opener()
+#     # create output folder if it does not exist
+#     if not os.path.exists(output_folder):
+#         os.makedirs(output_folder)
+#     for filename in os.listdir(input_folder):
+#         if filename.lower().endswith('.heic'):
+#             heic_path = os.path.join(input_folder, filename)
+#             jpg_filename = f"{os.path.splitext(filename)[0]}.jpg"
+#             jpg_path = os.path.join(output_folder, jpg_filename)
+#             heic_to_jpg(heic_path, jpg_path)
+#             print(f"Converting {filename} to JPG")
+#
+# convert_multiple_heic_to_jpg(input_folder, output_folder)
+#
+# # step 2 - colour to greyscale img
+# greyscale_input_folder = 'G:\\My Drive\\plantscan_photos_to_process\\converted_to_jpg'
+# greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\greyscale'
+#
+# def colour_to_greyscale(greyscale_input_folder, greyscale_output_folder):
+#     if not os.path.exists(greyscale_output_folder):
+#         os.makedirs(greyscale_output_folder)
+#     for file in os.listdir(greyscale_input_folder):
+#         colour_path = os.path.join(greyscale_input_folder, file)
+#         greyscale_path = os.path.join(greyscale_output_folder, file)
+#         img = cv.imread(colour_path) # read image
+#         greyscale_img = cv.cvtColor(img, cv.COLOR_BGR2GRAY) # convert to greyscale
+#         cv.imwrite(greyscale_path, greyscale_img) # saving the greyscale img to the output folder
+#         print(f"converting {file} to greyscale")
+# colour_to_greyscale(greyscale_input_folder, greyscale_output_folder)
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -76,6 +114,7 @@ img_w, img_h = img.size # image size is set to img width and height
 img = resize_image(img) # resizing the image
 img_tk = ImageTk.PhotoImage(img) # convert to tkinter compatible format
 gui_window.imgtk = img_tk
+
 
 
 def cropClick():
