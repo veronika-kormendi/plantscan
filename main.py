@@ -80,7 +80,7 @@ def draw_rectangle():
     x0, y0 = start_corner
     x1, y1 = end_corner
     if rect_id is None:
-        rect_id = canvas.create_rectangle(x0, y0, x1, y1, outline="red", width=4)  # create rectangle
+        rect_id = canvas.create_rectangle(x0, y0, x1, y1, outline="red", width=2)  # create rectangle
     else:
         canvas.coords(rect_id, x0, y0, x1, y1)
 
@@ -140,6 +140,9 @@ def drag_rect(event):
 def on_release(event): # when mouse is released
     global mode
     mode = None
+
+def shift_coords(x0,y0,x1,y1):
+    return x0-12,y0-12, x1-12, y1-12
 
 def save_cropped_img():
     global resized_image
