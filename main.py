@@ -154,7 +154,9 @@ def save_cropped_img():
     if rect is None:
         print("No rectangle drawn.")
         return
-    x0, y0, x1, y1 = canvas.coords(rect_id)
+    # canvas coords to image coords since
+    # rectangle is in canvas coords & cropped img is in other coords
+    x0, y0, x1, y1 = shift_coords(*canvas.coords(rect_id))
     cropped = resized_image.crop((x0, y0, x1, y1))
     save_path = filedialog.asksaveasfilename(defaultextension=".png")
     if save_path:
