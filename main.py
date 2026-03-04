@@ -51,6 +51,7 @@ def make_tk_img(resized_image):
     return tk_img
 
 def display_image(tk_img):
+    global rect_id, start_corner,end_corner, mode
     canvas.delete("all")
     rect_id = None
     start_corner = None
