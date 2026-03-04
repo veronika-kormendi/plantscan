@@ -19,6 +19,7 @@ rect_id = None
 offset_x = None
 offset_y = None
 mode = None # drawing/moving/none
+resized_image = None
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -62,6 +63,7 @@ def display_image(tk_img):
     print("displaying image", tk_img) # for troubleshooting
 
 def run_img_tasks():
+    global resized_image
     opened_img_pil = select_img_from()
     resized_image = resize_image(opened_img_pil)
     tk_img = make_tk_img(resized_image)
@@ -139,8 +141,27 @@ def on_release(event): # when mouse is released
     global mode
     mode = None
 
+def save_cropped_img():
+    global resized_image
+    if resized_image is None:
+        print("No image loaded.")
+        return
+
+    rect = get_rect_coords()
+    if rect is None:
+        print("No rectangle drawn.")
+        return
+    x0, y0, x1, y1 = canvas.coords(rect_id)
+    cropped = resized_image.crop((x0, y0, x1, y1))
+    save_path = filedialog.asksaveasfilename(defaultextension=".png")
+    if save_path:
+        cropped.save(save_path)
+
+
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
+save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
+save_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
