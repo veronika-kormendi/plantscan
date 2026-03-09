@@ -58,9 +58,7 @@ def heic_to_jpg(selected_file):
             print(f"File extension changed from {selected_file} to JPG")
 
 # ------- GREYSCALE ----------
-#heic_to_jpg("IMG_7762.HEIC")
-
-greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\test2'
+greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\new_test'
 def colour_to_greyscale(coloured_img):
     # path = join input folder & selected coloured image
     img_to_greyscale = os.path.join(output_folder, coloured_img)
@@ -72,13 +70,10 @@ def colour_to_greyscale(coloured_img):
     greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY) #convert to gscale
     cv.imwrite(gscale_output, greyscale_img) # saving the greyscale image to the output folder
     print(f"Greyscale conversion successful: {gscale_filename} is greyscale now.")
-#colour_to_greyscale("IMG_7762.jpg")
-
-
 
 # open image file - JPG
 def select_img_from():
-    file_to_open = filedialog.askopenfilename(title="Select Image", filetypes=(("JPG files", "*.jpg"),))
+    file_to_open = filedialog.askopenfilename(title="Select Image", filetypes=(("Supported image files", "*.jpg *.heic *.HEIC *.jpeg"),))
     if not file_to_open: # if the file does not exist
         return None
     # opened_pil_img = Image.open(file_to_open)
@@ -113,16 +108,16 @@ def run_img_tasks():
     selected_path = select_img_from() # open img file
     if not selected_path:
         return
-    # opened_img_pil = select_img_from()
-    # resized_image = resize_image(opened_img_pil)
     filename = os.path.basename(selected_path)
     extension = filename. lower().split('.')[-1]
     if extension == "heic":
         heic_to_jpg(selected_path) # convert heic to jpg
-        filename = filename.replace('.heic', '.jpg')
-        output_path = os.path.join(output_folder, filename)
+        filename = filename.replace('.heic', '.jpg').replace('HEIC', 'jpg') # replace extension
+        output_path = os.path.join(output_folder, filename) #add converted file to
     else:
-        output_path = selected_path
+        output_path = os.path.join(output_folder, filename)
+        if not os.path.exists(output_path):
+            os.makedirs(output_folder, exist_ok=True)
     colour_to_greyscale(os.path.basename(output_path)) # turn into greyscale
     gscale_path = os.path.join(greyscale_output_folder, os.path.basename(output_path))
     pil_img = Image.open(gscale_path) # load image
