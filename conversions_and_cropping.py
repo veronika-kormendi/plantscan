@@ -20,6 +20,7 @@ offset_x = None
 offset_y = None
 mode = None # drawing/moving/none
 resized_image = None
+output_path = None # working path
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -100,7 +101,7 @@ def display_image(tk_img):
     print("displaying image", tk_img) # for troubleshooting
 
 def run_img_tasks():
-    global resized_image
+    global resized_image, output_path
     selected_path = select_img_from() # open img file
     if not selected_path:
         return
@@ -197,11 +198,14 @@ def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
 def save_cropped_img():
-    global resized_image
+    cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
+    global resized_image, output_path
     if resized_image is None:
         print("No image loaded.")
         return
-
+    if output_path is None:
+        print("No output path was provided.")
+        return
     rect = get_rect_coords()
     if rect is None:
         print("No rectangle drawn.")
@@ -210,9 +214,16 @@ def save_cropped_img():
     # rectangle is in canvas coords & cropped img is in other coords
     x0, y0, x1, y1 = shift_coords(*canvas.coords(rect_id))
     cropped = resized_image.crop((x0, y0, x1, y1))
-    save_path = filedialog.asksaveasfilename(defaultextension=".png")
+    if not os.path.exists(cropped_folder): #if it does not exist
+        os.makedirs(cropped_folder) # create cropped folder
+    original_name = os.path.basename(output_path) #original name
+    base, _ = os.path.splitext(original_name)
+    new_name = f"{base}_cropped.jpg"
+    # save_path = filedialog.asksaveasfilename(defaultextension=".png")
+    save_path = os.path.join(cropped_folder, new_name) # where to save the new one
     if save_path:
-        cropped.save(save_path)
+        cropped.save(save_path, format="JPEG")
+        print(f"Saved cropped image to {save_path}.")
 
 
 canvas.bind("<Button-1>", on_click)
