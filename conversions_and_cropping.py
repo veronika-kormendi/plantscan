@@ -38,24 +38,20 @@ input_folder = 'G:\\My Drive\\plantscan_photos_to_process'
 output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\converted_to_jpg'
 
 # open & save HEIC to JPG img
-def heic_to_jpg(selected_file):
-    img_to_convert = os.path.join(input_folder, selected_file)
+def heic_to_jpg(input_path):
     pillow_heif.register_heif_opener() # to be able to open HEIC files
     if not os.path.exists(output_folder): # if output folder does not exist
         os.makedirs(output_folder) # create one
-    if not os.path.exists(img_to_convert): # if file does not exist
-        print(f"file {selected_file} does not exist") #display error message
-    if selected_file in os.listdir(input_folder): # if selected file is in the input folder
-        if selected_file.lower().endswith('.heic'): #and it is a HEIC file
-            jpg_filename = f"{os.path.splitext(selected_file)[0]}.jpg" # build jpg filename
-            jpg_path = os.path.join(output_folder, jpg_filename)
-            try:
-                img = Image.open(img_to_convert)  # open img from input folder
-                img.save(jpg_path, format='JPEG')
-            except Exception as e:
-                print(f"Error occurred: {e}")
-                return
-            print(f"File extension changed from {selected_file} to JPG")
+    filename = os.path.basename(input_path)
+    jpg_filename = f"{os.path.splitext(filename)[0]}.jpg" # build jpg filename
+    jpg_path = os.path.join(output_folder, jpg_filename) #build jpg path where to save the jpg img
+    try:
+        img = Image.open(input_path)  # open img from input path
+        img.save(jpg_path, format='JPEG') # save jpg
+    except Exception as e: # error handling
+        print(f"Heic conversion error occurred: {e}")
+        return
+    print(f"File extension changed from {filename} to JPG")
 
 # ------- GREYSCALE ----------
 greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\new_test'
