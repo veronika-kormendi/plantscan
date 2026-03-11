@@ -1,7 +1,7 @@
 ''' Author: Veronika Kormendi
     Purpose: Final Year Project
 '''
-
+import math
 # ------- IMPORTS -------
 import os
 from PIL import Image, ImageTk  # for managing images
@@ -21,6 +21,7 @@ offset_y = None
 mode = None # drawing/moving/none
 resized_image = None
 output_path = None # working path
+rotation_angle = None
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -36,7 +37,7 @@ canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas t
 # step 1 - img conversion: HEIC to JPG
 
 input_folder = 'G:\\My Drive\\plantscan_photos_to_process'
-output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\converted_to_jpg'
+output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\to_jpg'
 
 # open & save HEIC to JPG img
 def heic_to_jpg(input_path):
@@ -122,6 +123,7 @@ def run_img_tasks():
     tk_img = make_tk_img(resized_image) # convert to tk img
     display_image(tk_img) # display
 
+
 # ----- BUTTON ---------
 select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=run_img_tasks)
 select_img_btn.pack()
@@ -179,6 +181,7 @@ def on_click(event):
     end_corner = (event.x, event.y)
     draw_rectangle()
 
+
 def drag_rect(event):
     global end_corner
     if mode == "drawing":
@@ -193,9 +196,41 @@ def drag_rect(event):
 def on_release(event): # when mouse is released
     global mode
     mode = None
+    rotate_rect(rect_id, 10) # test rotation with a value
+    # this produced a shifted rectangle, not rotated, it is axis aligned unfortunately
 
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
+
+def rotate_rect(rect_id, rotate_angle):
+    rect_coords = get_rect_coords() # getting the rect coords
+    print("coords before rotation:", rect_coords) # displaying them for debug
+    if rect_coords is None:
+        print("no rect coords") # error message
+        return
+    x0, y0, x1, y1 = rect_coords # coords
+    # we rotate from x_center & y_center
+    x_center = (x0 + x1) / 2 # middle of x start & end points
+    y_center = (y0 + y1) / 2 # middle of y start and end
+    angle = math.radians(rotate_angle) # convert rotate degree to radian
+    #rotate point by the centre
+    def rotate_coords(x,y):
+        dx = x - x_center # offset/point from center
+        dy = y - y_center
+        cos_angle = math.cos(angle)
+        sin_angle = math.sin(angle)
+        xrot = x_center + dx * cos_angle - dy * sin_angle # calculate rotation
+        yrot = y_center + dx * sin_angle + dy * cos_angle
+        return xrot, yrot #return rotated points
+    new_x0, new_y0 = rotate_coords(x0, y0) # rotate start
+    new_x1, new_y1 = rotate_coords(x1, y1) # rotate end
+    canvas.coords(rect_id, new_x0, new_y0, new_x1, new_y1)
+
+    print("rotate ran") # print for debug purposes
+
+
+
+
 
 def save_cropped_img():
     cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
