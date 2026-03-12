@@ -210,42 +210,9 @@ def make_poly():
         print("no rect coords")
         return
     x0, y0, x1, y1 = rect_coords
-    # points = [x0,y0,x1,y0,x1,y1,x0,y1]
-    # poly = canvas.create_polygon(points, outline="blue", width=2)
-
-    # center_x = (x0+y0)/2
-    # center_y = (y0+y1)/2
-    center_x = (x0+x1)/2
-    center_y = (y0+y1)/2
-
-    half_width = abs(x1-x0)/2 # x middle
-    half_height = abs(y1-y0)/2 # y middle
-
-    #double the width of half_width to get full width of rectangle
-    top_right_x = half_width * 2 # xtr
-    # double the height of half height to get full height of rect
-    bott_left_x = half_height*2 #xbr
-    top_right = (top_right_x)
-    bott_left = (bott_left_x)
-    new_center = x0, y0 # this is top left corner
-    bott_right = x1, y1
-    print(new_center, top_right, bott_left, bott_right)
-    poly = canvas.create_polygon(new_center, top_right, bott_left, bott_right, fill="red") # displays a triangle instead of a rectangle
-   # print("center coords:", center_x, center_y)
-    #print(tl, tr, bl, br)
-    #new_points = [tl, tr, bl, br]
-    # these are the points of 1/4 of the rectangle
-    #
-    #print("new_points:", new_points)
-    #poly = canvas.create_polygon(, outline="red", fill="red") #displays 1/4 filled rectangle
-    # print(center_x, center_y)
-    # tr = -center_x
-    # bl = -center_y
-    # print(tr, bl)
-    # poly = canvas.create_polygon(center_x, center_y, tr, bl, outline="red", fill="red")
-
-
-
+    # top left, top right, bottom right, bottom left
+    points = [x0,y0,x1,y0,x1,y1,x0,y1]
+    poly = canvas.create_polygon(points, outline="blue", width=2, fill="")  # this one works
 
 # def rotate_rect(rect_id, rotate_angle):
 #     rect_coords = get_rect_coords() # getting the rect coords
