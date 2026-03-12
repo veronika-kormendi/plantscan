@@ -1,7 +1,6 @@
 ''' Author: Veronika Kormendi
     Purpose: Final Year Project
 '''
-import math
 # ------- IMPORTS -------
 import os
 from PIL import Image, ImageTk  # for managing images
@@ -10,6 +9,8 @@ import tkinter as tk # for GUI
 import cv2 as cv # openCV
 import ttkbootstrap as ttk # for modern GUI
 from tkinter import filedialog
+import math
+import time
 
 start_corner = None
 end_corner = None
@@ -196,38 +197,82 @@ def drag_rect(event):
 def on_release(event): # when mouse is released
     global mode
     mode = None
-    rotate_rect(rect_id, 10) # test rotation with a value
+    # time.sleep(30)
+    # rotate_rect(rect_id, 10) # test rotation with a value
     # this produced a shifted rectangle, not rotated, it is axis aligned unfortunately
-
+    make_poly()
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
-def rotate_rect(rect_id, rotate_angle):
-    rect_coords = get_rect_coords() # getting the rect coords
-    print("coords before rotation:", rect_coords) # displaying them for debug
+def make_poly():
+    rect_coords = get_rect_coords()
     if rect_coords is None:
-        print("no rect coords") # error message
+        print("no rect coords")
         return
-    x0, y0, x1, y1 = rect_coords # coords
-    # we rotate from x_center & y_center
-    x_center = (x0 + x1) / 2 # middle of x start & end points
-    y_center = (y0 + y1) / 2 # middle of y start and end
-    angle = math.radians(rotate_angle) # convert rotate degree to radian
-    #rotate point by the centre
-    def rotate_coords(x,y):
-        dx = x - x_center # offset/point from center
-        dy = y - y_center
-        cos_angle = math.cos(angle)
-        sin_angle = math.sin(angle)
-        xrot = x_center + dx * cos_angle - dy * sin_angle # calculate rotation
-        yrot = y_center + dx * sin_angle + dy * cos_angle
-        return xrot, yrot #return rotated points
-    new_x0, new_y0 = rotate_coords(x0, y0) # rotate start
-    new_x1, new_y1 = rotate_coords(x1, y1) # rotate end
-    canvas.coords(rect_id, new_x0, new_y0, new_x1, new_y1)
+    x0, y0, x1, y1 = rect_coords
+    # points = [x0,y0,x1,y0,x1,y1,x0,y1]
+    # poly = canvas.create_polygon(points, outline="blue", width=2)
 
-    print("rotate ran") # print for debug purposes
+    # center_x = (x0+y0)/2
+    # center_y = (y0+y1)/2
+    center_x = (x0+x1)/2
+    center_y = (y0+y1)/2
 
+    half_width = abs(x1-x0)/2 # x middle
+    half_height = abs(y1-y0)/2 # y middle
+
+    #double the width of half_width to get full width of rectangle
+    top_right_x = half_width * 2 # xtr
+    # double the height of half height to get full height of rect
+    bott_left_x = half_height*2 #xbr
+    top_right = (top_right_x)
+    bott_left = (bott_left_x)
+    new_center = x0, y0 # this is top left corner
+    bott_right = x1, y1
+    print(new_center, top_right, bott_left, bott_right)
+    poly = canvas.create_polygon(new_center, top_right, bott_left, bott_right, fill="red") # displays a triangle instead of a rectangle
+   # print("center coords:", center_x, center_y)
+    #print(tl, tr, bl, br)
+    #new_points = [tl, tr, bl, br]
+    # these are the points of 1/4 of the rectangle
+    #
+    #print("new_points:", new_points)
+    #poly = canvas.create_polygon(, outline="red", fill="red") #displays 1/4 filled rectangle
+    # print(center_x, center_y)
+    # tr = -center_x
+    # bl = -center_y
+    # print(tr, bl)
+    # poly = canvas.create_polygon(center_x, center_y, tr, bl, outline="red", fill="red")
+
+
+
+
+# def rotate_rect(rect_id, rotate_angle):
+#     rect_coords = get_rect_coords() # getting the rect coords
+#     print("coords before rotation:", rect_coords) # displaying them for debug
+#     if rect_coords is None:
+#         print("no rect coords") # error message
+#         return
+#     x0, y0, x1, y1 = rect_coords # coords
+#     # we rotate from x_center & y_center
+#     x_center = (x0 + x1) / 2 # middle of x start & end points
+#     y_center = (y0 + y1) / 2 # middle of y start and end
+#     angle = math.radians(rotate_angle) # convert rotate degree to radian
+#     #rotate point by the centre
+#     def rotate_coords(x,y):
+#         dx = x - x_center # offset/point from center
+#         dy = y - y_center
+#         cos_angle = math.cos(angle)
+#         sin_angle = math.sin(angle)
+#         xrot = x_center + dx * cos_angle - dy * sin_angle # calculate rotation
+#         yrot = y_center + dx * sin_angle + dy * cos_angle
+#         return xrot, yrot #return rotated points
+#     new_x0, new_y0 = rotate_coords(x0, y0) # rotate start
+#     new_x1, new_y1 = rotate_coords(x1, y1) # rotate end
+#     canvas.coords(rect_id, new_x0, new_y0, new_x1, new_y1)
+#
+#     print("rotate ran") # print for debug purposes
+#
 
 
 
