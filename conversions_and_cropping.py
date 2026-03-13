@@ -123,7 +123,6 @@ def run_img_tasks():
     tk_img = make_tk_img(resized_image) # convert to tk img
     display_image(tk_img) # display
 
-
 # ----- BUTTON ---------
 select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=run_img_tasks)
 select_img_btn.pack()
@@ -203,67 +202,9 @@ def on_release(event): # when mouse is released
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
-# def make_poly():
-#     global poly_id
-#     rect_coords = get_rect_coords()
-#     if rect_coords is None:
-#         print("no rect coords")
-#         return
-#     x0, y0, x1, y1 = rect_coords
-#     # top left, top right, bottom right, bottom left
-#     points = [x0,y0,x1,y0,x1,y1,x0,y1]
-#     # draw polygon
-#     poly_id = canvas.create_polygon(points, outline="blue", width=2, fill="")  # this one works
-
-# def rotate_rect(rect_id, rotate_angle):
-#     rect_coords = get_rect_coords() # getting the rect coords
-#     print("coords before rotation:", rect_coords) # displaying them for debug
-#     if rect_coords is None:
-#         print("no rect coords") # error message
-#         return
-#     x0, y0, x1, y1 = rect_coords # coords
-#     # we rotate from x_center & y_center
-#     x_center = (x0 + x1) / 2 # middle of x start & end points
-#     y_center = (y0 + y1) / 2 # middle of y start and end
-#     angle = math.radians(rotate_angle) # convert rotate degree to radian
-#     #rotate point by the centre
-#     def rotate_coords(x,y):
-#         dx = x - x_center # offset/point from center
-#         dy = y - y_center
-#         cos_angle = math.cos(angle)
-#         sin_angle = math.sin(angle)
-#         xrot = x_center + dx * cos_angle - dy * sin_angle # calculate rotation
-#         yrot = y_center + dx * sin_angle + dy * cos_angle
-#         return xrot, yrot #return rotated points
-#     new_x0, new_y0 = rotate_coords(x0, y0) # rotate start
-#     new_x1, new_y1 = rotate_coords(x1, y1) # rotate end
-#     canvas.coords(rect_id, new_x0, new_y0, new_x1, new_y1)
-#
-#     print("rotate ran") # print for debug purposes
-#
-
-# def rotate_poly(poly_id, rotation_angle):
-#
-#     poly_coords = canvas.coords(poly_id)
-#     xs = poly_coords[0::2]
-#     ys = poly_coords[1::2]
-#     cx = sum(xs) / 4
-#     cy = sum(ys) / 4
-#     rad = math.radians(rotation_angle)
-#     cos_angle = math.cos(rad)
-#     sin_angle = math.sin(rad)
-#     new_coords = []
-#     for x,y in zip(xs,ys):
-#         dx = x-cx
-#         dy = y-cy
-#         xr = cx + dx * cos_angle - dy * sin_angle
-#         yr = cy + dx * sin_angle + dy * cos_angle
-#         new_coords.extend((xr, yr))
-#     canvas.coords(poly_id, new_coords)
-
-        #rotate clockwise by rotation angle for each button click
+#rotate counter-clockwise by rotation angle for each button click
 def rotate_img():
-    global resized_image, tk_img, canvas_img_id
+    global resized_image, tk_img, canvas_img_id, rect_id
     resized_image= resized_image.rotate(2, expand=True)
     tk_img = make_tk_img(resized_image)
     canvas.itemconfig(canvas_img_id, image=tk_img)
@@ -303,7 +244,5 @@ save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
 save_btn.pack()
 rotate_btn = tk.Button(gui_window, text="Rotate", command=rotate_img)
 rotate_btn.pack()
-# rotate_btn = tk.Button(gui_window, text="Rotate", command=lambda: rotate_poly(poly_id, rotation_angle=1))
-# rotate_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
