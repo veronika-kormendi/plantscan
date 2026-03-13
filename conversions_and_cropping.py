@@ -31,11 +31,8 @@ style_obj = ttk.Style(theme="vapor") # applying theme
 width = gui_window.winfo_screenwidth() # set window width
 height = gui_window.winfo_screenheight() # set window height
 gui_window.geometry(f"{width}x{height}+0+0") # window size with width, height, offset, offset
-# ---------- CANVAS ------------
-canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
 
 # step 1 - img conversion: HEIC to JPG
-
 input_folder = 'G:\\My Drive\\plantscan_photos_to_process'
 output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\to_jpg'
 
@@ -195,19 +192,10 @@ def drag_rect(event):
 def on_release(event): # when mouse is released
     global mode
     mode = None
-    # time.sleep(30)
-    # rotate_rect(rect_id, 10) # test rotation with a value
-    # this produced a shifted rectangle, not rotated, it is axis aligned unfortunately
-    # make_poly()
+
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
-#rotate counter-clockwise by rotation angle for each button click
-def rotate_img():
-    global resized_image, tk_img, canvas_img_id, rect_id
-    resized_image= resized_image.rotate(2, expand=True)
-    tk_img = make_tk_img(resized_image)
-    canvas.itemconfig(canvas_img_id, image=tk_img)
 def save_cropped_img():
     cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
     global resized_image, output_path
@@ -236,13 +224,12 @@ def save_cropped_img():
         cropped.save(save_path, format="JPEG")
         print(f"Saved cropped image to {save_path}.")
 
-
+# ---------- CANVAS ------------
+canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
 save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
 save_btn.pack()
-rotate_btn = tk.Button(gui_window, text="Rotate", command=rotate_img)
-rotate_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
