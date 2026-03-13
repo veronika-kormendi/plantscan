@@ -9,8 +9,6 @@ import tkinter as tk # for GUI
 import cv2 as cv # openCV
 import ttkbootstrap as ttk # for modern GUI
 from tkinter import filedialog
-import math
-import time
 
 start_corner = None
 end_corner = None
@@ -23,6 +21,7 @@ mode = None # drawing/moving/none
 resized_image = None
 output_path = None # working path
 rotation_angle = None
+canvas_img_id = None
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -92,13 +91,13 @@ def make_tk_img(resized_image):
     return tk_img
 
 def display_image(tk_img):
-    global rect_id, start_corner,end_corner, mode
+    global rect_id, start_corner,end_corner, mode, canvas_img_id
     canvas.delete("all")
     rect_id = None
     start_corner = None
     end_corner = None
     mode = None
-    canvas.create_image(10,10, anchor=tk.NW, image=tk_img) # adding tkinter image to canvas
+    canvas_img_id = canvas.create_image(10,10, anchor=tk.NW, image=tk_img) # adding tkinter image to canvas
     canvas.image = tk_img
     print("displaying image", tk_img) # for troubleshooting
 
@@ -200,19 +199,21 @@ def on_release(event): # when mouse is released
     # time.sleep(30)
     # rotate_rect(rect_id, 10) # test rotation with a value
     # this produced a shifted rectangle, not rotated, it is axis aligned unfortunately
-    make_poly()
+    # make_poly()
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
-def make_poly():
-    rect_coords = get_rect_coords()
-    if rect_coords is None:
-        print("no rect coords")
-        return
-    x0, y0, x1, y1 = rect_coords
-    # top left, top right, bottom right, bottom left
-    points = [x0,y0,x1,y0,x1,y1,x0,y1]
-    poly = canvas.create_polygon(points, outline="blue", width=2, fill="")  # this one works
+# def make_poly():
+#     global poly_id
+#     rect_coords = get_rect_coords()
+#     if rect_coords is None:
+#         print("no rect coords")
+#         return
+#     x0, y0, x1, y1 = rect_coords
+#     # top left, top right, bottom right, bottom left
+#     points = [x0,y0,x1,y0,x1,y1,x0,y1]
+#     # draw polygon
+#     poly_id = canvas.create_polygon(points, outline="blue", width=2, fill="")  # this one works
 
 # def rotate_rect(rect_id, rotate_angle):
 #     rect_coords = get_rect_coords() # getting the rect coords
@@ -241,9 +242,31 @@ def make_poly():
 #     print("rotate ran") # print for debug purposes
 #
 
+# def rotate_poly(poly_id, rotation_angle):
+#
+#     poly_coords = canvas.coords(poly_id)
+#     xs = poly_coords[0::2]
+#     ys = poly_coords[1::2]
+#     cx = sum(xs) / 4
+#     cy = sum(ys) / 4
+#     rad = math.radians(rotation_angle)
+#     cos_angle = math.cos(rad)
+#     sin_angle = math.sin(rad)
+#     new_coords = []
+#     for x,y in zip(xs,ys):
+#         dx = x-cx
+#         dy = y-cy
+#         xr = cx + dx * cos_angle - dy * sin_angle
+#         yr = cy + dx * sin_angle + dy * cos_angle
+#         new_coords.extend((xr, yr))
+#     canvas.coords(poly_id, new_coords)
 
-
-
+        #rotate clockwise by rotation angle for each button click
+def rotate_img():
+    global resized_image, tk_img, canvas_img_id
+    resized_image= resized_image.rotate(2, expand=True)
+    tk_img = make_tk_img(resized_image)
+    canvas.itemconfig(canvas_img_id, image=tk_img)
 def save_cropped_img():
     cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
     global resized_image, output_path
@@ -278,5 +301,9 @@ canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
 save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
 save_btn.pack()
+rotate_btn = tk.Button(gui_window, text="Rotate", command=rotate_img)
+rotate_btn.pack()
+# rotate_btn = tk.Button(gui_window, text="Rotate", command=lambda: rotate_poly(poly_id, rotation_angle=1))
+# rotate_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
