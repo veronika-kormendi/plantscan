@@ -1,7 +1,6 @@
 ''' Author: Veronika Kormendi
     Purpose: Final Year Project
 '''
-
 # ------- IMPORTS -------
 import os
 from PIL import Image, ImageTk  # for managing images
@@ -20,6 +19,9 @@ offset_x = None
 offset_y = None
 mode = None # drawing/moving/none
 resized_image = None
+output_path = None # working path
+rotation_angle = None
+canvas_img_id = None
 
 # ---------- GUI ------------
 gui_window = tk.Tk() # creating a window instance
@@ -29,15 +31,49 @@ style_obj = ttk.Style(theme="vapor") # applying theme
 width = gui_window.winfo_screenwidth() # set window width
 height = gui_window.winfo_screenheight() # set window height
 gui_window.geometry(f"{width}x{height}+0+0") # window size with width, height, offset, offset
-# ---------- CANVAS ------------
-canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
+
+# step 1 - img conversion: HEIC to JPG
+input_folder = 'G:\\My Drive\\plantscan_photos_to_process'
+output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\to_jpg'
+
+# open & save HEIC to JPG img
+def heic_to_jpg(input_path):
+    pillow_heif.register_heif_opener() # to be able to open HEIC files
+    if not os.path.exists(output_folder): # if output folder does not exist
+        os.makedirs(output_folder) # create one
+    filename = os.path.basename(input_path)
+    jpg_filename = f"{os.path.splitext(filename)[0]}.jpg" # build jpg filename
+    jpg_path = os.path.join(output_folder, jpg_filename) #build jpg path where to save the jpg img
+    try:
+        img = Image.open(input_path)  # open img from input path
+        img.save(jpg_path, format='JPEG') # save jpg
+    except Exception as e: # error handling
+        print(f"Heic conversion error occurred: {e}")
+        return
+    print(f"File extension changed from {filename} to JPG")
+
+# ------- GREYSCALE ----------
+greyscale_output_folder = 'G:\\My Drive\\plantscan_photos_to_process\\new_test'
+def colour_to_greyscale(coloured_img):
+    # path = join input folder & selected coloured image
+    img_to_greyscale = os.path.join(output_folder, coloured_img)
+    if not os.path.exists(greyscale_output_folder):
+        os.makedirs(greyscale_output_folder)
+    gscale_output = os.path.join(greyscale_output_folder, coloured_img)
+    gscale_filename = os.path.basename(gscale_output)
+    coloured_img = cv.imread(img_to_greyscale)
+    greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY) #convert to gscale
+    cv.imwrite(gscale_output, greyscale_img) # saving the greyscale image to the output folder
+    print(f"Greyscale conversion successful: {gscale_filename} is greyscale now.")
+
 # open image file - JPG
 def select_img_from():
-    file_to_open = filedialog.askopenfilename(title="Select Image", filetypes=(("JPG files", "*.jpg"),))
+    file_to_open = filedialog.askopenfilename(title="Select Image", filetypes=(("Supported image files", "*.jpg *.heic *.HEIC *.jpeg"),))
     if not file_to_open: # if the file does not exist
         return None
-    opened_pil_img = Image.open(file_to_open)
-    return opened_pil_img
+    # opened_pil_img = Image.open(file_to_open)
+    # return opened_pil_img # returns PIL image
+    return file_to_open # return filepath
 
 # resize image proportionately to fit to screen
 def resize_image(image, new_w=600):
@@ -52,22 +88,37 @@ def make_tk_img(resized_image):
     return tk_img
 
 def display_image(tk_img):
-    global rect_id, start_corner,end_corner, mode
+    global rect_id, start_corner,end_corner, mode, canvas_img_id
     canvas.delete("all")
     rect_id = None
     start_corner = None
     end_corner = None
     mode = None
-    canvas.create_image(10,10, anchor=tk.NW, image=tk_img) # adding tkinter image to canvas
+    canvas_img_id = canvas.create_image(10,10, anchor=tk.NW, image=tk_img) # adding tkinter image to canvas
     canvas.image = tk_img
     print("displaying image", tk_img) # for troubleshooting
 
 def run_img_tasks():
-    global resized_image
-    opened_img_pil = select_img_from()
-    resized_image = resize_image(opened_img_pil)
-    tk_img = make_tk_img(resized_image)
-    display_image(tk_img)
+    global resized_image, output_path
+    selected_path = select_img_from() # open img file
+    if not selected_path:
+        return
+    filename = os.path.basename(selected_path)
+    extension = filename. lower().split('.')[-1]
+    if extension == "heic":
+        heic_to_jpg(selected_path) # convert heic to jpg
+        filename = filename.replace('.heic', '.jpg').replace('HEIC', 'jpg') # replace extension
+        output_path = os.path.join(output_folder, filename) #add converted file to
+    else:
+        output_path = os.path.join(output_folder, filename)
+        if not os.path.exists(output_path):
+            os.makedirs(output_folder, exist_ok=True)
+    colour_to_greyscale(os.path.basename(output_path)) # turn into greyscale
+    gscale_path = os.path.join(greyscale_output_folder, os.path.basename(output_path))
+    pil_img = Image.open(gscale_path) # load image
+    resized_image = resize_image(pil_img)  #resize image
+    tk_img = make_tk_img(resized_image) # convert to tk img
+    display_image(tk_img) # display
 
 # ----- BUTTON ---------
 select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=run_img_tasks)
@@ -126,6 +177,7 @@ def on_click(event):
     end_corner = (event.x, event.y)
     draw_rectangle()
 
+
 def drag_rect(event):
     global end_corner
     if mode == "drawing":
@@ -145,11 +197,14 @@ def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
 def save_cropped_img():
-    global resized_image
+    cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
+    global resized_image, output_path
     if resized_image is None:
         print("No image loaded.")
         return
-
+    if output_path is None:
+        print("No output path was provided.")
+        return
     rect = get_rect_coords()
     if rect is None:
         print("No rectangle drawn.")
@@ -158,11 +213,19 @@ def save_cropped_img():
     # rectangle is in canvas coords & cropped img is in other coords
     x0, y0, x1, y1 = shift_coords(*canvas.coords(rect_id))
     cropped = resized_image.crop((x0, y0, x1, y1))
-    save_path = filedialog.asksaveasfilename(defaultextension=".png")
+    if not os.path.exists(cropped_folder): #if it does not exist
+        os.makedirs(cropped_folder) # create cropped folder
+    original_name = os.path.basename(output_path) #original name
+    base, _ = os.path.splitext(original_name)
+    new_name = f"{base}_cropped.jpg"
+    # save_path = filedialog.asksaveasfilename(defaultextension=".png")
+    save_path = os.path.join(cropped_folder, new_name) # where to save the new one
     if save_path:
-        cropped.save(save_path)
+        cropped.save(save_path, format="JPEG")
+        print(f"Saved cropped image to {save_path}.")
 
-
+# ---------- CANVAS ------------
+canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
