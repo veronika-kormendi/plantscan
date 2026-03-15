@@ -225,16 +225,17 @@ def save_cropped_img():
         cropped.save(save_path, format="JPEG")
         print(f"Saved cropped image to {save_path}.")
 
+def perform_ocr():
+    ocr = PaddleOCR(use_doc_orientation_classify=True,
+                    use_doc_unwarping=True,
+                    use_textline_orientation=True,)
+    result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
+    for res in result:
+        res.print()
+        res.save_to_img("output")
+        res.save_to_json("output")
 
-ocr = PaddleOCR(use_doc_orientation_classify=False,
-                use_doc_unwarping=False,
-                use_textline_orientation=False,)
-result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
-for res in result:
-    res.print()
-    res.save_to_img("output")
-    res.save_to_json("output")
-
+perform_ocr()
 
 
 # ---------- CANVAS ------------
