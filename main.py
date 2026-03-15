@@ -197,8 +197,8 @@ def on_release(event): # when mouse is released
 def shift_coords(x0,y0,x1,y1):
     return x0-12,y0-12, x1-12, y1-12
 
+cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
 def save_cropped_img():
-    cropped_folder = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images'
     global resized_image, output_path
     if resized_image is None:
         print("No image loaded.")
@@ -225,17 +225,33 @@ def save_cropped_img():
         cropped.save(save_path, format="JPEG")
         print(f"Saved cropped image to {save_path}.")
 
-def perform_ocr():
-    ocr = PaddleOCR(use_doc_orientation_classify=True,
-                    use_doc_unwarping=True,
-                    use_textline_orientation=True,)
-    result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
-    for res in result:
-        res.print()
-        res.save_to_img("output")
-        res.save_to_json("output")
+# def perform_ocr():
+#     ocr = PaddleOCR(use_doc_orientation_classify=True,
+#                     use_doc_unwarping=True,
+#                     use_textline_orientation=True,)
+#     result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
+#     for res in result:
+#         res.print()
+#         res.save_to_img("output")
+#         res.save_to_json("output")
+#
+# perform_ocr()
 
-perform_ocr()
+#process multiple files
+def perform_ocr(folder):
+    ocr = PaddleOCR(use_doc_orientation_classify=True,
+                    use_doc_unwarping=False,
+                    use_textline_orientation=False,)
+    for img_file in os.listdir(folder):
+        ocr_path = os.path.join(folder, img_file)
+        print(f"processing image: {img_file}")
+        result = ocr.predict(cropped_folder)
+        for res in result:
+            res.print()
+            res.save_to_img("output")
+            res.save_to_json("output")
+
+perform_ocr(cropped_folder)
 
 
 # ---------- CANVAS ------------
