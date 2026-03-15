@@ -9,6 +9,7 @@ import tkinter as tk # for GUI
 import cv2 as cv # openCV
 import ttkbootstrap as ttk # for modern GUI
 from tkinter import filedialog
+from paddleocr import PaddleOCR
 
 start_corner = None
 end_corner = None
@@ -223,6 +224,18 @@ def save_cropped_img():
     if save_path:
         cropped.save(save_path, format="JPEG")
         print(f"Saved cropped image to {save_path}.")
+
+
+ocr = PaddleOCR(use_doc_orientation_classify=False,
+                use_doc_unwarping=False,
+                use_textline_orientation=False,)
+result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
+for res in result:
+    res.print()
+    res.save_to_img("output")
+    res.save_to_json("output")
+
+
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
