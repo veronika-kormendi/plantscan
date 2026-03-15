@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_8591_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                3,
+                10
+            ],
+            [
+                328,
+                3
+            ],
+            [
+                328,
+                36
+            ],
+            [
+                3,
+                43
+            ]
+        ],
+        [
+            [
+                434,
+                25
+            ],
+            [
+                469,
+                33
+            ],
+            [
+                465,
+                59
+            ],
+            [
+                430,
+                50
+            ]
+        ],
+        [
+            [
+                6,
+                37
+            ],
+            [
+                152,
+                27
+            ],
+            [
+                153,
+                50
+            ],
+            [
+                8,
+                60
+            ]
+        ],
+        [
+            [
+                207,
+                42
+            ],
+            [
+                463,
+                62
+            ],
+            [
+                461,
+                93
+            ],
+            [
+                206,
+                73
+            ]
+        ],
+        [
+            [
+                9,
+                54
+            ],
+            [
+                208,
+                46
+            ],
+            [
+                208,
+                72
+            ],
+            [
+                9,
+                81
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Straerrr",
+        "121134",
+        "added vitamins B6&D",
+        "WatertrawerriesMfedMa",
+        "Ingredients: Yogurt (MILK),"
+    ],
+    "rec_scores": [
+        0.7097581028938293,
+        0.9304949641227722,
+        0.9652439951896667,
+        0.6613423228263855,
+        0.9404215216636658
+    ],
+    "rec_polys": [
+        [
+            [
+                3,
+                10
+            ],
+            [
+                328,
+                3
+            ],
+            [
+                328,
+                36
+            ],
+            [
+                3,
+                43
+            ]
+        ],
+        [
+            [
+                434,
+                25
+            ],
+            [
+                469,
+                33
+            ],
+            [
+                465,
+                59
+            ],
+            [
+                430,
+                50
+            ]
+        ],
+        [
+            [
+                6,
+                37
+            ],
+            [
+                152,
+                27
+            ],
+            [
+                153,
+                50
+            ],
+            [
+                8,
+                60
+            ]
+        ],
+        [
+            [
+                207,
+                42
+            ],
+            [
+                463,
+                62
+            ],
+            [
+                461,
+                93
+            ],
+            [
+                206,
+                73
+            ]
+        ],
+        [
+            [
+                9,
+                54
+            ],
+            [
+                208,
+                46
+            ],
+            [
+                208,
+                72
+            ],
+            [
+                9,
+                81
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            3,
+            3,
+            328,
+            43
+        ],
+        [
+            430,
+            25,
+            469,
+            59
+        ],
+        [
+            6,
+            27,
+            153,
+            60
+        ],
+        [
+            206,
+            42,
+            463,
+            93
+        ],
+        [
+            9,
+            46,
+            208,
+            81
+        ]
+    ]
+}

@@ -1,0 +1,310 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_8582_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                8,
+                9
+            ],
+            [
+                431,
+                19
+            ],
+            [
+                431,
+                35
+            ],
+            [
+                8,
+                25
+            ]
+        ],
+        [
+            [
+                7,
+                22
+            ],
+            [
+                432,
+                34
+            ],
+            [
+                432,
+                50
+            ],
+            [
+                7,
+                38
+            ]
+        ],
+        [
+            [
+                7,
+                36
+            ],
+            [
+                431,
+                47
+            ],
+            [
+                431,
+                63
+            ],
+            [
+                7,
+                52
+            ]
+        ],
+        [
+            [
+                7,
+                49
+            ],
+            [
+                431,
+                61
+            ],
+            [
+                431,
+                77
+            ],
+            [
+                7,
+                65
+            ]
+        ],
+        [
+            [
+                7,
+                62
+            ],
+            [
+                430,
+                73
+            ],
+            [
+                430,
+                89
+            ],
+            [
+                7,
+                78
+            ]
+        ],
+        [
+            [
+                6,
+                75
+            ],
+            [
+                430,
+                86
+            ],
+            [
+                430,
+                101
+            ],
+            [
+                6,
+                91
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Lerofcbcncricetccenocl",
+        "crunchiiceiutouriccrerecuriccetecam",
+        "wccbuu",
+        "",
+        "r",
+        "meAC"
+    ],
+    "rec_scores": [
+        0.5521454811096191,
+        0.5753574371337891,
+        0.46662262082099915,
+        0.0,
+        0.4731311798095703,
+        0.4766330122947693
+    ],
+    "rec_polys": [
+        [
+            [
+                8,
+                9
+            ],
+            [
+                431,
+                19
+            ],
+            [
+                431,
+                35
+            ],
+            [
+                8,
+                25
+            ]
+        ],
+        [
+            [
+                7,
+                22
+            ],
+            [
+                432,
+                34
+            ],
+            [
+                432,
+                50
+            ],
+            [
+                7,
+                38
+            ]
+        ],
+        [
+            [
+                7,
+                36
+            ],
+            [
+                431,
+                47
+            ],
+            [
+                431,
+                63
+            ],
+            [
+                7,
+                52
+            ]
+        ],
+        [
+            [
+                7,
+                49
+            ],
+            [
+                431,
+                61
+            ],
+            [
+                431,
+                77
+            ],
+            [
+                7,
+                65
+            ]
+        ],
+        [
+            [
+                7,
+                62
+            ],
+            [
+                430,
+                73
+            ],
+            [
+                430,
+                89
+            ],
+            [
+                7,
+                78
+            ]
+        ],
+        [
+            [
+                6,
+                75
+            ],
+            [
+                430,
+                86
+            ],
+            [
+                430,
+                101
+            ],
+            [
+                6,
+                91
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            8,
+            9,
+            431,
+            35
+        ],
+        [
+            7,
+            22,
+            432,
+            50
+        ],
+        [
+            7,
+            36,
+            431,
+            63
+        ],
+        [
+            7,
+            49,
+            431,
+            77
+        ],
+        [
+            7,
+            62,
+            430,
+            89
+        ],
+        [
+            6,
+            75,
+            430,
+            101
+        ]
+    ]
+}
