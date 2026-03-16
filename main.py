@@ -10,6 +10,7 @@ import cv2 as cv # openCV
 import ttkbootstrap as ttk # for modern GUI
 from tkinter import filedialog
 from paddleocr import PaddleOCR
+import json
 
 start_corner = None
 end_corner = None
@@ -224,6 +225,7 @@ def save_cropped_img():
     if save_path:
         cropped.save(save_path, format="JPEG")
         print(f"Saved cropped image to {save_path}.")
+    return save_path
 
 # def perform_ocr():
 #     ocr = PaddleOCR(use_doc_orientation_classify=True,
@@ -238,28 +240,82 @@ def save_cropped_img():
 # perform_ocr()
 
 #process multiple files
-def perform_ocr(folder):
-    ocr = PaddleOCR(use_doc_orientation_classify=True,
-                    use_doc_unwarping=False,
-                    use_textline_orientation=False,)
-    for img_file in os.listdir(folder):
-        ocr_path = os.path.join(folder, img_file)
-        print(f"processing image: {img_file}")
-        result = ocr.predict(cropped_folder)
-        for res in result:
-            res.print()
-            res.save_to_img("output")
-            res.save_to_json("output")
-
-perform_ocr(cropped_folder)
+# def perform_ocr(folder):
+#     ocr = PaddleOCR(use_doc_orientation_classify=True,
+#                     use_doc_unwarping=False,
+#                     use_textline_orientation=False,)
+#     for img_file in os.listdir(folder):
+#         ocr_path = os.path.join(folder, img_file)
+#         print(f"processing image: {img_file}")
+#         result = ocr.predict(cropped_folder)
+#         for res in result:
+#             res.print()
+#             res.save_to_img("output")
+#             res.save_to_json("output")
+#
+# perform_ocr(cropped_folder)
 
 
 # ---------- CANVAS ------------
+
+# def perform_ocr_single(img_path):
+    # ocr = PaddleOCR(use_doc_orientation_classify=True,
+    #                      use_doc_unwarping=False,
+    #                      use_textline_orientation=False,)
+    # print(f"Performing OCR on {img_path}...")
+    # result = ocr.predict(img_path)
+    # base = os.path.splitext(os.path.basename(img_path))[0]
+    # json_path = os.path.join("output", f"{base}_res.json")
+    # txt_path = os.path.join("output", f"{base}.txt")
+    # for res in result:
+    #     res.print()
+    #     res.save_to_json("output")
+    #     res.save_to_img("output")
+    # with open(json_path, "r", encoding="utf-8") as f:
+    #     data = json.load(f)
+    # text_lines = data.get("rec_texts", [])
+    #
+    # with open(txt_path, "w", encoding="utf-8") as f:
+    #     for line in text_lines:
+    #         f.write(line + "\n")
+
+def perform_ocr_multiple(img_path): #folder
+    #create ocr object
+    ocr = PaddleOCR(use_doc_orientation_classify=True,
+                         use_doc_unwarping=False,
+                         use_textline_orientation=False,)
+    # go through the files in the cropped folder //called later
+    for img_file in os.listdir(img_path):
+        ocr_path = os.path.join(img_path, img_file) # get cropped image
+        result = ocr.predict(ocr_path) # create results & run ocr
+        for res in result:
+            res.print()
+            res.save_to_json("output")
+            res.save_to_img("output")
+    for json_file in os.listdir("output"): # extract text from json files
+        if  not json_file.endswith(".json"): continue
+        json_path = os.path.join(os.path.join("output", json_file))
+        base = json_file.replace("_res.json", "")
+        txt_path = os.path.join("output", f"{base}.txt")
+        with open(json_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        text_lines = data.get("rec_texts", [])
+        with open(txt_path, "w", encoding="utf-8") as f:
+            for line in text_lines:
+                f.write(line + "\n")
+
+def save_and_ocr():
+    cropped_img_path = save_cropped_img()
+    if cropped_img_path is None:
+        return
+    perform_ocr_multiple(cropped_folder)
+
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
-save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
+# save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
+save_btn = tk.Button(gui_window, text="Save Crop", command=save_and_ocr)
 save_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
