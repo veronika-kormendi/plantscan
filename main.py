@@ -227,37 +227,6 @@ def save_cropped_img():
         print(f"Saved cropped image to {save_path}.")
     return save_path
 
-# def perform_ocr():
-#     ocr = PaddleOCR(use_doc_orientation_classify=True,
-#                     use_doc_unwarping=True,
-#                     use_textline_orientation=True,)
-#     result = ocr.predict('G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7766_cropped.jpg')
-#     for res in result:
-#         res.print()
-#         res.save_to_img("output")
-#         res.save_to_json("output")
-#
-# perform_ocr()
-
-#process multiple files
-# def perform_ocr(folder):
-#     ocr = PaddleOCR(use_doc_orientation_classify=True,
-#                     use_doc_unwarping=False,
-#                     use_textline_orientation=False,)
-#     for img_file in os.listdir(folder):
-#         ocr_path = os.path.join(folder, img_file)
-#         print(f"processing image: {img_file}")
-#         result = ocr.predict(cropped_folder)
-#         for res in result:
-#             res.print()
-#             res.save_to_img("output")
-#             res.save_to_json("output")
-#
-# perform_ocr(cropped_folder)
-
-
-
-
 # def perform_ocr_single(img_path):
 #     ocr = PaddleOCR(use_doc_orientation_classify=True,
 #                          use_doc_unwarping=False,
@@ -308,15 +277,12 @@ def perform_ocr_multiple(img_path): #folder
                 f.write(line + "\n")
     print("ORC Finished.")
 
-
-
 def save_and_ocr():
     cropped_img_path = save_cropped_img()
     if cropped_img_path is None:
         return
     perform_ocr_multiple(cropped_folder) # for multiple images
     # perform_ocr_single(cropped_img_path) # for single img
-
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
