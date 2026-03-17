@@ -297,9 +297,9 @@ def perform_ocr_multiple(img_path): #folder
             print(f"perfoming OCR on {img_file}.")
     for json_file in os.listdir("output"): # extract text from json files
         if  not json_file.endswith(".json"): continue
-        json_path = os.path.join(os.path.join("output", json_file))
-        base = os.path.splitext(json_file)[0]
-        txt_path = os.path.join("output", f"{base}.txt")
+        json_path = os.path.join(os.path.join("output", json_file)) # IMG_0000_cropped_res.json
+        base = os.path.splitext(json_file)[0] # IMG_0000_cropped_res
+        txt_path = os.path.join("output", f"{base}.txt") # output/IMG_0000_cropped_res.jpg
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         text_lines = data.get("rec_texts", [])
