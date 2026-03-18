@@ -1,6 +1,7 @@
 import Levenshtein
 import os
 import string
+import unicodedata
 
 input1 = "mommy"
 input2 = "mommy"
@@ -22,12 +23,13 @@ def count_words(folder):
         with open(file_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
+                line = unicodedata.normalize("NFKC", line) # remove unicode chars
                 translator = str.maketrans(string.punctuation, " " * len(string.punctuation)) # replace punct with space
                 line = line.translate(translator) # apply spaces
                 words = line.split()
                 word_count += len(words)
-                # print(line)
-        print(f"There are {word_count} words in the file {file}")
+                print(line)
+        print(f"There are {word_count} words in the file {file}\n")
         totals_per_txt_files[file] = word_count
         grand_total += word_count
 
