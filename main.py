@@ -227,62 +227,64 @@ def save_cropped_img():
         print(f"Saved cropped image to {save_path}.")
     return save_path
 
-# def perform_ocr_single(img_path):
-#     ocr = PaddleOCR(use_doc_orientation_classify=True,
-#                          use_doc_unwarping=False,
-#                          use_textline_orientation=False,)
-#     print(f"Performing OCR on {img_path}...")
-#     result = ocr.predict(img_path)
-#     base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
-#     # create correct extension
-#     json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
-#     txt_path = os.path.join("output", f"{base}.txt") # IMG_8590_cropped.txt
-#     for res in result:
-#         res.print()
-#         res.save_to_json(json_path)
-#         res.save_to_img("output")
-#     with open(json_path, "r", encoding="utf-8") as f:
-#         data = json.load(f)
-#     text_lines = data.get("rec_texts", [])
-#
-#     with open(txt_path, "w", encoding="utf-8") as f:
-#         for line in text_lines:
-#             f.write(line + "\n")
-#     print(f"Finished performing OCR on {img_path}.")
-
-
-def perform_ocr_multiple(img_path): #folder
-    ocr = PaddleOCR(use_doc_orientation_classify=True,  #create ocr object
+def perform_ocr_single(img_path):
+    ocr = PaddleOCR(use_doc_orientation_classify=True,
                          use_doc_unwarping=False,
                          use_textline_orientation=False,)
-    # go through the files in the cropped folder //called later
-    for img_file in os.listdir(img_path):
-        ocr_path = os.path.join(img_path, img_file) # get cropped image
-        result = ocr.predict(ocr_path) # create results & run ocr
-        for res in result:
-            res.print()
-            res.save_to_json("output")
-            res.save_to_img("output")
-            print(f"perfoming OCR on {img_file}.")
-    for json_file in os.listdir("output"): # extract text from json files
-        if  not json_file.endswith(".json"): continue
-        json_path = os.path.join(os.path.join("output", json_file)) # IMG_0000_cropped_res.json
-        base = os.path.splitext(json_file)[0] # IMG_0000_cropped_res
-        txt_path = os.path.join("output", f"{base}.txt") # output/IMG_0000_cropped_res.jpg
-        with open(json_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        text_lines = data.get("rec_texts", [])
-        with open(txt_path, "w", encoding="utf-8") as f:
-            for line in text_lines:
-                f.write(line + "\n")
-    print("ORC Finished.")
+    print(f"Performing OCR on {img_path}...")
+    result = ocr.predict(img_path)
+    base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
+    # create correct extension
+    json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
+    txt_path = os.path.join("output", f"{base}.txt") # IMG_8590_cropped.txt
+    for res in result:
+        res.print()
+        res.save_to_json(json_path)
+        res.save_to_img("output")
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    text_lines = data.get("rec_texts", [])
+
+    with open(txt_path, "w", encoding="utf-8") as f:
+        for line in text_lines:
+            f.write(line + "\n")
+    print(f"Finished performing OCR on {img_path}.")
+
+
+# def perform_ocr_multiple(img_path): #folder
+#     ocr = PaddleOCR(use_doc_orientation_classify=True,  #create ocr object
+#                          use_doc_unwarping=False,
+#                          use_textline_orientation=False,)
+#     # go through the files in the cropped folder //called later
+#     for img_file in os.listdir(img_path):
+#         ocr_path = os.path.join(img_path, img_file) # get cropped image
+#         result = ocr.predict(ocr_path) # create results & run ocr
+#         for res in result:
+#             res.print()
+#             res.save_to_json("output")
+#             res.save_to_img("output")
+#             print(f"perfoming OCR on {img_file}.")
+#     for json_file in os.listdir("output"): # extract text from json files
+#         if  not json_file.endswith(".json"): continue
+#         json_path = os.path.join(os.path.join("output", json_file)) # IMG_0000_cropped_res.json
+#         base = os.path.splitext(json_file)[0] # IMG_0000_cropped_res
+#         txt_path = os.path.join("output", f"{base}.txt") # output/IMG_0000_cropped_res.jpg
+#         with open(json_path, "r", encoding="utf-8") as f:
+#             data = json.load(f)
+#         text_lines = data.get("rec_texts", [])
+#         with open(txt_path, "w", encoding="utf-8") as f:
+#             for line in text_lines:
+#                 f.write(line + "\n")
+#     print("ORC Finished.")
 
 def save_and_ocr():
     cropped_img_path = save_cropped_img()
     if cropped_img_path is None:
         return
-    perform_ocr_multiple(cropped_folder) # for multiple images
-    # perform_ocr_single(cropped_img_path) # for single img
+    # perform_ocr_multiple(cropped_folder) # for multiple images
+    perform_ocr_single(cropped_img_path) # for single img
+
+
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
