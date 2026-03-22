@@ -284,7 +284,7 @@ def perform_ocr_single(img_path):
 #     print("ORC Finished.")
 
 
-test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7476_cropped.txt' # temporarily I use this path for testing
+test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7761_cropped.txt' # temporarily I use this path for testing
 def save_crop_and_start_ocr():
     # 1. save cropped  image
     cropped_img_path = save_cropped_img()
@@ -302,34 +302,30 @@ def save_crop_and_start_ocr():
         # print(f"test {test}")
         # print(f"cleaned_test {cleaned_test}")
         #//////////
+        # load words from cleaned folder (cleaned_path)
         cleaned_extracted_test = count_word_and_char(extracted_txt) #orc extracted text is passed in
         extracted_text_before_cleaning = load_words(extracted_txt)
+        # extracted_text_before_cleaning = load_text(extracted_txt)
         print(f"extracted text before cleaning: {extracted_text_before_cleaning}")
-        print(f"cleaned_extracted text: {cleaned_extracted_test}")
+        print(f"cleaned_extracted text's path: {cleaned_extracted_test}")
         load_cleaned_extracted = load_words(cleaned_extracted_test)
+        # load_cleaned_extracted = load_text(cleaned_extracted_test)
+        print(f"loaded cleaned_extracted text: {load_cleaned_extracted}")
 
         not_cleaned_gt = load_words(test_gt_filepath) # display not cleaned gt file
+        # not_cleaned_gt = load_text(test_gt_filepath) # display not cleaned gt file
         print(f"not_cleaned_gt: {not_cleaned_gt}")
         cleaned_gt = count_word_and_char(test_gt_filepath) # cleaning
         load_cleaned_gt = load_words(cleaned_gt) # load cleaned gt file
+        # load_cleaned_gt = load_text(cleaned_gt) # load cleaned gt file
         print(f"cleaned_gt {load_cleaned_gt}")
-        # not_cleaned_gt = load_words(test_gt_filepath) # gt test file before cleaning
-        # cleaned_gt_words = count_word_and_char(test_gt_filepath)
-        # cleaned_ocr_words = count_word_and_char(extracted_txt)
-        # gt_words = load_words(cleaned_gt_words)
-        # ocr_words = load_words(cleaned_ocr_words)
-        # edit_dist = Levenshtein.distance(gt_words, ocr_words)
-        # print(f"test_gt_filepath: {test_gt_filepath}")
-        # print(f"not cleaned gt: {not_cleaned_gt}") # display not cleaned gt test file's text
-        # print("gt words after cleaning", gt_words)
-        # # print(f"ocr words before cleaning: {cleaned_ocr_words}")
-        # # print("ocr words after cleaning", ocr_words)
-        # print(f"edit_distance = {edit_dist}")
-        # Lev_ratio = Levenshtein.ratio(gt_words, ocr_words)
-        #
-        # ac = 1 - edit_dist
-        # print(f"Levenshtein ratio = {Lev_ratio}")
-        # print(f"ac = {ac}")
+
+        # edit_dist = Levenshtein.distance(" ".join(cleaned_gt)," ".join(load_cleaned_extracted)) # use with load_words()
+        edit_dist = Levenshtein.distance(load_cleaned_gt, load_cleaned_extracted) # use with load_text()
+        print(f"edit_distance = {edit_dist}")
+        Lev_ratio = Levenshtein.ratio(load_cleaned_gt, load_cleaned_extracted)
+        print(f"Accuracy(Levenshtein ratio) = {Lev_ratio}")
+
         # WER =edit_dist/len(gt_words)*100
         # print(f"WER = {WER}")
 
@@ -338,6 +334,7 @@ def save_crop_and_start_ocr():
 # print("extracted_txt: ",extracted_txt)
 def clean_line(line):
     line = line.strip()
+    line = line.lower()
     line = unicodedata.normalize("NFKC", line)  # remove unicode chars
     translator = str.maketrans(string.punctuation, " " * len(string.punctuation))  # replace punct with space
     line = line.translate(translator)  # apply spaces
@@ -365,7 +362,7 @@ def count_word_and_char(text_file):
         os.makedirs(cleaned_folder_path)
     origin = os.path.basename(text_file)
     without_extension = os.path.splitext(origin)[0]
-    cleaned_filename = f"{without_extension}_cleaned.txt"
+    cleaned_filename = f"{without_extension}_cleaned_super.txt"
     cleaned_path = os.path.join(cleaned_folder_path, cleaned_filename)
     with open(text_file, "r", encoding="utf-8") as f:
         for line in f:
@@ -382,12 +379,19 @@ def count_word_and_char(text_file):
     print(f"There are {word_count} words and {char_count} chars in the file {text_file}\n")
     return cleaned_path
 
-def load_words(txt_input_file):
+def load_words(txt_input_file): # use this for word-level comparison
     """Loads a text file and return a list of words.
     :parameter txt_input_file: Path to the text file.
     :return: List of words."""
     with open(txt_input_file, "r", encoding="utf-8") as f:
-        return f.read().split() #return words
+        return f.read().split() #return  text as list of words
+
+# def load_text(txt_input_file): # use this for char-level comparison
+#     with open(txt_input_file, "r", encoding="utf-8") as f:
+#         return f.read() # return the entire text as a string
+
+# def calc_accuracy():
+#     edit_dist = Levenshtein.distance()
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on

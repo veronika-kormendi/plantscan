@@ -7,6 +7,7 @@ cleaned_path = "C:\\Users\\veron\\PycharmProjects\\plantscan\\output\\cleaned_te
 
 def clean_line(line):
     line = line.strip()
+    line = line.lower()
     line = unicodedata.normalize("NFKC", line)
     translator = str.maketrans(string.punctuation, " " * len(string.punctuation))
     line = line.translate(translator)

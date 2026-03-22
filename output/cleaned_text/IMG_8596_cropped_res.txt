@@ -1,2 +1,2 @@
-Sardines    Water Concentrated Tomato
-Paste    Salt 
+sardines    water concentrated tomato
+paste    salt 
