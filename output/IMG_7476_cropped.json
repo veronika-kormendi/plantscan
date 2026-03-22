@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images\\IMG_7476_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                14,
+                18
+            ],
+            [
+                278,
+                10
+            ],
+            [
+                278,
+                29
+            ],
+            [
+                15,
+                36
+            ]
+        ],
+        [
+            [
+                14,
+                41
+            ],
+            [
+                79,
+                37
+            ],
+            [
+                80,
+                53
+            ],
+            [
+                15,
+                58
+            ]
+        ],
+        [
+            [
+                85,
+                37
+            ],
+            [
+                232,
+                33
+            ],
+            [
+                233,
+                49
+            ],
+            [
+                85,
+                53
+            ]
+        ],
+        [
+            [
+                15,
+                55
+            ],
+            [
+                245,
+                48
+            ],
+            [
+                245,
+                65
+            ],
+            [
+                16,
+                72
+            ]
+        ],
+        [
+            [
+                16,
+                69
+            ],
+            [
+                60,
+                66
+            ],
+            [
+                61,
+                84
+            ],
+            [
+                17,
+                86
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Smoked tofu-smoked pasteurised soya beancurd",
+        "Ingredients",
+        "57% Soya Beans,Water,Salt,",
+        "Firming Agents:Calcium ChlorideMagnesium",
+        "Chloride."
+    ],
+    "rec_scores": [
+        0.8711345791816711,
+        0.9958496689796448,
+        0.9198406934738159,
+        0.9251083135604858,
+        0.9804931282997131
+    ],
+    "rec_polys": [
+        [
+            [
+                14,
+                18
+            ],
+            [
+                278,
+                10
+            ],
+            [
+                278,
+                29
+            ],
+            [
+                15,
+                36
+            ]
+        ],
+        [
+            [
+                14,
+                41
+            ],
+            [
+                79,
+                37
+            ],
+            [
+                80,
+                53
+            ],
+            [
+                15,
+                58
+            ]
+        ],
+        [
+            [
+                85,
+                37
+            ],
+            [
+                232,
+                33
+            ],
+            [
+                233,
+                49
+            ],
+            [
+                85,
+                53
+            ]
+        ],
+        [
+            [
+                15,
+                55
+            ],
+            [
+                245,
+                48
+            ],
+            [
+                245,
+                65
+            ],
+            [
+                16,
+                72
+            ]
+        ],
+        [
+            [
+                16,
+                69
+            ],
+            [
+                60,
+                66
+            ],
+            [
+                61,
+                84
+            ],
+            [
+                17,
+                86
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            14,
+            10,
+            278,
+            36
+        ],
+        [
+            14,
+            37,
+            80,
+            58
+        ],
+        [
+            85,
+            33,
+            233,
+            53
+        ],
+        [
+            15,
+            48,
+            245,
+            72
+        ],
+        [
+            16,
+            66,
+            61,
+            86
+        ]
+    ]
+}

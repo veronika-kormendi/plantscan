@@ -8,9 +8,11 @@ input2 = "mommy"
 
 dist_calc = Levenshtein.distance(input1, input2)
 l_ratio = Levenshtein.ratio(input1, input2)
-
+print("test Levenshtein:\n")
 print(f"The Levenshtein distance between {input1} and {input2} is : {dist_calc}")
 print(f"the Levenshtein similarity ratio is : {l_ratio}")
+
+# this version leaves the digits in and the uppercase letters
 
 my_folder = "C:\\Users\\veron\\PycharmProjects\\plantscan\\output"
 def count_words(folder):
