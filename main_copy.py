@@ -11,6 +11,8 @@ import ttkbootstrap as ttk # for modern GUI
 from tkinter import filedialog
 from paddleocr import PaddleOCR
 import json
+import string
+import unicodedata
 import Levenshtein
 
 start_corner = None
@@ -228,66 +230,179 @@ def save_cropped_img():
         print(f"Saved cropped image to {save_path}.")
     return save_path
 
-# def perform_ocr_single(img_path):
-#     ocr = PaddleOCR(use_doc_orientation_classify=True,
-#                          use_doc_unwarping=False,
-#                          use_textline_orientation=False,)
-#     print(f"Performing OCR on {img_path}...")
-#     result = ocr.predict(img_path)
-#     base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
-#     # create correct extension
-#     json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
-#     txt_path = os.path.join("output", f"{base}.txt") # IMG_8590_cropped.txt
-#     for res in result:
-#         res.print()
-#         res.save_to_json(json_path)
-#         res.save_to_img("output")
-#     with open(json_path, "r", encoding="utf-8") as f:
-#         data = json.load(f)
-#     text_lines = data.get("rec_texts", [])
-#
-#     with open(txt_path, "w", encoding="utf-8") as f:
-#         for line in text_lines:
-#             f.write(line + "\n")
-#     print(f"Finished performing OCR on {img_path}.")
-
-
-def perform_ocr_multiple(img_path): #folder
-    ocr = PaddleOCR(use_doc_orientation_classify=True,  #create ocr object
+def perform_ocr_single(img_path):
+    ocr = PaddleOCR(use_doc_orientation_classify=True,
                          use_doc_unwarping=False,
                          use_textline_orientation=False,)
-    # go through the files in the cropped folder //called later
-    for img_file in os.listdir(img_path):
-        ocr_path = os.path.join(img_path, img_file) # get cropped image
-        result = ocr.predict(ocr_path) # create results & run ocr
-        for res in result:
-            res.print()
-            res.save_to_json("output")
-            res.save_to_img("output")
-            print(f"perfoming OCR on {img_file}.")
-    for json_file in os.listdir("output"): # extract text from json files
-        if  not json_file.endswith(".json"): continue
-        json_path = os.path.join(os.path.join("output", json_file)) # IMG_0000_cropped_res.json
-        base = os.path.splitext(json_file)[0] # IMG_0000_cropped_res
-        txt_path = os.path.join("output", f"{base}.txt") # output/IMG_0000_cropped_res.jpg
-        with open(json_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        text_lines = data.get("rec_texts", [])
-        with open(txt_path, "w", encoding="utf-8") as f:
-            for line in text_lines:
-                f.write(line + "\n")
-    print("ORC Finished.")
+    print(f"Performing OCR on {img_path}...")
+    result = ocr.predict(img_path)
+    base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
+    # create correct extension
+    json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
+    txt_path = os.path.abspath(os.path.join("output", f"{base}.txt")) # IMG_8590_cropped.txt
+    for res in result:
+        res.print()
+        res.save_to_json(json_path)
+        res.save_to_img("output")
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    text_lines = data.get("rec_texts", [])
 
-def save_and_ocr():
+    with open(txt_path, "w", encoding="utf-8") as f:
+        for line in text_lines:
+            f.write(line + "\n")
+    print(f"Finished performing OCR on {img_path}.")
+    print("txt path", txt_path)
+    return txt_path
+
+# batch process ocr
+
+# def perform_ocr_multiple(img_path): #folder
+#     ocr = PaddleOCR(use_doc_orientation_classify=True,  #create ocr object
+#                          use_doc_unwarping=False,
+#                          use_textline_orientation=False,)
+#     # go through the files in the cropped folder //called later
+#     for img_file in os.listdir(img_path):
+#         ocr_path = os.path.join(img_path, img_file) # get cropped image
+#         result = ocr.predict(ocr_path) # create results & run ocr
+#         for res in result:
+#             res.print()
+#             res.save_to_json("output")
+#             res.save_to_img("output")
+#             print(f"perfoming OCR on {img_file}.")
+#     for json_file in os.listdir("output"): # extract text from json files
+#         if  not json_file.endswith(".json"): continue
+#         json_path = os.path.join(os.path.join("output", json_file)) # IMG_0000_cropped_res.json
+#         base = os.path.splitext(json_file)[0] # IMG_0000_cropped_res
+#         txt_path = os.path.join("output", f"{base}.txt") # output/IMG_0000_cropped_res.jpg
+#         with open(json_path, "r", encoding="utf-8") as f:
+#             data = json.load(f)
+#         text_lines = data.get("rec_texts", [])
+#         with open(txt_path, "w", encoding="utf-8") as f:
+#             for line in text_lines:
+#                 f.write(line + "\n")
+#     print("ORC Finished.")
+
+
+test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7476_cropped.txt' # temporarily I use this path for testing
+def save_crop_and_start_ocr():
+    # 1. save cropped  image
     cropped_img_path = save_cropped_img()
+    print(f"Saved cropped image to {cropped_img_path}.")
     if cropped_img_path is None:
         return
-    perform_ocr_multiple(cropped_folder) # for multiple images
-    # perform_ocr_single(cropped_img_path) # for single img
+    # 2. extract text
+    # perform_ocr_multiple(cropped_folder) # for multiple images
+    extracted_txt = perform_ocr_single(cropped_img_path) # for single img
+    print(f"extracted text {extracted_txt}.")
+    if extracted_txt is not None:
+        #/////////////wrong
+        # test = load_words(extracted_txt)
+        # cleaned_test = count_word_and_char(test) # this does not work because load_words returns a list not a file path and count_word_and_char() expects a path not a list
+        # print(f"test {test}")
+        # print(f"cleaned_test {cleaned_test}")
+        #//////////
+        cleaned_extracted_test = count_word_and_char(extracted_txt) #orc extracted text is passed in
+        extracted_text_before_cleaning = load_words(extracted_txt)
+        print(f"extracted text before cleaning: {extracted_text_before_cleaning}")
+        print(f"cleaned_extracted text: {cleaned_extracted_test}")
+        load_cleaned_extracted = load_words(cleaned_extracted_test)
 
-# accuracy calculation
+        not_cleaned_gt = load_words(test_gt_filepath) # display not cleaned gt file
+        print(f"not_cleaned_gt: {not_cleaned_gt}")
+        cleaned_gt = count_word_and_char(test_gt_filepath) # cleaning
+        load_cleaned_gt = load_words(cleaned_gt) # load cleaned gt file
+        print(f"cleaned_gt {load_cleaned_gt}")
+        # not_cleaned_gt = load_words(test_gt_filepath) # gt test file before cleaning
+        # cleaned_gt_words = count_word_and_char(test_gt_filepath)
+        # cleaned_ocr_words = count_word_and_char(extracted_txt)
+        # gt_words = load_words(cleaned_gt_words)
+        # ocr_words = load_words(cleaned_ocr_words)
+        # edit_dist = Levenshtein.distance(gt_words, ocr_words)
+        # print(f"test_gt_filepath: {test_gt_filepath}")
+        # print(f"not cleaned gt: {not_cleaned_gt}") # display not cleaned gt test file's text
+        # print("gt words after cleaning", gt_words)
+        # # print(f"ocr words before cleaning: {cleaned_ocr_words}")
+        # # print("ocr words after cleaning", ocr_words)
+        # print(f"edit_distance = {edit_dist}")
+        # Lev_ratio = Levenshtein.ratio(gt_words, ocr_words)
+        #
+        # ac = 1 - edit_dist
+        # print(f"Levenshtein ratio = {Lev_ratio}")
+        # print(f"ac = {ac}")
+        # WER =edit_dist/len(gt_words)*100
+        # print(f"WER = {WER}")
+
+    return extracted_txt # extracted txt path
+
+# print("extracted_txt: ",extracted_txt)
+def clean_line(line):
+    line = line.strip()
+    line = unicodedata.normalize("NFKC", line)  # remove unicode chars
+    translator = str.maketrans(string.punctuation, " " * len(string.punctuation))  # replace punct with space
+    line = line.translate(translator)  # apply spaces
+    #remove numbers
+    empty_string = ""
+    for char in line:
+        if not char.isdigit():
+            empty_string += char
+    line = empty_string
+    return line
+
+#new folder for cleaned files
+cleaned_folder_path = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder'
+
+def count_word_and_char(text_file):
+    """
+    Cleans the text, counts the number of words and chars in a text file.
+    :param text_file:
+    :return: cleaned text
+    """
+    word_count = 0
+    char_count = 0
+    cleaned_lines =[]
+    if not os.path.exists(cleaned_folder_path):
+        os.makedirs(cleaned_folder_path)
+    origin = os.path.basename(text_file)
+    without_extension = os.path.splitext(origin)[0]
+    cleaned_filename = f"{without_extension}_cleaned.txt"
+    cleaned_path = os.path.join(cleaned_folder_path, cleaned_filename)
+    with open(text_file, "r", encoding="utf-8") as f:
+        for line in f:
+            cleaned_line = clean_line(line)
+            cleaned_lines.append(cleaned_line)
+            words = cleaned_line.split()
+            word_count += len(words)
+            for word in words:
+                char_count += len(word)
+            # print(cleaned_line)
+    with open(cleaned_path, "w", encoding="utf-8") as out:
+        out.write("\n".join(cleaned_lines))
+    print(f"cleaned text was saved to {cleaned_path}.")
+    print(f"There are {word_count} words and {char_count} chars in the file {text_file}\n")
+    return cleaned_path
 
 
+# def count_w_char(text_file):
+#     word_count = 0
+#     char_count = 0
+#     with open(text_file, "r", encoding="utf-8") as f: #open file passed into the function
+#         for line in f: #go through the lines of the text file
+#             cleaned_line = clean_line(line) # calls clean_line function to remove numbers, special chars, and uncode chars
+#             words = cleaned_line.split() # break up line to words
+#             word_count += len(words) # the number of words on a line
+#             for word in words: #go through all words in words in line
+#                 char_count += len(word)  # count chars by getting the length of a word and adding all length to char_count
+#             print(cleaned_line) # print the cleaned line of text
+#         print(f"There are {word_count} words and {char_count} chars in the file {text_file}\n")
+
+
+def load_words(txt_input_file):
+    """Loads a text file and return a list of words.
+    :parameter txt_input_file: Path to the text file.
+    :return: List of words."""
+    with open(txt_input_file, "r", encoding="utf-8") as f:
+        return f.read().split() #return words
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
@@ -295,7 +410,7 @@ canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
 # save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
-save_btn = tk.Button(gui_window, text="Save Crop", command=save_and_ocr)
+save_btn = tk.Button(gui_window, text="Save Crop", command=save_crop_and_start_ocr)
 save_btn.pack()
 canvas.pack()
 gui_window.mainloop() # displaying the window & listen for events
