@@ -284,7 +284,7 @@ def perform_ocr_single(img_path):
 #     print("ORC Finished.")
 
 
-test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7761_cropped.txt' # temporarily I use this path for testing
+test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7522_cropped.txt' # temporarily I use this path for testing
 def save_crop_and_start_ocr():
     # 1. save cropped  image
     cropped_img_path = save_cropped_img()
@@ -303,7 +303,7 @@ def save_crop_and_start_ocr():
         # print(f"cleaned_test {cleaned_test}")
         #//////////
         # load words from cleaned folder (cleaned_path)
-        cleaned_extracted_test = count_word_and_char(extracted_txt) #orc extracted text is passed in
+        cleaned_extracted_test = count_word_and_char(extracted_txt, file_type="ocr") #orc extracted text is passed in
         extracted_text_before_cleaning = load_words(extracted_txt)
         # extracted_text_before_cleaning = load_text(extracted_txt)
         print(f"extracted text before cleaning: {extracted_text_before_cleaning}")
@@ -315,7 +315,7 @@ def save_crop_and_start_ocr():
         not_cleaned_gt = load_words(test_gt_filepath) # display not cleaned gt file
         # not_cleaned_gt = load_text(test_gt_filepath) # display not cleaned gt file
         print(f"not_cleaned_gt: {not_cleaned_gt}")
-        cleaned_gt = count_word_and_char(test_gt_filepath) # cleaning
+        cleaned_gt = count_word_and_char(test_gt_filepath, file_type="gt") # cleaning
         load_cleaned_gt = load_words(cleaned_gt) # load cleaned gt file
         # load_cleaned_gt = load_text(cleaned_gt) # load cleaned gt file
         print(f"cleaned_gt {load_cleaned_gt}")
@@ -349,7 +349,7 @@ def clean_line(line):
 #new folder for cleaned files
 cleaned_folder_path = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder'
 
-def count_word_and_char(text_file):
+def count_word_and_char(text_file, file_type="ocr"):
     """
     Cleans the text, counts the number of words and chars in a text file.
     :param text_file:
@@ -363,6 +363,10 @@ def count_word_and_char(text_file):
     origin = os.path.basename(text_file)
     without_extension = os.path.splitext(origin)[0]
     cleaned_filename = f"{without_extension}_cleaned_super.txt"
+    if file_type == "gt":
+        cleaned_filename = f"{without_extension}_cleaned_gt.txt"
+    else:
+        cleaned_filename = f"{without_extension}_cleaned_ocr.txt"
     cleaned_path = os.path.join(cleaned_folder_path, cleaned_filename)
     with open(text_file, "r", encoding="utf-8") as f:
         for line in f:
