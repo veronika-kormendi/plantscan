@@ -297,15 +297,17 @@ def save_and_ocr():
         gt_words = load_words(test_gt_file)
         ocr_words = load_words(extracted_txt)
         edit_dist = Levenshtein.distance(gt_words, ocr_words)
+        print("gt words", gt_words)
+        print("ocr words", ocr_words)
         print(f"edit_distance = {edit_dist}")
         Lev_ratio = Levenshtein.ratio(gt_words, ocr_words)
-        ER = edit_dist/len(gt_words) # error rate
-        ac = 1-ER
+
+        ac = 1 - edit_dist
         print(f"Levenshtein ratio = {Lev_ratio}")
         print(f"ac = {ac}")
         WER =edit_dist/len(gt_words)*100
         print(f"WER = {WER}")
-        print(f"ER = {ER}")
+
     return extracted_txt # extracted txt path
 
 
@@ -325,30 +327,21 @@ def clean_line(line):
     return line
 
 def count_w_char(extracted_txt_file):
-    total_words = 0
-    total_chars = 0
     word_count = 0
     char_count = 0
-    with open(extracted_txt_file, "r", encoding="utf-8") as f:
-        for line in f:
-            cleaned_line = clean_line(line)
-            words = cleaned_line.split()
-            word_count += len(words)
-            for word in words:
-                char_count += len(word)  # count chars
+    with open(extracted_txt_file, "r", encoding="utf-8") as f: #open file passed into the function
+        for line in f: #go through the lines of the text file
+            cleaned_line = clean_line(line) # calls clean_line function to remove numbers, special chars, and uncode chars
+            words = cleaned_line.split() # break up line to words
+            word_count += len(words) # the number of words on a line
+            for word in words: #go through all words in words in line
+                char_count += len(word)  # count chars by getting the length of a word and adding all length to char_count
             print(cleaned_line) # print the cleaned line of text
         print(f"There are {word_count} words and {char_count} chars in the file {extracted_txt_file}\n")
-    total_words += word_count  # sum them all
-    total_chars += char_count
-
 
 def load_words(txt_input_file):
     with open(txt_input_file, "r", encoding="utf-8") as f:
         return f.read().split()
-
-
-
-
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
