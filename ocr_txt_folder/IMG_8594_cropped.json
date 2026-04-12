@@ -1,0 +1,130 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8594_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                13,
+                13
+            ],
+            [
+                502,
+                14
+            ],
+            [
+                501,
+                40
+            ],
+            [
+                13,
+                39
+            ]
+        ],
+        [
+            [
+                15,
+                38
+            ],
+            [
+                516,
+                40
+            ],
+            [
+                516,
+                63
+            ],
+            [
+                15,
+                61
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "ingredsToto1r10ooecuugr",
+        "SaltcecrooGriorte"
+    ],
+    "rec_scores": [
+        0.5804601907730103,
+        0.5352072715759277
+    ],
+    "rec_polys": [
+        [
+            [
+                13,
+                13
+            ],
+            [
+                502,
+                14
+            ],
+            [
+                501,
+                40
+            ],
+            [
+                13,
+                39
+            ]
+        ],
+        [
+            [
+                15,
+                38
+            ],
+            [
+                516,
+                40
+            ],
+            [
+                516,
+                63
+            ],
+            [
+                15,
+                61
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            13,
+            13,
+            502,
+            40
+        ],
+        [
+            15,
+            38,
+            516,
+            63
+        ]
+    ]
+}

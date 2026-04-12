@@ -1,0 +1,130 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9151_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                88,
+                10
+            ],
+            [
+                436,
+                6
+            ],
+            [
+                436,
+                29
+            ],
+            [
+                89,
+                33
+            ]
+        ],
+        [
+            [
+                62,
+                33
+            ],
+            [
+                463,
+                27
+            ],
+            [
+                464,
+                51
+            ],
+            [
+                62,
+                55
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS:PasteurisedGoats'Milk,Salt",
+        "StarterCulture,Vegetarian RennetMouldCulure."
+    ],
+    "rec_scores": [
+        0.901332437992096,
+        0.8902651071548462
+    ],
+    "rec_polys": [
+        [
+            [
+                88,
+                10
+            ],
+            [
+                436,
+                6
+            ],
+            [
+                436,
+                29
+            ],
+            [
+                89,
+                33
+            ]
+        ],
+        [
+            [
+                62,
+                33
+            ],
+            [
+                463,
+                27
+            ],
+            [
+                464,
+                51
+            ],
+            [
+                62,
+                55
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            88,
+            6,
+            436,
+            33
+        ],
+        [
+            62,
+            27,
+            464,
+            55
+        ]
+    ]
+}

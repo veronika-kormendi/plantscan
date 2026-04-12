@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8603_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                6,
+                1
+            ],
+            [
+                382,
+                3
+            ],
+            [
+                382,
+                19
+            ],
+            [
+                6,
+                17
+            ]
+        ],
+        [
+            [
+                6,
+                19
+            ],
+            [
+                388,
+                21
+            ],
+            [
+                388,
+                40
+            ],
+            [
+                6,
+                38
+            ]
+        ],
+        [
+            [
+                6,
+                36
+            ],
+            [
+                368,
+                38
+            ],
+            [
+                367,
+                58
+            ],
+            [
+                6,
+                56
+            ]
+        ],
+        [
+            [
+                7,
+                56
+            ],
+            [
+                347,
+                58
+            ],
+            [
+                347,
+                74
+            ],
+            [
+                7,
+                72
+            ]
+        ],
+        [
+            [
+                7,
+                73
+            ],
+            [
+                328,
+                74
+            ],
+            [
+                328,
+                91
+            ],
+            [
+                7,
+                90
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS:Cereal flours(62%)（maize,wheat，oat）,wheat",
+        "gluten,sugar,fat reducedcocoa powder(1%),glucose syrup,",
+        "oligofructose,salt,naturalflavourings,niacinantioxidants",
+        "(ascorbyl palmitate,alpha tocopherol),iron,vitaminB6,",
+        "riboflavin,thiamin,folic acid,vitamin D,vitamin B12."
+    ],
+    "rec_scores": [
+        0.8713292479515076,
+        0.9266586303710938,
+        0.8444404602050781,
+        0.9390968680381775,
+        0.9125486016273499
+    ],
+    "rec_polys": [
+        [
+            [
+                6,
+                1
+            ],
+            [
+                382,
+                3
+            ],
+            [
+                382,
+                19
+            ],
+            [
+                6,
+                17
+            ]
+        ],
+        [
+            [
+                6,
+                19
+            ],
+            [
+                388,
+                21
+            ],
+            [
+                388,
+                40
+            ],
+            [
+                6,
+                38
+            ]
+        ],
+        [
+            [
+                6,
+                36
+            ],
+            [
+                368,
+                38
+            ],
+            [
+                367,
+                58
+            ],
+            [
+                6,
+                56
+            ]
+        ],
+        [
+            [
+                7,
+                56
+            ],
+            [
+                347,
+                58
+            ],
+            [
+                347,
+                74
+            ],
+            [
+                7,
+                72
+            ]
+        ],
+        [
+            [
+                7,
+                73
+            ],
+            [
+                328,
+                74
+            ],
+            [
+                328,
+                91
+            ],
+            [
+                7,
+                90
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            6,
+            1,
+            382,
+            19
+        ],
+        [
+            6,
+            19,
+            388,
+            40
+        ],
+        [
+            6,
+            36,
+            368,
+            58
+        ],
+        [
+            7,
+            56,
+            347,
+            74
+        ],
+        [
+            7,
+            73,
+            328,
+            91
+        ]
+    ]
+}

@@ -239,7 +239,7 @@ def perform_ocr_single(img_path):
     base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
     # create correct extension
     json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
-    txt_path = os.path.abspath(os.path.join("output", f"{base}.txt")) # IMG_8590_cropped.txt
+    txt_path = os.path.abspath(os.path.join("output", f"{base}.txt")) # IMG_8590_annotation_pb.txt
     for res in result:
         res.print()
         res.save_to_json(json_path)
@@ -284,7 +284,7 @@ def perform_ocr_single(img_path):
 #     print("ORC Finished.")
 
 
-test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7522_cropped.txt' # temporarily I use this path for testing
+test_gt_filepath = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation\\IMG_7762_cropped.txt' # temporarily I use this path for testing
 def save_crop_and_start_ocr():
     # 1. save cropped  image
     cropped_img_path = save_cropped_img()
@@ -304,20 +304,20 @@ def save_crop_and_start_ocr():
         #//////////
         # load words from cleaned folder (cleaned_path)
         cleaned_extracted_test = count_word_and_char(extracted_txt, file_type="ocr") #orc extracted text is passed in
-        extracted_text_before_cleaning = load_words(extracted_txt)
-        # extracted_text_before_cleaning = load_text(extracted_txt)
+        # extracted_text_before_cleaning = load_words(extracted_txt)
+        extracted_text_before_cleaning = load_text(extracted_txt)
         print(f"extracted text before cleaning: {extracted_text_before_cleaning}")
         print(f"cleaned_extracted text's path: {cleaned_extracted_test}")
-        load_cleaned_extracted = load_words(cleaned_extracted_test)
-        # load_cleaned_extracted = load_text(cleaned_extracted_test)
+        # load_cleaned_extracted = load_words(cleaned_extracted_test)
+        load_cleaned_extracted = load_text(cleaned_extracted_test)
         print(f"loaded cleaned_extracted text: {load_cleaned_extracted}")
 
-        not_cleaned_gt = load_words(test_gt_filepath) # display not cleaned gt file
-        # not_cleaned_gt = load_text(test_gt_filepath) # display not cleaned gt file
+        # not_cleaned_gt = load_words(test_gt_filepath) # display not cleaned gt file
+        not_cleaned_gt = load_text(test_gt_filepath) # display not cleaned gt file
         print(f"not_cleaned_gt: {not_cleaned_gt}")
         cleaned_gt = count_word_and_char(test_gt_filepath, file_type="gt") # cleaning
-        load_cleaned_gt = load_words(cleaned_gt) # load cleaned gt file
-        # load_cleaned_gt = load_text(cleaned_gt) # load cleaned gt file
+        # load_cleaned_gt = load_words(cleaned_gt) # load cleaned gt file
+        load_cleaned_gt = load_text(cleaned_gt) # load cleaned gt file
         print(f"cleaned_gt {load_cleaned_gt}")
 
         # edit_dist = Levenshtein.distance(" ".join(cleaned_gt)," ".join(load_cleaned_extracted)) # use with load_words()
@@ -362,7 +362,7 @@ def count_word_and_char(text_file, file_type="ocr"):
         os.makedirs(cleaned_folder_path)
     origin = os.path.basename(text_file)
     without_extension = os.path.splitext(origin)[0]
-    cleaned_filename = f"{without_extension}_cleaned_super.txt"
+    # cleaned_filename = f"{without_extension}_cleaned_super.txt"
     if file_type == "gt":
         cleaned_filename = f"{without_extension}_cleaned_gt.txt"
     else:
@@ -383,16 +383,16 @@ def count_word_and_char(text_file, file_type="ocr"):
     print(f"There are {word_count} words and {char_count} chars in the file {text_file}\n")
     return cleaned_path
 
-def load_words(txt_input_file): # use this for word-level comparison
-    """Loads a text file and return a list of words.
-    :parameter txt_input_file: Path to the text file.
-    :return: List of words."""
-    with open(txt_input_file, "r", encoding="utf-8") as f:
-        return f.read().split() #return  text as list of words
-
-# def load_text(txt_input_file): # use this for char-level comparison
+# def load_words(txt_input_file): # use this for word-level comparison
+#     """Loads a text file and return a list of words.
+#     :parameter txt_input_file: Path to the text file.
+#     :return: List of words."""
 #     with open(txt_input_file, "r", encoding="utf-8") as f:
-#         return f.read() # return the entire text as a string
+#         return f.read().split() #return  text as list of words
+
+def load_text(txt_input_file): # use this for char-level comparison
+    with open(txt_input_file, "r", encoding="utf-8") as f:
+        return f.read() # return the entire text as a string
 
 # def calc_accuracy():
 #     edit_dist = Levenshtein.distance()

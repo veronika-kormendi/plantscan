@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8601_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                7,
+                0
+            ],
+            [
+                361,
+                4
+            ],
+            [
+                361,
+                23
+            ],
+            [
+                7,
+                19
+            ]
+        ],
+        [
+            [
+                7,
+                18
+            ],
+            [
+                352,
+                22
+            ],
+            [
+                352,
+                40
+            ],
+            [
+                7,
+                36
+            ]
+        ],
+        [
+            [
+                8,
+                37
+            ],
+            [
+                382,
+                39
+            ],
+            [
+                382,
+                59
+            ],
+            [
+                8,
+                56
+            ]
+        ],
+        [
+            [
+                7,
+                54
+            ],
+            [
+                382,
+                57
+            ],
+            [
+                382,
+                76
+            ],
+            [
+                7,
+                73
+            ]
+        ],
+        [
+            [
+                8,
+                74
+            ],
+            [
+                195,
+                74
+            ],
+            [
+                195,
+                90
+            ],
+            [
+                8,
+                90
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS: Rice(45%),wholewheat(36%), Sugar,",
+        "barley（4.5%),freezedriedfruits（4.5%)(strawberry,",
+        "cherry,cranberry),malted barleyflour,saltbarleymalt",
+        "extract,niacin,iron,riboflavin,thiamin,vitamin B6,folic",
+        "acid,vitaminD,vitaminB12"
+    ],
+    "rec_scores": [
+        0.8994879722595215,
+        0.9211435317993164,
+        0.8707205057144165,
+        0.8742363452911377,
+        0.92997807264328
+    ],
+    "rec_polys": [
+        [
+            [
+                7,
+                0
+            ],
+            [
+                361,
+                4
+            ],
+            [
+                361,
+                23
+            ],
+            [
+                7,
+                19
+            ]
+        ],
+        [
+            [
+                7,
+                18
+            ],
+            [
+                352,
+                22
+            ],
+            [
+                352,
+                40
+            ],
+            [
+                7,
+                36
+            ]
+        ],
+        [
+            [
+                8,
+                37
+            ],
+            [
+                382,
+                39
+            ],
+            [
+                382,
+                59
+            ],
+            [
+                8,
+                56
+            ]
+        ],
+        [
+            [
+                7,
+                54
+            ],
+            [
+                382,
+                57
+            ],
+            [
+                382,
+                76
+            ],
+            [
+                7,
+                73
+            ]
+        ],
+        [
+            [
+                8,
+                74
+            ],
+            [
+                195,
+                74
+            ],
+            [
+                195,
+                90
+            ],
+            [
+                8,
+                90
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            7,
+            0,
+            361,
+            23
+        ],
+        [
+            7,
+            18,
+            352,
+            40
+        ],
+        [
+            8,
+            37,
+            382,
+            59
+        ],
+        [
+            7,
+            54,
+            382,
+            76
+        ],
+        [
+            8,
+            74,
+            195,
+            90
+        ]
+    ]
+}

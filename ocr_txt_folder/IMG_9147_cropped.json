@@ -1,0 +1,175 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9147_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                16,
+                2
+            ],
+            [
+                444,
+                6
+            ],
+            [
+                444,
+                30
+            ],
+            [
+                15,
+                26
+            ]
+        ],
+        [
+            [
+                16,
+                24
+            ],
+            [
+                438,
+                26
+            ],
+            [
+                438,
+                50
+            ],
+            [
+                15,
+                48
+            ]
+        ],
+        [
+            [
+                16,
+                46
+            ],
+            [
+                427,
+                47
+            ],
+            [
+                427,
+                71
+            ],
+            [
+                16,
+                70
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Mushrooms（88%）Garlic&HerbButter（12%）（Saled",
+        "ButterMilk）（8%）Garlic（Garlic，GarlicDriedGali",
+        "Granulate)(13%),Mixed Herbs(2%）,BlackPeper."
+    ],
+    "rec_scores": [
+        0.9078389406204224,
+        0.8634905219078064,
+        0.8695909380912781
+    ],
+    "rec_polys": [
+        [
+            [
+                16,
+                2
+            ],
+            [
+                444,
+                6
+            ],
+            [
+                444,
+                30
+            ],
+            [
+                15,
+                26
+            ]
+        ],
+        [
+            [
+                16,
+                24
+            ],
+            [
+                438,
+                26
+            ],
+            [
+                438,
+                50
+            ],
+            [
+                15,
+                48
+            ]
+        ],
+        [
+            [
+                16,
+                46
+            ],
+            [
+                427,
+                47
+            ],
+            [
+                427,
+                71
+            ],
+            [
+                16,
+                70
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            15,
+            2,
+            444,
+            30
+        ],
+        [
+            15,
+            24,
+            438,
+            50
+        ],
+        [
+            16,
+            46,
+            427,
+            71
+        ]
+    ]
+}

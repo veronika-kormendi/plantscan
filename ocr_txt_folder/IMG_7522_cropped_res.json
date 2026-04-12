@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_7522_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                3,
+                13
+            ],
+            [
+                158,
+                20
+            ],
+            [
+                157,
+                40
+            ],
+            [
+                2,
+                33
+            ]
+        ],
+        [
+            [
+                5,
+                28
+            ],
+            [
+                182,
+                38
+            ],
+            [
+                180,
+                59
+            ],
+            [
+                3,
+                49
+            ]
+        ],
+        [
+            [
+                4,
+                41
+            ],
+            [
+                179,
+                52
+            ],
+            [
+                177,
+                72
+            ],
+            [
+                2,
+                61
+            ]
+        ],
+        [
+            [
+                4,
+                55
+            ],
+            [
+                170,
+                64
+            ],
+            [
+                169,
+                84
+            ],
+            [
+                3,
+                75
+            ]
+        ],
+        [
+            [
+                4,
+                71
+            ],
+            [
+                140,
+                76
+            ],
+            [
+                139,
+                93
+            ],
+            [
+                4,
+                88
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "TERIYAKISAUCEINGREDIENTS:",
+        "Suoe",
+        "",
+        "eao",
+        "Ginger, Onions,Garic Powder"
+    ],
+    "rec_scores": [
+        0.9714388251304626,
+        0.5644564628601074,
+        0.0,
+        0.5232809782028198,
+        0.8633540272712708
+    ],
+    "rec_polys": [
+        [
+            [
+                3,
+                13
+            ],
+            [
+                158,
+                20
+            ],
+            [
+                157,
+                40
+            ],
+            [
+                2,
+                33
+            ]
+        ],
+        [
+            [
+                5,
+                28
+            ],
+            [
+                182,
+                38
+            ],
+            [
+                180,
+                59
+            ],
+            [
+                3,
+                49
+            ]
+        ],
+        [
+            [
+                4,
+                41
+            ],
+            [
+                179,
+                52
+            ],
+            [
+                177,
+                72
+            ],
+            [
+                2,
+                61
+            ]
+        ],
+        [
+            [
+                4,
+                55
+            ],
+            [
+                170,
+                64
+            ],
+            [
+                169,
+                84
+            ],
+            [
+                3,
+                75
+            ]
+        ],
+        [
+            [
+                4,
+                71
+            ],
+            [
+                140,
+                76
+            ],
+            [
+                139,
+                93
+            ],
+            [
+                4,
+                88
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            2,
+            13,
+            158,
+            40
+        ],
+        [
+            3,
+            28,
+            182,
+            59
+        ],
+        [
+            2,
+            41,
+            179,
+            72
+        ],
+        [
+            3,
+            55,
+            170,
+            84
+        ],
+        [
+            4,
+            71,
+            140,
+            93
+        ]
+    ]
+}

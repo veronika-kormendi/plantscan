@@ -1,0 +1,310 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9077_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                27,
+                3
+            ],
+            [
+                414,
+                6
+            ],
+            [
+                414,
+                29
+            ],
+            [
+                27,
+                26
+            ]
+        ],
+        [
+            [
+                23,
+                26
+            ],
+            [
+                375,
+                29
+            ],
+            [
+                375,
+                51
+            ],
+            [
+                23,
+                48
+            ]
+        ],
+        [
+            [
+                18,
+                47
+            ],
+            [
+                410,
+                51
+            ],
+            [
+                410,
+                76
+            ],
+            [
+                18,
+                73
+            ]
+        ],
+        [
+            [
+                20,
+                70
+            ],
+            [
+                402,
+                73
+            ],
+            [
+                402,
+                96
+            ],
+            [
+                20,
+                94
+            ]
+        ],
+        [
+            [
+                20,
+                91
+            ],
+            [
+                368,
+                94
+            ],
+            [
+                368,
+                120
+            ],
+            [
+                20,
+                118
+            ]
+        ],
+        [
+            [
+                23,
+                116
+            ],
+            [
+                192,
+                116
+            ],
+            [
+                192,
+                139
+            ],
+            [
+                23,
+                139
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTSCornishSardines(Fish）（58%)",
+        "Water,Tomato Puree,OliveOil,Sundried",
+        "TomatoesSpirit Vinegar,Black Olive,Caprs,",
+        "Garlic Powder,Salt,Thickeners(Locust Bean",
+        "Gum,Guar Gum),Onion Powder, Parsley,",
+        "Chilli,Black Pepper."
+    ],
+    "rec_scores": [
+        0.8862529397010803,
+        0.9212634563446045,
+        0.9054877758026123,
+        0.9249536395072937,
+        0.9173773527145386,
+        0.9206342697143555
+    ],
+    "rec_polys": [
+        [
+            [
+                27,
+                3
+            ],
+            [
+                414,
+                6
+            ],
+            [
+                414,
+                29
+            ],
+            [
+                27,
+                26
+            ]
+        ],
+        [
+            [
+                23,
+                26
+            ],
+            [
+                375,
+                29
+            ],
+            [
+                375,
+                51
+            ],
+            [
+                23,
+                48
+            ]
+        ],
+        [
+            [
+                18,
+                47
+            ],
+            [
+                410,
+                51
+            ],
+            [
+                410,
+                76
+            ],
+            [
+                18,
+                73
+            ]
+        ],
+        [
+            [
+                20,
+                70
+            ],
+            [
+                402,
+                73
+            ],
+            [
+                402,
+                96
+            ],
+            [
+                20,
+                94
+            ]
+        ],
+        [
+            [
+                20,
+                91
+            ],
+            [
+                368,
+                94
+            ],
+            [
+                368,
+                120
+            ],
+            [
+                20,
+                118
+            ]
+        ],
+        [
+            [
+                23,
+                116
+            ],
+            [
+                192,
+                116
+            ],
+            [
+                192,
+                139
+            ],
+            [
+                23,
+                139
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            27,
+            3,
+            414,
+            29
+        ],
+        [
+            23,
+            26,
+            375,
+            51
+        ],
+        [
+            18,
+            47,
+            410,
+            76
+        ],
+        [
+            20,
+            70,
+            402,
+            96
+        ],
+        [
+            20,
+            91,
+            368,
+            120
+        ],
+        [
+            23,
+            116,
+            192,
+            139
+        ]
+    ]
+}

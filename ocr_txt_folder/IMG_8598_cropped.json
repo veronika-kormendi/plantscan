@@ -1,0 +1,310 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8598_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                31,
+                7
+            ],
+            [
+                318,
+                24
+            ],
+            [
+                316,
+                46
+            ],
+            [
+                29,
+                29
+            ]
+        ],
+        [
+            [
+                28,
+                27
+            ],
+            [
+                330,
+                44
+            ],
+            [
+                329,
+                66
+            ],
+            [
+                27,
+                49
+            ]
+        ],
+        [
+            [
+                28,
+                46
+            ],
+            [
+                332,
+                63
+            ],
+            [
+                331,
+                85
+            ],
+            [
+                27,
+                68
+            ]
+        ],
+        [
+            [
+                26,
+                66
+            ],
+            [
+                345,
+                83
+            ],
+            [
+                344,
+                105
+            ],
+            [
+                25,
+                88
+            ]
+        ],
+        [
+            [
+                24,
+                85
+            ],
+            [
+                327,
+                100
+            ],
+            [
+                327,
+                122
+            ],
+            [
+                24,
+                107
+            ]
+        ],
+        [
+            [
+                24,
+                104
+            ],
+            [
+                333,
+                121
+            ],
+            [
+                332,
+                139
+            ],
+            [
+                23,
+                126
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Fresh wholemilk,water,sugarglucose syrup",
+        "cream,plainchocolate4,5% cocoamass,suar",
+        "cocoabuteremulsifier(lecitins:soya),aral",
+        "vanillaexrcccoowdergolkl",
+        "chicory)lowfatcocoapowdernaturalsaliser",
+        "(carobseedflour).Maycontainnutsandpeanuts"
+    ],
+    "rec_scores": [
+        0.8443048596382141,
+        0.8133284449577332,
+        0.6683384776115417,
+        0.6448248624801636,
+        0.7717083692550659,
+        0.8811870813369751
+    ],
+    "rec_polys": [
+        [
+            [
+                31,
+                7
+            ],
+            [
+                318,
+                24
+            ],
+            [
+                316,
+                46
+            ],
+            [
+                29,
+                29
+            ]
+        ],
+        [
+            [
+                28,
+                27
+            ],
+            [
+                330,
+                44
+            ],
+            [
+                329,
+                66
+            ],
+            [
+                27,
+                49
+            ]
+        ],
+        [
+            [
+                28,
+                46
+            ],
+            [
+                332,
+                63
+            ],
+            [
+                331,
+                85
+            ],
+            [
+                27,
+                68
+            ]
+        ],
+        [
+            [
+                26,
+                66
+            ],
+            [
+                345,
+                83
+            ],
+            [
+                344,
+                105
+            ],
+            [
+                25,
+                88
+            ]
+        ],
+        [
+            [
+                24,
+                85
+            ],
+            [
+                327,
+                100
+            ],
+            [
+                327,
+                122
+            ],
+            [
+                24,
+                107
+            ]
+        ],
+        [
+            [
+                24,
+                104
+            ],
+            [
+                333,
+                121
+            ],
+            [
+                332,
+                139
+            ],
+            [
+                23,
+                126
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            29,
+            7,
+            318,
+            46
+        ],
+        [
+            27,
+            27,
+            330,
+            66
+        ],
+        [
+            27,
+            46,
+            332,
+            85
+        ],
+        [
+            25,
+            66,
+            345,
+            105
+        ],
+        [
+            24,
+            85,
+            327,
+            122
+        ],
+        [
+            23,
+            104,
+            333,
+            139
+        ]
+    ]
+}

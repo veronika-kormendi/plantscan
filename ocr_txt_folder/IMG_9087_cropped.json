@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9087_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                16,
+                16
+            ],
+            [
+                546,
+                16
+            ],
+            [
+                546,
+                42
+            ],
+            [
+                16,
+                42
+            ]
+        ],
+        [
+            [
+                16,
+                39
+            ],
+            [
+                527,
+                39
+            ],
+            [
+                527,
+                65
+            ],
+            [
+                16,
+                65
+            ]
+        ],
+        [
+            [
+                16,
+                62
+            ],
+            [
+                463,
+                64
+            ],
+            [
+                462,
+                88
+            ],
+            [
+                16,
+                85
+            ]
+        ],
+        [
+            [
+                15,
+                87
+            ],
+            [
+                153,
+                88
+            ],
+            [
+                152,
+                108
+            ],
+            [
+                15,
+                107
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS Reconstituted DriedSkmmed MilkReconsiued",
+        "Buttermilk PowderWaterSugarModified Maize Starch,Palm",
+        "Oil,Milk ProteinsFlavouringColours(Beta-Carotene",
+        "Paprika Extract)"
+    ],
+    "rec_scores": [
+        0.8220149278640747,
+        0.88276606798172,
+        0.9111643433570862,
+        0.9561981558799744
+    ],
+    "rec_polys": [
+        [
+            [
+                16,
+                16
+            ],
+            [
+                546,
+                16
+            ],
+            [
+                546,
+                42
+            ],
+            [
+                16,
+                42
+            ]
+        ],
+        [
+            [
+                16,
+                39
+            ],
+            [
+                527,
+                39
+            ],
+            [
+                527,
+                65
+            ],
+            [
+                16,
+                65
+            ]
+        ],
+        [
+            [
+                16,
+                62
+            ],
+            [
+                463,
+                64
+            ],
+            [
+                462,
+                88
+            ],
+            [
+                16,
+                85
+            ]
+        ],
+        [
+            [
+                15,
+                87
+            ],
+            [
+                153,
+                88
+            ],
+            [
+                152,
+                108
+            ],
+            [
+                15,
+                107
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            16,
+            16,
+            546,
+            42
+        ],
+        [
+            16,
+            39,
+            527,
+            65
+        ],
+        [
+            16,
+            62,
+            463,
+            88
+        ],
+        [
+            15,
+            87,
+            153,
+            108
+        ]
+    ]
+}

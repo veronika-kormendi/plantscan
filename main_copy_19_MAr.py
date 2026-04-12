@@ -239,7 +239,7 @@ def perform_ocr_single(img_path):
     base = os.path.splitext(os.path.basename(img_path))[0] # e.g. IMG_8590_cropped
     # create correct extension
     json_path = os.path.join("output", f"{base}.json") # for json e.g. IMG_8590_cropped_res.json
-    txt_path = os.path.abspath(os.path.join("output", f"{base}.txt")) # IMG_8590_cropped.txt
+    txt_path = os.path.abspath(os.path.join("output", f"{base}.txt")) # IMG_8590_annotation_pb.txt
     for res in result:
         res.print()
         res.save_to_json(json_path)
