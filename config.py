@@ -11,13 +11,14 @@ THEME = "vapor"
 ICON_PATH = 'C:\\Users\\veron\\Downloads\\isitpb.ico'
 DEFAULT_RESIZE_WIDTH = 600
 CROP_SHIFT = 12
+# File dialog settings
+SUPPORTED_IMAGE_TYPES = [
+    ("Supported image files", "*.jpg *.jpeg *.heic *.HEIC")
+]
 # OCR settings
 OCR_SETTINGS = {
     "use_doc_orientation_classify": True,
     "use_doc_unwarping": False,
     "use_textline_orientation": False,
 }
-# File dialog settings
-SUPPORTED_IMAGE_TYPES = [
-    ("Supported image files", "*.jpg *.jpeg *.heic *.HEIC")
-]
+
