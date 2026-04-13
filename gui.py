@@ -4,9 +4,10 @@ from config import *
 import os
 from PIL import Image, ImageTk  # for managing images
 from utils import select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
-    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,\
-    load_and_clean_char, find_matching_gt_file
+    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric, \
+    load_and_clean_char, find_matching_gt_file, calculate_wer_manual
 import Levenshtein
+from jiwer import wer
 
 start_corner = None # start corner of cropping rectangle
 end_corner = None # end corner of cropping rectangle
@@ -261,8 +262,8 @@ def process_cropped_img():
     # 8. clean GT text
     cleaned_gt_path = count_word_and_char(gt_file_path, file_type="gt")
     # 9. load cleaned GT text
-    gt_after = load_text(cleaned_gt_path)
-    gt_norm = normalize_for_char_metric(gt_after)
+    gt_after = load_text(cleaned_gt_path) # char level
+    gt_norm = normalize_for_char_metric(gt_after) # normalized char level
     gt_after_w = load_words(cleaned_gt_path)
     print(f"GT text before cleaning: {gt_before}")
     print(f"GT text after cleaning: {gt_after}")
@@ -284,6 +285,15 @@ def process_cropped_img():
 
     print(f"word-level edit distance: {edit_dist_word}")
     print(f"Levenshtein ratio -word level: {ratio_word}")
+
+
+    # wer = calculate_wer(gt_after_w, extracted_after_w)
+    # print(f"wer: {wer}")
+
+    gt_word_count = len(gt_after_w) # length: number of words in gt text
+    wer_manual = calculate_wer_manual(edit_dist_word, gt_word_count)
+    print(f"wer manual: {wer_manual}")
+
 
 
 def start_gui():

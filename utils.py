@@ -3,6 +3,8 @@ from PIL import Image, ImageTk  # for managing images
 import pillow_heif # for HEIC to JPG conversion
 import cv2 as cv # openCV
 from tkinter import filedialog
+
+from jiwer import wer
 from paddleocr import PaddleOCR
 import json
 import string
@@ -268,3 +270,28 @@ def find_matching_gt_file(ocr_file_path):
             if annotation_id == ocr_img_id: #if there is a match
                 return file_path
     return None
+
+def calculate_cer():
+    pass
+
+
+def calculate_wer_manual(word_edit_distance, gt_word_count):
+    """
+    Calculate Word Error Rate (WER) using edit distance and GT word count.
+    :param word_edit_distance: Levenshtein distance between GT words and OCR words
+    :param gt_word_count: number of words in the GT text
+    :return: WER value (float)
+    """
+    if gt_word_count == 0:
+        return 0.0  # no GT words → no errors possible
+
+    wer_value = word_edit_distance / gt_word_count
+    return wer_value
+
+
+def calculate_error_rates():
+    pass
+
+# def calculate_wer(gt_text, extracted_text):
+#     wer_value = wer(gt_text, extracted_text)
+#     return wer_value
