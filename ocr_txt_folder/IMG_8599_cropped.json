@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8599_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                8,
+                4
+            ],
+            [
+                310,
+                5
+            ],
+            [
+                310,
+                24
+            ],
+            [
+                8,
+                23
+            ]
+        ],
+        [
+            [
+                9,
+                24
+            ],
+            [
+                248,
+                24
+            ],
+            [
+                248,
+                40
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                7,
+                38
+            ],
+            [
+                302,
+                37
+            ],
+            [
+                302,
+                57
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                8,
+                57
+            ],
+            [
+                274,
+                55
+            ],
+            [
+                274,
+                72
+            ],
+            [
+                8,
+                74
+            ]
+        ],
+        [
+            [
+                8,
+                74
+            ],
+            [
+                298,
+                72
+            ],
+            [
+                298,
+                88
+            ],
+            [
+                8,
+                90
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "UK Rehydrated textured SoYA protein (71%),",
+        "rapeseed oil,onion,chickpea flour,",
+        "flavouring,yeast extract,stabiliser:methyl",
+        "cellulose;garlic puree,malted BARLEY",
+        "extract,onion powder,salt,garlic powder."
+    ],
+    "rec_scores": [
+        0.93614262342453,
+        0.9704181551933289,
+        0.9518502354621887,
+        0.9397876262664795,
+        0.9703226089477539
+    ],
+    "rec_polys": [
+        [
+            [
+                8,
+                4
+            ],
+            [
+                310,
+                5
+            ],
+            [
+                310,
+                24
+            ],
+            [
+                8,
+                23
+            ]
+        ],
+        [
+            [
+                9,
+                24
+            ],
+            [
+                248,
+                24
+            ],
+            [
+                248,
+                40
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                7,
+                38
+            ],
+            [
+                302,
+                37
+            ],
+            [
+                302,
+                57
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                8,
+                57
+            ],
+            [
+                274,
+                55
+            ],
+            [
+                274,
+                72
+            ],
+            [
+                8,
+                74
+            ]
+        ],
+        [
+            [
+                8,
+                74
+            ],
+            [
+                298,
+                72
+            ],
+            [
+                298,
+                88
+            ],
+            [
+                8,
+                90
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            8,
+            4,
+            310,
+            24
+        ],
+        [
+            9,
+            24,
+            248,
+            40
+        ],
+        [
+            7,
+            37,
+            302,
+            58
+        ],
+        [
+            8,
+            55,
+            274,
+            74
+        ],
+        [
+            8,
+            72,
+            298,
+            90
+        ]
+    ]
+}

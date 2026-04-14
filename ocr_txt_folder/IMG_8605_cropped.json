@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8605_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                45,
+                12
+            ],
+            [
+                247,
+                15
+            ],
+            [
+                247,
+                34
+            ],
+            [
+                45,
+                32
+            ]
+        ],
+        [
+            [
+                11,
+                29
+            ],
+            [
+                285,
+                32
+            ],
+            [
+                285,
+                52
+            ],
+            [
+                11,
+                50
+            ]
+        ],
+        [
+            [
+                18,
+                48
+            ],
+            [
+                276,
+                50
+            ],
+            [
+                276,
+                69
+            ],
+            [
+                18,
+                67
+            ]
+        ],
+        [
+            [
+                21,
+                66
+            ],
+            [
+                274,
+                68
+            ],
+            [
+                274,
+                87
+            ],
+            [
+                21,
+                85
+            ]
+        ],
+        [
+            [
+                31,
+                83
+            ],
+            [
+                266,
+                85
+            ],
+            [
+                266,
+                106
+            ],
+            [
+                31,
+                103
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "ROASTED RED PEPPERS 45%",
+        "UNSWEETENED GRAPE JUICE,TOMATOES",
+        "17%,ONIONS,WHITE WINE VINEGAR",
+        "GELLING AGENT:PECTIN,MUSTARD",
+        "SEEDS,SPICES,GARLIC,SALT."
+    ],
+    "rec_scores": [
+        0.9395200610160828,
+        0.9766247272491455,
+        0.9602213501930237,
+        0.956701934337616,
+        0.9752455353736877
+    ],
+    "rec_polys": [
+        [
+            [
+                45,
+                12
+            ],
+            [
+                247,
+                15
+            ],
+            [
+                247,
+                34
+            ],
+            [
+                45,
+                32
+            ]
+        ],
+        [
+            [
+                11,
+                29
+            ],
+            [
+                285,
+                32
+            ],
+            [
+                285,
+                52
+            ],
+            [
+                11,
+                50
+            ]
+        ],
+        [
+            [
+                18,
+                48
+            ],
+            [
+                276,
+                50
+            ],
+            [
+                276,
+                69
+            ],
+            [
+                18,
+                67
+            ]
+        ],
+        [
+            [
+                21,
+                66
+            ],
+            [
+                274,
+                68
+            ],
+            [
+                274,
+                87
+            ],
+            [
+                21,
+                85
+            ]
+        ],
+        [
+            [
+                31,
+                83
+            ],
+            [
+                266,
+                85
+            ],
+            [
+                266,
+                106
+            ],
+            [
+                31,
+                103
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            45,
+            12,
+            247,
+            34
+        ],
+        [
+            11,
+            29,
+            285,
+            52
+        ],
+        [
+            18,
+            48,
+            276,
+            69
+        ],
+        [
+            21,
+            66,
+            274,
+            87
+        ],
+        [
+            31,
+            83,
+            266,
+            106
+        ]
+    ]
+}

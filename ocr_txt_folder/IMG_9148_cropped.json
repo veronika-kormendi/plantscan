@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9148_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                10,
+                3
+            ],
+            [
+                451,
+                11
+            ],
+            [
+                450,
+                34
+            ],
+            [
+                9,
+                26
+            ]
+        ],
+        [
+            [
+                11,
+                28
+            ],
+            [
+                457,
+                32
+            ],
+            [
+                457,
+                55
+            ],
+            [
+                11,
+                51
+            ]
+        ],
+        [
+            [
+                9,
+                50
+            ],
+            [
+                468,
+                53
+            ],
+            [
+                468,
+                78
+            ],
+            [
+                9,
+                75
+            ]
+        ],
+        [
+            [
+                9,
+                72
+            ],
+            [
+                472,
+                74
+            ],
+            [
+                472,
+                101
+            ],
+            [
+                9,
+                99
+            ]
+        ],
+        [
+            [
+                12,
+                97
+            ],
+            [
+                349,
+                102
+            ],
+            [
+                349,
+                122
+            ],
+            [
+                11,
+                117
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS:Wheat Flour, Water,Sugar, Egg,",
+        "RapeseedOil,Yeast,Concentrated Butter (Milk),",
+        "Flavouring, Dried Skimmed Milk, Salt, Pea Protein,",
+        "Acerola Powder, Glucose Syrup, Rice Flour, Wheat",
+        "Gluten,Deactivated Yeast,Turmeric"
+    ],
+    "rec_scores": [
+        0.8907576203346252,
+        0.9426195025444031,
+        0.9031831622123718,
+        0.9398525357246399,
+        0.9689061045646667
+    ],
+    "rec_polys": [
+        [
+            [
+                10,
+                3
+            ],
+            [
+                451,
+                11
+            ],
+            [
+                450,
+                34
+            ],
+            [
+                9,
+                26
+            ]
+        ],
+        [
+            [
+                11,
+                28
+            ],
+            [
+                457,
+                32
+            ],
+            [
+                457,
+                55
+            ],
+            [
+                11,
+                51
+            ]
+        ],
+        [
+            [
+                9,
+                50
+            ],
+            [
+                468,
+                53
+            ],
+            [
+                468,
+                78
+            ],
+            [
+                9,
+                75
+            ]
+        ],
+        [
+            [
+                9,
+                72
+            ],
+            [
+                472,
+                74
+            ],
+            [
+                472,
+                101
+            ],
+            [
+                9,
+                99
+            ]
+        ],
+        [
+            [
+                12,
+                97
+            ],
+            [
+                349,
+                102
+            ],
+            [
+                349,
+                122
+            ],
+            [
+                11,
+                117
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            9,
+            3,
+            451,
+            34
+        ],
+        [
+            11,
+            28,
+            457,
+            55
+        ],
+        [
+            9,
+            50,
+            468,
+            78
+        ],
+        [
+            9,
+            72,
+            472,
+            101
+        ],
+        [
+            11,
+            97,
+            349,
+            122
+        ]
+    ]
+}

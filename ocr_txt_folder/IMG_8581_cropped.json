@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8581_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                12,
+                14
+            ],
+            [
+                126,
+                9
+            ],
+            [
+                127,
+                27
+            ],
+            [
+                13,
+                31
+            ]
+        ],
+        [
+            [
+                6,
+                42
+            ],
+            [
+                406,
+                27
+            ],
+            [
+                407,
+                43
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                7,
+                58
+            ],
+            [
+                420,
+                42
+            ],
+            [
+                421,
+                60
+            ],
+            [
+                8,
+                76
+            ]
+        ],
+        [
+            [
+                8,
+                76
+            ],
+            [
+                373,
+                61
+            ],
+            [
+                374,
+                77
+            ],
+            [
+                9,
+                92
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTS",
+        "Water,Fruit Juice from Concentrate(24%)[Pineapple,Orange.",
+        "Strawberryl.Sugar,Glucose Syrup,Acid (Citric Acid).Flavourings",
+        "Stabiliser(Guar Gum).Colours (Beetroot Red,Curcumin)."
+    ],
+    "rec_scores": [
+        0.9958706498146057,
+        0.9259708523750305,
+        0.9135114550590515,
+        0.9177791476249695
+    ],
+    "rec_polys": [
+        [
+            [
+                12,
+                14
+            ],
+            [
+                126,
+                9
+            ],
+            [
+                127,
+                27
+            ],
+            [
+                13,
+                31
+            ]
+        ],
+        [
+            [
+                6,
+                42
+            ],
+            [
+                406,
+                27
+            ],
+            [
+                407,
+                43
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                7,
+                58
+            ],
+            [
+                420,
+                42
+            ],
+            [
+                421,
+                60
+            ],
+            [
+                8,
+                76
+            ]
+        ],
+        [
+            [
+                8,
+                76
+            ],
+            [
+                373,
+                61
+            ],
+            [
+                374,
+                77
+            ],
+            [
+                9,
+                92
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            12,
+            9,
+            127,
+            31
+        ],
+        [
+            6,
+            27,
+            407,
+            58
+        ],
+        [
+            7,
+            42,
+            421,
+            76
+        ],
+        [
+            8,
+            61,
+            374,
+            92
+        ]
+    ]
+}

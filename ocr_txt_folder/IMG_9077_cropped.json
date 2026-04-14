@@ -1,0 +1,355 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9077_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                56,
+                0
+            ],
+            [
+                297,
+                0
+            ],
+            [
+                297,
+                13
+            ],
+            [
+                56,
+                13
+            ]
+        ],
+        [
+            [
+                32,
+                10
+            ],
+            [
+                421,
+                11
+            ],
+            [
+                421,
+                34
+            ],
+            [
+                32,
+                33
+            ]
+        ],
+        [
+            [
+                28,
+                33
+            ],
+            [
+                381,
+                34
+            ],
+            [
+                381,
+                56
+            ],
+            [
+                28,
+                55
+            ]
+        ],
+        [
+            [
+                24,
+                55
+            ],
+            [
+                414,
+                57
+            ],
+            [
+                414,
+                80
+            ],
+            [
+                24,
+                78
+            ]
+        ],
+        [
+            [
+                24,
+                77
+            ],
+            [
+                408,
+                79
+            ],
+            [
+                407,
+                101
+            ],
+            [
+                24,
+                99
+            ]
+        ],
+        [
+            [
+                25,
+                99
+            ],
+            [
+                373,
+                101
+            ],
+            [
+                372,
+                124
+            ],
+            [
+                25,
+                122
+            ]
+        ],
+        [
+            [
+                25,
+                119
+            ],
+            [
+                198,
+                121
+            ],
+            [
+                198,
+                147
+            ],
+            [
+                25,
+                145
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "andcapersaucewithchiil.",
+        "INGREDIENSCornishSardines(Fish）（58%),",
+        "Water,Tomato Puree,OliveOil,Sundried",
+        "Tomatoes,Spirit Vinegar,BlackOlive,Capers,",
+        "Garlic Powder,Salt,Thickeners(Locust Bean",
+        "Gum,Guar Gum),Onion Powder,Parsley,",
+        "Chilli,Black Pepper."
+    ],
+    "rec_scores": [
+        0.8521047830581665,
+        0.897439181804657,
+        0.9295305609703064,
+        0.9072186350822449,
+        0.9180343151092529,
+        0.9161561131477356,
+        0.9322835803031921
+    ],
+    "rec_polys": [
+        [
+            [
+                56,
+                0
+            ],
+            [
+                297,
+                0
+            ],
+            [
+                297,
+                13
+            ],
+            [
+                56,
+                13
+            ]
+        ],
+        [
+            [
+                32,
+                10
+            ],
+            [
+                421,
+                11
+            ],
+            [
+                421,
+                34
+            ],
+            [
+                32,
+                33
+            ]
+        ],
+        [
+            [
+                28,
+                33
+            ],
+            [
+                381,
+                34
+            ],
+            [
+                381,
+                56
+            ],
+            [
+                28,
+                55
+            ]
+        ],
+        [
+            [
+                24,
+                55
+            ],
+            [
+                414,
+                57
+            ],
+            [
+                414,
+                80
+            ],
+            [
+                24,
+                78
+            ]
+        ],
+        [
+            [
+                24,
+                77
+            ],
+            [
+                408,
+                79
+            ],
+            [
+                407,
+                101
+            ],
+            [
+                24,
+                99
+            ]
+        ],
+        [
+            [
+                25,
+                99
+            ],
+            [
+                373,
+                101
+            ],
+            [
+                372,
+                124
+            ],
+            [
+                25,
+                122
+            ]
+        ],
+        [
+            [
+                25,
+                119
+            ],
+            [
+                198,
+                121
+            ],
+            [
+                198,
+                147
+            ],
+            [
+                25,
+                145
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            56,
+            0,
+            297,
+            13
+        ],
+        [
+            32,
+            10,
+            421,
+            34
+        ],
+        [
+            28,
+            33,
+            381,
+            56
+        ],
+        [
+            24,
+            55,
+            414,
+            80
+        ],
+        [
+            24,
+            77,
+            408,
+            101
+        ],
+        [
+            25,
+            99,
+            373,
+            124
+        ],
+        [
+            25,
+            119,
+            198,
+            147
+        ]
+    ]
+}

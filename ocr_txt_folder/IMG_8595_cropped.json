@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8595_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                7,
+                6
+            ],
+            [
+                318,
+                5
+            ],
+            [
+                318,
+                32
+            ],
+            [
+                7,
+                34
+            ]
+        ],
+        [
+            [
+                7,
+                30
+            ],
+            [
+                312,
+                29
+            ],
+            [
+                312,
+                57
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                8,
+                54
+            ],
+            [
+                326,
+                54
+            ],
+            [
+                326,
+                81
+            ],
+            [
+                8,
+                81
+            ]
+        ],
+        [
+            [
+                9,
+                79
+            ],
+            [
+                315,
+                79
+            ],
+            [
+                315,
+                106
+            ],
+            [
+                9,
+                106
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREIE:RosteH",
+        "Chrel",
+        "6086GeSeTri",
+        "PepperGnole"
+    ],
+    "rec_scores": [
+        0.6141011118888855,
+        0.6221948862075806,
+        0.5132730007171631,
+        0.6455471515655518
+    ],
+    "rec_polys": [
+        [
+            [
+                7,
+                6
+            ],
+            [
+                318,
+                5
+            ],
+            [
+                318,
+                32
+            ],
+            [
+                7,
+                34
+            ]
+        ],
+        [
+            [
+                7,
+                30
+            ],
+            [
+                312,
+                29
+            ],
+            [
+                312,
+                57
+            ],
+            [
+                7,
+                58
+            ]
+        ],
+        [
+            [
+                8,
+                54
+            ],
+            [
+                326,
+                54
+            ],
+            [
+                326,
+                81
+            ],
+            [
+                8,
+                81
+            ]
+        ],
+        [
+            [
+                9,
+                79
+            ],
+            [
+                315,
+                79
+            ],
+            [
+                315,
+                106
+            ],
+            [
+                9,
+                106
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            7,
+            5,
+            318,
+            34
+        ],
+        [
+            7,
+            29,
+            312,
+            58
+        ],
+        [
+            8,
+            54,
+            326,
+            81
+        ],
+        [
+            9,
+            79,
+            315,
+            106
+        ]
+    ]
+}

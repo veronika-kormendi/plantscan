@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8588_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                31,
+                5
+            ],
+            [
+                543,
+                18
+            ],
+            [
+                543,
+                42
+            ],
+            [
+                30,
+                29
+            ]
+        ],
+        [
+            [
+                6,
+                26
+            ],
+            [
+                113,
+                28
+            ],
+            [
+                113,
+                50
+            ],
+            [
+                6,
+                48
+            ]
+        ],
+        [
+            [
+                4,
+                57
+            ],
+            [
+                537,
+                67
+            ],
+            [
+                537,
+                91
+            ],
+            [
+                4,
+                81
+            ]
+        ],
+        [
+            [
+                7,
+                79
+            ],
+            [
+                520,
+                87
+            ],
+            [
+                519,
+                111
+            ],
+            [
+                7,
+                103
+            ]
+        ],
+        [
+            [
+                7,
+                101
+            ],
+            [
+                349,
+                106
+            ],
+            [
+                349,
+                128
+            ],
+            [
+                7,
+                123
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "ekpea andsesameseed pastewith concentrated lemon juiceand",
+        "garlic puree",
+        "Ingredients 48%CookedChickpeas(Chickpeas,WaterRapeseedOil,",
+        "Water,12% Sesame Seed Paste3% Concentrated Lemon Juice,Garlic",
+        "Puree, Salt, Preservative: Potassium Sorbate."
+    ],
+    "rec_scores": [
+        0.9349038600921631,
+        0.9292930960655212,
+        0.8946409821510315,
+        0.8359466791152954,
+        0.9414814710617065
+    ],
+    "rec_polys": [
+        [
+            [
+                31,
+                5
+            ],
+            [
+                543,
+                18
+            ],
+            [
+                543,
+                42
+            ],
+            [
+                30,
+                29
+            ]
+        ],
+        [
+            [
+                6,
+                26
+            ],
+            [
+                113,
+                28
+            ],
+            [
+                113,
+                50
+            ],
+            [
+                6,
+                48
+            ]
+        ],
+        [
+            [
+                4,
+                57
+            ],
+            [
+                537,
+                67
+            ],
+            [
+                537,
+                91
+            ],
+            [
+                4,
+                81
+            ]
+        ],
+        [
+            [
+                7,
+                79
+            ],
+            [
+                520,
+                87
+            ],
+            [
+                519,
+                111
+            ],
+            [
+                7,
+                103
+            ]
+        ],
+        [
+            [
+                7,
+                101
+            ],
+            [
+                349,
+                106
+            ],
+            [
+                349,
+                128
+            ],
+            [
+                7,
+                123
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            30,
+            5,
+            543,
+            42
+        ],
+        [
+            6,
+            26,
+            113,
+            50
+        ],
+        [
+            4,
+            57,
+            537,
+            91
+        ],
+        [
+            7,
+            79,
+            520,
+            111
+        ],
+        [
+            7,
+            101,
+            349,
+            128
+        ]
+    ]
+}

@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8614_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                12,
+                6
+            ],
+            [
+                518,
+                2
+            ],
+            [
+                518,
+                33
+            ],
+            [
+                12,
+                37
+            ]
+        ],
+        [
+            [
+                23,
+                0
+            ],
+            [
+                265,
+                0
+            ],
+            [
+                265,
+                11
+            ],
+            [
+                23,
+                11
+            ]
+        ],
+        [
+            [
+                11,
+                30
+            ],
+            [
+                517,
+                23
+            ],
+            [
+                517,
+                55
+            ],
+            [
+                11,
+                62
+            ]
+        ],
+        [
+            [
+                13,
+                58
+            ],
+            [
+                515,
+                50
+            ],
+            [
+                515,
+                79
+            ],
+            [
+                13,
+                87
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Ingredient:elourualcaciumcarbont0rasing",
+        "GbAiiiarslapeuDiscuitsTorch",
+        "agentsallaourcolounEnixnts0",
+        "potassiumtaiulpitItmacotainraceofnupeauoy"
+    ],
+    "rec_scores": [
+        0.6322963833808899,
+        0.6684615015983582,
+        0.6469635963439941,
+        0.6288721561431885
+    ],
+    "rec_polys": [
+        [
+            [
+                12,
+                6
+            ],
+            [
+                518,
+                2
+            ],
+            [
+                518,
+                33
+            ],
+            [
+                12,
+                37
+            ]
+        ],
+        [
+            [
+                23,
+                0
+            ],
+            [
+                265,
+                0
+            ],
+            [
+                265,
+                11
+            ],
+            [
+                23,
+                11
+            ]
+        ],
+        [
+            [
+                11,
+                30
+            ],
+            [
+                517,
+                23
+            ],
+            [
+                517,
+                55
+            ],
+            [
+                11,
+                62
+            ]
+        ],
+        [
+            [
+                13,
+                58
+            ],
+            [
+                515,
+                50
+            ],
+            [
+                515,
+                79
+            ],
+            [
+                13,
+                87
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            12,
+            2,
+            518,
+            37
+        ],
+        [
+            23,
+            0,
+            265,
+            11
+        ],
+        [
+            11,
+            23,
+            517,
+            62
+        ],
+        [
+            13,
+            50,
+            515,
+            87
+        ]
+    ]
+}

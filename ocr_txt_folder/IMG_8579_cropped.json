@@ -1,0 +1,355 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8579_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                8,
+                6
+            ],
+            [
+                205,
+                14
+            ],
+            [
+                205,
+                32
+            ],
+            [
+                7,
+                23
+            ]
+        ],
+        [
+            [
+                15,
+                42
+            ],
+            [
+                122,
+                48
+            ],
+            [
+                121,
+                66
+            ],
+            [
+                14,
+                60
+            ]
+        ],
+        [
+            [
+                7,
+                75
+            ],
+            [
+                347,
+                87
+            ],
+            [
+                346,
+                104
+            ],
+            [
+                6,
+                92
+            ]
+        ],
+        [
+            [
+                6,
+                90
+            ],
+            [
+                332,
+                104
+            ],
+            [
+                332,
+                121
+            ],
+            [
+                5,
+                107
+            ]
+        ],
+        [
+            [
+                8,
+                106
+            ],
+            [
+                310,
+                119
+            ],
+            [
+                309,
+                134
+            ],
+            [
+                7,
+                121
+            ]
+        ],
+        [
+            [
+                6,
+                121
+            ],
+            [
+                325,
+                134
+            ],
+            [
+                324,
+                151
+            ],
+            [
+                5,
+                138
+            ]
+        ],
+        [
+            [
+                8,
+                136
+            ],
+            [
+                131,
+                142
+            ],
+            [
+                130,
+                159
+            ],
+            [
+                7,
+                154
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Vanilla flavour ice cream.",
+        "INGREDIENTS",
+        "Partially Reconstituted Dried Skimmed Milk.Cream(Milk）",
+        "(12%).SugarCoconut Oil,Glucose Syrup.Whey Powder",
+        "(Milk）.Emulsifier (Mono-and Di-Glycerides of Fatty",
+        "Acids),Flavouring. Stabilisers (Guar Gum.Locust Bean",
+        "Gum,Xanthan Gum)"
+    ],
+    "rec_scores": [
+        0.9486310482025146,
+        0.9960575103759766,
+        0.9236751794815063,
+        0.8908106684684753,
+        0.9253924489021301,
+        0.9141600131988525,
+        0.9360679984092712
+    ],
+    "rec_polys": [
+        [
+            [
+                8,
+                6
+            ],
+            [
+                205,
+                14
+            ],
+            [
+                205,
+                32
+            ],
+            [
+                7,
+                23
+            ]
+        ],
+        [
+            [
+                15,
+                42
+            ],
+            [
+                122,
+                48
+            ],
+            [
+                121,
+                66
+            ],
+            [
+                14,
+                60
+            ]
+        ],
+        [
+            [
+                7,
+                75
+            ],
+            [
+                347,
+                87
+            ],
+            [
+                346,
+                104
+            ],
+            [
+                6,
+                92
+            ]
+        ],
+        [
+            [
+                6,
+                90
+            ],
+            [
+                332,
+                104
+            ],
+            [
+                332,
+                121
+            ],
+            [
+                5,
+                107
+            ]
+        ],
+        [
+            [
+                8,
+                106
+            ],
+            [
+                310,
+                119
+            ],
+            [
+                309,
+                134
+            ],
+            [
+                7,
+                121
+            ]
+        ],
+        [
+            [
+                6,
+                121
+            ],
+            [
+                325,
+                134
+            ],
+            [
+                324,
+                151
+            ],
+            [
+                5,
+                138
+            ]
+        ],
+        [
+            [
+                8,
+                136
+            ],
+            [
+                131,
+                142
+            ],
+            [
+                130,
+                159
+            ],
+            [
+                7,
+                154
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            7,
+            6,
+            205,
+            32
+        ],
+        [
+            14,
+            42,
+            122,
+            66
+        ],
+        [
+            6,
+            75,
+            347,
+            104
+        ],
+        [
+            5,
+            90,
+            332,
+            121
+        ],
+        [
+            7,
+            106,
+            310,
+            134
+        ],
+        [
+            5,
+            121,
+            325,
+            151
+        ],
+        [
+            7,
+            136,
+            131,
+            159
+        ]
+    ]
+}

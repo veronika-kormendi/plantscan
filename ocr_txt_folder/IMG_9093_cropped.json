@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9093_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                6,
+                2
+            ],
+            [
+                295,
+                11
+            ],
+            [
+                294,
+                36
+            ],
+            [
+                6,
+                26
+            ]
+        ],
+        [
+            [
+                7,
+                24
+            ],
+            [
+                308,
+                33
+            ],
+            [
+                308,
+                55
+            ],
+            [
+                7,
+                46
+            ]
+        ],
+        [
+            [
+                7,
+                46
+            ],
+            [
+                268,
+                54
+            ],
+            [
+                267,
+                75
+            ],
+            [
+                7,
+                68
+            ]
+        ],
+        [
+            [
+                7,
+                67
+            ],
+            [
+                294,
+                74
+            ],
+            [
+                293,
+                96
+            ],
+            [
+                7,
+                89
+            ]
+        ],
+        [
+            [
+                7,
+                87
+            ],
+            [
+                303,
+                95
+            ],
+            [
+                303,
+                116
+            ],
+            [
+                7,
+                109
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Ingredients:HEATfloureastextractpotao",
+        "starch,onionpowder.6%)iodisedalomao",
+        "puree powder(5.9%),salt,sugar,palmfat,",
+        "caramelsrupmaltodextrnspicebayleaves",
+        "garlic,favourings（ontainCELER）.Maycontain"
+    ],
+    "rec_scores": [
+        0.7195857167243958,
+        0.6577808260917664,
+        0.8473345041275024,
+        0.7004066705703735,
+        0.7122865319252014
+    ],
+    "rec_polys": [
+        [
+            [
+                6,
+                2
+            ],
+            [
+                295,
+                11
+            ],
+            [
+                294,
+                36
+            ],
+            [
+                6,
+                26
+            ]
+        ],
+        [
+            [
+                7,
+                24
+            ],
+            [
+                308,
+                33
+            ],
+            [
+                308,
+                55
+            ],
+            [
+                7,
+                46
+            ]
+        ],
+        [
+            [
+                7,
+                46
+            ],
+            [
+                268,
+                54
+            ],
+            [
+                267,
+                75
+            ],
+            [
+                7,
+                68
+            ]
+        ],
+        [
+            [
+                7,
+                67
+            ],
+            [
+                294,
+                74
+            ],
+            [
+                293,
+                96
+            ],
+            [
+                7,
+                89
+            ]
+        ],
+        [
+            [
+                7,
+                87
+            ],
+            [
+                303,
+                95
+            ],
+            [
+                303,
+                116
+            ],
+            [
+                7,
+                109
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            6,
+            2,
+            295,
+            36
+        ],
+        [
+            7,
+            24,
+            308,
+            55
+        ],
+        [
+            7,
+            46,
+            268,
+            75
+        ],
+        [
+            7,
+            67,
+            294,
+            96
+        ],
+        [
+            7,
+            87,
+            303,
+            116
+        ]
+    ]
+}

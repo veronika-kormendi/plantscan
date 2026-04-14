@@ -1,0 +1,310 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8608_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                22,
+                3
+            ],
+            [
+                411,
+                27
+            ],
+            [
+                409,
+                51
+            ],
+            [
+                20,
+                26
+            ]
+        ],
+        [
+            [
+                20,
+                26
+            ],
+            [
+                395,
+                50
+            ],
+            [
+                394,
+                74
+            ],
+            [
+                18,
+                50
+            ]
+        ],
+        [
+            [
+                18,
+                50
+            ],
+            [
+                410,
+                74
+            ],
+            [
+                408,
+                98
+            ],
+            [
+                16,
+                74
+            ]
+        ],
+        [
+            [
+                17,
+                74
+            ],
+            [
+                359,
+                94
+            ],
+            [
+                358,
+                118
+            ],
+            [
+                15,
+                98
+            ]
+        ],
+        [
+            [
+                15,
+                98
+            ],
+            [
+                397,
+                120
+            ],
+            [
+                396,
+                144
+            ],
+            [
+                14,
+                122
+            ]
+        ],
+        [
+            [
+                14,
+                121
+            ],
+            [
+                291,
+                136
+            ],
+            [
+                290,
+                159
+            ],
+            [
+                13,
+                145
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Ingredients:WholewheatFlour(84%)Yeastame",
+        "Seed,WheatGlutenSaltOats(1.5%)Wheat Bn",
+        "（0.7%）,Rye（0.7%）Millet（0.4%）Soya，Maiz（.3%，",
+        "Malt(Rye),Rice(0.2%Sourdough Rye(0.1%,",
+        "BuckwheaCarawaySeedEmulsiier（SoyaL",
+        "FlourTreatment Agent(AscorbicAcid)."
+    ],
+    "rec_scores": [
+        0.8581966161727905,
+        0.7370616793632507,
+        0.7730374336242676,
+        0.8734110593795776,
+        0.71614009141922,
+        0.9428094029426575
+    ],
+    "rec_polys": [
+        [
+            [
+                22,
+                3
+            ],
+            [
+                411,
+                27
+            ],
+            [
+                409,
+                51
+            ],
+            [
+                20,
+                26
+            ]
+        ],
+        [
+            [
+                20,
+                26
+            ],
+            [
+                395,
+                50
+            ],
+            [
+                394,
+                74
+            ],
+            [
+                18,
+                50
+            ]
+        ],
+        [
+            [
+                18,
+                50
+            ],
+            [
+                410,
+                74
+            ],
+            [
+                408,
+                98
+            ],
+            [
+                16,
+                74
+            ]
+        ],
+        [
+            [
+                17,
+                74
+            ],
+            [
+                359,
+                94
+            ],
+            [
+                358,
+                118
+            ],
+            [
+                15,
+                98
+            ]
+        ],
+        [
+            [
+                15,
+                98
+            ],
+            [
+                397,
+                120
+            ],
+            [
+                396,
+                144
+            ],
+            [
+                14,
+                122
+            ]
+        ],
+        [
+            [
+                14,
+                121
+            ],
+            [
+                291,
+                136
+            ],
+            [
+                290,
+                159
+            ],
+            [
+                13,
+                145
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            20,
+            3,
+            411,
+            51
+        ],
+        [
+            18,
+            26,
+            395,
+            74
+        ],
+        [
+            16,
+            50,
+            410,
+            98
+        ],
+        [
+            15,
+            74,
+            359,
+            118
+        ],
+        [
+            14,
+            98,
+            397,
+            144
+        ],
+        [
+            13,
+            121,
+            291,
+            159
+        ]
+    ]
+}

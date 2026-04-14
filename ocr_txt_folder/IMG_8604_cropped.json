@@ -1,0 +1,175 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_8604_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                2,
+                8
+            ],
+            [
+                257,
+                14
+            ],
+            [
+                256,
+                40
+            ],
+            [
+                1,
+                34
+            ]
+        ],
+        [
+            [
+                19,
+                36
+            ],
+            [
+                239,
+                40
+            ],
+            [
+                238,
+                63
+            ],
+            [
+                19,
+                59
+            ]
+        ],
+        [
+            [
+                89,
+                62
+            ],
+            [
+                169,
+                64
+            ],
+            [
+                168,
+                85
+            ],
+            [
+                88,
+                83
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Water, Organic Oats (11%),",
+        "Organic Sunflower Oil,",
+        "Sea Salt"
+    ],
+    "rec_scores": [
+        0.9437960386276245,
+        0.9675927758216858,
+        0.938331127166748
+    ],
+    "rec_polys": [
+        [
+            [
+                2,
+                8
+            ],
+            [
+                257,
+                14
+            ],
+            [
+                256,
+                40
+            ],
+            [
+                1,
+                34
+            ]
+        ],
+        [
+            [
+                19,
+                36
+            ],
+            [
+                239,
+                40
+            ],
+            [
+                238,
+                63
+            ],
+            [
+                19,
+                59
+            ]
+        ],
+        [
+            [
+                89,
+                62
+            ],
+            [
+                169,
+                64
+            ],
+            [
+                168,
+                85
+            ],
+            [
+                88,
+                83
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            1,
+            8,
+            257,
+            40
+        ],
+        [
+            19,
+            36,
+            239,
+            63
+        ],
+        [
+            88,
+            62,
+            169,
+            85
+        ]
+    ]
+}

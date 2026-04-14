@@ -1,0 +1,130 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_9094_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                12,
+                6
+            ],
+            [
+                153,
+                10
+            ],
+            [
+                152,
+                26
+            ],
+            [
+                11,
+                22
+            ]
+        ],
+        [
+            [
+                10,
+                21
+            ],
+            [
+                69,
+                23
+            ],
+            [
+                68,
+                40
+            ],
+            [
+                10,
+                37
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "ProsCiutto.INGREDIENTS",
+        "Pork,Salt."
+    ],
+    "rec_scores": [
+        0.9006056189537048,
+        0.975383460521698
+    ],
+    "rec_polys": [
+        [
+            [
+                12,
+                6
+            ],
+            [
+                153,
+                10
+            ],
+            [
+                152,
+                26
+            ],
+            [
+                11,
+                22
+            ]
+        ],
+        [
+            [
+                10,
+                21
+            ],
+            [
+                69,
+                23
+            ],
+            [
+                68,
+                40
+            ],
+            [
+                10,
+                37
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            11,
+            6,
+            153,
+            26
+        ],
+        [
+            10,
+            21,
+            69,
+            40
+        ]
+    ]
+}
