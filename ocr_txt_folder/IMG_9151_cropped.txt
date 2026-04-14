@@ -1,2 +1,0 @@
-INGREDIENTS:PasteurisedGoats'Milk,Salt
-StarterCulture,Vegetarian RennetMouldCulure.

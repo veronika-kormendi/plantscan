@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2\\IMG_7761_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                81,
+                16
+            ],
+            [
+                446,
+                10
+            ],
+            [
+                447,
+                32
+            ],
+            [
+                82,
+                38
+            ]
+        ],
+        [
+            [
+                8,
+                48
+            ],
+            [
+                523,
+                39
+            ],
+            [
+                523,
+                64
+            ],
+            [
+                8,
+                73
+            ]
+        ],
+        [
+            [
+                15,
+                72
+            ],
+            [
+                518,
+                64
+            ],
+            [
+                518,
+                89
+            ],
+            [
+                15,
+                97
+            ]
+        ],
+        [
+            [
+                36,
+                95
+            ],
+            [
+                496,
+                87
+            ],
+            [
+                496,
+                113
+            ],
+            [
+                36,
+                120
+            ]
+        ],
+        [
+            [
+                23,
+                118
+            ],
+            [
+                510,
+                113
+            ],
+            [
+                510,
+                138
+            ],
+            [
+                23,
+                144
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "THE ORIGINAL CARAMELISED BISCUIT",
+        "Ingredients: Wheat flour,sugar,vegetable oils (palm*,",
+        "rapeseed),candy sugar syrup,raising agent(sodium",
+        "hydrogen carbonate), soya flour, salt, cinnamon.",
+        "*Palm oil from sustainable and certified plantations."
+    ],
+    "rec_scores": [
+        0.952892541885376,
+        0.9207801222801208,
+        0.9608016014099121,
+        0.9390051364898682,
+        0.956103503704071
+    ],
+    "rec_polys": [
+        [
+            [
+                81,
+                16
+            ],
+            [
+                446,
+                10
+            ],
+            [
+                447,
+                32
+            ],
+            [
+                82,
+                38
+            ]
+        ],
+        [
+            [
+                8,
+                48
+            ],
+            [
+                523,
+                39
+            ],
+            [
+                523,
+                64
+            ],
+            [
+                8,
+                73
+            ]
+        ],
+        [
+            [
+                15,
+                72
+            ],
+            [
+                518,
+                64
+            ],
+            [
+                518,
+                89
+            ],
+            [
+                15,
+                97
+            ]
+        ],
+        [
+            [
+                36,
+                95
+            ],
+            [
+                496,
+                87
+            ],
+            [
+                496,
+                113
+            ],
+            [
+                36,
+                120
+            ]
+        ],
+        [
+            [
+                23,
+                118
+            ],
+            [
+                510,
+                113
+            ],
+            [
+                510,
+                138
+            ],
+            [
+                23,
+                144
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            81,
+            10,
+            447,
+            38
+        ],
+        [
+            8,
+            39,
+            523,
+            73
+        ],
+        [
+            15,
+            64,
+            518,
+            97
+        ],
+        [
+            36,
+            87,
+            496,
+            120
+        ],
+        [
+            23,
+            113,
+            510,
+            144
+        ]
+    ]
+}

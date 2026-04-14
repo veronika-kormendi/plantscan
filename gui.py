@@ -3,9 +3,9 @@ import ttkbootstrap as ttk # for modern GUI
 from config import *
 import os
 from PIL import Image, ImageTk  # for managing images
-from utils import select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
-    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric, \
-    load_and_clean_char, find_matching_gt_file, calculate_wer_manual
+from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
+                   perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
+                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual)
 import Levenshtein
 from jiwer import wer
 
@@ -169,132 +169,199 @@ def run_img_tasks():
     tk_img = make_tk_img(resized_image)
     display_image(tk_img)
 
+def process_cropped_img():
+    # ---------------------------------------------------------
+    # 0. Save cropped image + run OCR
+    # ---------------------------------------------------------
+    cropped_img_path = save_cropped_img()
+    print(f"Saved cropped image to {cropped_img_path}.")
+    if not cropped_img_path:
+        return
+    ocr_extracted = perform_ocr_on_single_image(cropped_img_path)
+    if not ocr_extracted:
+        print("OCR failed or returned no output.")
+        return
+    print(f"OCR performed on: {ocr_extracted}")
+    # ---------------------------------------------------------
+    # 1. LOAD & PRINT OCR + GT BEFORE CLEANING
+    # ---------------------------------------------------------
+    extracted_before = load_text(ocr_extracted)
+    extracted_before_w = load_words(ocr_extracted)
+    print("\n--- EXTRACTED TEXT BEFORE CLEANING ---")
+    print(extracted_before)
+    print(extracted_before_w)
+
+    # Find matching GT file (before cleaning)
+    gt_file_path = find_matching_gt_file(ocr_extracted)
+    if not gt_file_path:
+        print("No matching GT file found.")
+        return
+
+    gt_before = load_text(gt_file_path)
+    gt_before_w = load_words(gt_file_path)
+
+    print("\n--- GT TEXT BEFORE CLEANING ---")
+    print(gt_before)
+    print("GT words:", gt_before_w)
+
+    # ---------------------------------------------------------
+    # 2. CLEAN OCR + GT TEXT
+    # ---------------------------------------------------------
+    cleaned_extracted_path = count_word_and_char(ocr_extracted, file_type="ocr")
+    cleaned_gt_path = count_word_and_char(gt_file_path, file_type="gt")
+
+    # ---------------------------------------------------------
+    # 3. LOAD & DISPLAY CLEANED OCR + GT
+    # ---------------------------------------------------------
+    extracted_after = load_text(cleaned_extracted_path)
+    extracted_after_w = load_words(cleaned_extracted_path)
+    extracted_norm = normalize_for_char_metric(extracted_after)
+
+    gt_after = load_text(cleaned_gt_path) #char level
+    gt_after_w = load_words(cleaned_gt_path) #word level
+    gt_norm = normalize_for_char_metric(gt_after)
+
+    print("\n--- EXTRACTED TEXT AFTER CLEANING ---")
+    print(extracted_after)
+    print("OCR extracted words:", extracted_after_w)
+
+    print("\n--- GT TEXT AFTER CLEANING ---")
+    print(gt_after)
+    print("GT words:", gt_after_w)
+
+    # ---------------------------------------------------------
+    # 4. CALCULATE LEVENSHTEIN DISTANCES & RATIOS
+    # ---------------------------------------------------------
+    print("\n--- METRICS ---")
+
+    # Character-level
+    char_edit_dist = Levenshtein.distance(gt_after, extracted_after)
+    char_edit_dist_norm = Levenshtein.distance(gt_norm, extracted_norm)
+    char_ratio = Levenshtein.ratio(gt_after, extracted_after)
+    char_ratio_norm = Levenshtein.ratio(gt_norm, extracted_norm)
+
+    print(f"Char edit distance: {char_edit_dist}")
+    print(f"Char edit distance (normalized): {char_edit_dist_norm}")
+    print(f"Char ratio: {char_ratio}")
+    print(f"Char ratio (normalized): {char_ratio_norm}")
+
+    # Word-level
+    word_edit_dist = Levenshtein.distance(gt_after_w, extracted_after_w)
+    word_ratio = Levenshtein.ratio(gt_after_w, extracted_after_w)
+
+    print(f"Word edit distance: {word_edit_dist}")
+    print(f"Word ratio: {word_ratio}")
+
+    # calculate WER
+    gt_word_count = len(gt_after_w)
+    wer_manual = calculate_wer_manual(word_edit_dist, gt_word_count)
+    print(f"WER (manual): {wer_manual}")
+    # calculate CER
+    cer = calculate_cer_manual(char_edit_dist_norm, gt_norm)
+    print(f"CER (manual): {cer}")
+
+    # --------- word & char accuracy calculations
+    wac = calculate_wac(wer_manual)
+    wac_rounded = round(wac, 2)*100
+    print(f"WAC: {wac}, rounded: {wac_rounded}%")
+    cac = calculate_cac(cer)
+    cac_rounded = round(cac, 2)*100
+    print(f"CAC: {cac}, rounded: {cac_rounded}%")
+
 # def process_cropped_img():
-#     #1. save cropped image
+#     """process cropped image:
+#     1. save cropped image
+#     2. perform OCR
+#     # 3. load extracted text before cleaning
+#     # 4. clean extracted text
+#     # 5. display cleaned extracted text
+#     # 6. find matching gt file
+#     # 7. load gt before cleaning
+#     # 8. clean gt
+#     # 9. display cleaned gt"""
+#     cropped_img_path = save_cropped_img() # 1.
+#     print(f"Saved cropped image to {cropped_img_path}.")
+#     if cropped_img_path is None:
+#         return
+#     ocr_extracted = perform_ocr_on_single_image(cropped_img_path)
+#     if ocr_extracted is None:
+#         print("OCR failed or returned no output.")
+#         return
+#     print(f"OCR performed on: {ocr_extracted}.")
+#
+#     cleaned_extracted_path = count_word_and_char(ocr_extracted, file_type="ocr")
+#     gt_file_path = find_matching_gt_file(cleaned_extracted_path)
+#     if not gt_file_path:
+#         print("No matching GT file found.")
+#         return
+
+
+# def process_cropped_img():
+#     # 1. save cropped image
 #     cropped_img_path = save_cropped_img()
 #     print(f"Saved cropped image to {cropped_img_path}.")
 #     if cropped_img_path is None:
 #         return
-#     #2. extract text
+#     # 2. perform OCR
 #     ocr_extracted = perform_ocr_on_single_image(cropped_img_path)
-#     if ocr_extracted is not None:
-#         print(f"ocr performed on: {ocr_extracted}") #display the current text file
-#         load_extracted_txt = load_text(ocr_extracted) # 1. load
-#         cleaned_extracted = count_word_and_char(ocr_extracted,file_type="ocr") # 2. clean
-#         load_cleaned_extracted = load_text(cleaned_extracted) # 3. load cleaned one
-#         print(f"extracted before cleaning: {load_extracted_txt}")
-#         print(f"extracted after cleaning: {load_cleaned_extracted}")
+#     if ocr_extracted is None:
+#         print("OCR failed or returned no output.")
+#         return
+#     # 3. load extracted text before cleaning
+#     print(f"OCR performed on: {ocr_extracted}")
+#     extracted_before = load_text(ocr_extracted) #as string
+#     extracted_before_w =load_words(ocr_extracted) #as words
+#     # 4. clean extracted text
+#     cleaned_extracted_path = count_word_and_char(ocr_extracted, file_type="ocr")
+#     # 5. load cleaned extracted text
+#     extracted_after = load_text(cleaned_extracted_path) #use this for char level
+#     extracted_norm = normalize_for_char_metric(extracted_after)
+#     extracted_after_w = load_words(cleaned_extracted_path) #use this for char level comparison
+#     print(f"Extracted before cleaning: {extracted_before}")
+#     print(f"Extracted after cleaning: {extracted_after}")
+#     print(f"Extracted before cleaning (words): {extracted_before_w}")
+#     print(f"Extracted after cleaning(Words): {extracted_after_w}")
+#     # 6. find matching GT file
+#     gt_file_path = find_matching_gt_file(cleaned_extracted_path)
+#     if gt_file_path is None:
+#         print("No matching GT file found.")
+#         return
+#     # 7. load GT text before cleaning
+#     gt_before = load_text(gt_file_path) # gt char level
+#     gt_before_w = load_words(gt_file_path) # gt word level
+#     # 8. clean GT text
+#     cleaned_gt_path = count_word_and_char(gt_file_path, file_type="gt")
+#     # 9. load cleaned GT text
+#     gt_after = load_text(cleaned_gt_path) # char level
+#     gt_norm = normalize_for_char_metric(gt_after) # normalized char level
+#     gt_after_w = load_words(cleaned_gt_path)
+#     print(f"GT text before cleaning: {gt_before}")
+#     print(f"GT text after cleaning: {gt_after}")
+#     print(f"GT text before cleaning (words): {gt_before_w}")
+#     print(f"GT text after cleaning (words): {gt_after_w}")
+#     # 10. calculate edit distance & ratio
+#     char_edit_dist = Levenshtein.distance(gt_after, extracted_after)
+#     char_edit_dist_2 = Levenshtein.distance(gt_norm, extracted_norm)
+#     print(f"Char edit distance: {char_edit_dist}")
+#     print(f"Char edit distance 2: {char_edit_dist_2}")
+#     char_ratio = Levenshtein.ratio(gt_after, extracted_after)
+#     char_ratio_2 = Levenshtein.ratio(gt_norm, extracted_norm)
+#     print(f"Character-level edit distance: {char_edit_dist}")
+#     print(f"Levenshtein ratio: {char_ratio}")
+#     print(f"Levenshtein ratio: {char_ratio_2}")
 #
-#         # display_extracted = load_words(ocr_extracted) # display the extracted text before cleaning
-#         # print(f"OCR extracted text before cleaning: {display_extracted}")
-#         # cleaned_extracted_text = count_word_and_char(ocr_extracted, file_type="ocr") # clean extracted text
-#         # display_cleaned_extracted_text = load_words(cleaned_extracted_text) #load cleaned extracted text
-#         # print(f"OCR extracted text after cleaning: {display_cleaned_extracted_text}") #display the cleaned extracted text
-#         # display_extracted_char_level = load_text(cleaned_extracted_text)  #load the text for character level accuracy
-#         # print(f"char level ocr text: {display_extracted_char_level}") # display cleaned extracted text for char level accuracy
-#         # print("\n")
+#     edit_dist_word = Levenshtein.distance(gt_after_w, extracted_after_w)
+#     ratio_word = Levenshtein.ratio(gt_after_w, extracted_after_w)
 #
-# #######---------------------
-#         # ocr_result_displayed = load_and_clean_char(ocr_extracted)
-# #######--------------------
+#     print(f"word-level edit distance: {edit_dist_word}")
+#     print(f"Levenshtein ratio -word level: {ratio_word}")
 #
-#         # gt_file_path = None
-#         annotation_id = None
-#         # find_matching_gt_file(ocr_result_displayed)
+#     # wer = calculate_wer(gt_after_w, extracted_after_w)
+#     # print(f"wer: {wer}")
 #
-#         gt_file_path = find_matching_gt_file(cleaned_extracted) #4. find gt file
-#         display_gt_text = load_text(gt_file_path)
-#         cleaned_gt_text = count_word_and_char(gt_file_path,file_type="gt")
-#         display_cleaned_gt_text = load_text(cleaned_gt_text)
-#         print(f"gt text before cleaning: {display_gt_text}")
-#         print(f"gt text after cleaning: {display_cleaned_gt_text}")
-#         # display_gt_text = load_words(gt_file_path)
-#         # print(f"gt_text before cleaning: {display_gt_text}")
-#         # cleaned_gt_text = count_word_and_char(gt_file_path, file_type="gt")
-#         # display_cleaned_gt_text = load_words(cleaned_gt_text)
-#         # print(f"gt_text after cleaning: {display_cleaned_gt_text}")
-#         # display_gt_char_level = load_text(cleaned_gt_text)
-#         # print(f"char level text: {display_gt_char_level}")
-#         char_level_edit_dist = Levenshtein.distance(display_cleaned_gt_text, load_cleaned_extracted)
-#         # calculate Levensthein distance
-#         # word_level_edit_distance = Levenshtein.distance(display_cleaned_extracted_text,display_cleaned_gt_text) # word level accuracy
-#         # print(f"word level edit distance between extracted and gt {ocr_img_id, annotation_id}: {word_level_edit_distance}")
-#         print(f"char level edit distance {char_level_edit_dist}")
-#         print()
-#         # lev_ratio_word_level = Levenshtein.ratio(display_cleaned_extracted_text,display_cleaned_gt_text)
-#         lev_ratio_char_level = Levenshtein.ratio(display_cleaned_gt_text, load_cleaned_extracted)
-#         # print(f"Levenshtein ratio: {lev_ratio_word_level}")
-#         print(f"Levenshtein ratio: {lev_ratio_char_level}")
-
-def process_cropped_img():
-    # 1. save cropped image
-    cropped_img_path = save_cropped_img()
-    print(f"Saved cropped image to {cropped_img_path}.")
-    if cropped_img_path is None:
-        return
-    # 2. perform OCR
-    ocr_extracted = perform_ocr_on_single_image(cropped_img_path)
-    if ocr_extracted is None:
-        print("OCR failed or returned no output.")
-        return
-    # 3. load extracted text before cleaning
-    print(f"OCR performed on: {ocr_extracted}")
-    extracted_before = load_text(ocr_extracted) #as string
-    extracted_before_w =load_words(ocr_extracted) #as words
-    # 4. clean extracted text
-    cleaned_extracted_path = count_word_and_char(ocr_extracted, file_type="ocr")
-    # 5. load cleaned extracted text
-    extracted_after = load_text(cleaned_extracted_path) #use this for char level
-    extracted_norm = normalize_for_char_metric(extracted_after)
-    extracted_after_w = load_words(cleaned_extracted_path) #use this for char level comparison
-    print(f"Extracted before cleaning: {extracted_before}")
-    print(f"Extracted after cleaning: {extracted_after}")
-    print(f"Extracted before cleaning (words): {extracted_before_w}")
-    print(f"Extracted after cleaning(Words): {extracted_after_w}")
-    # 6. find matching GT file
-    gt_file_path = find_matching_gt_file(cleaned_extracted_path)
-    if gt_file_path is None:
-        print("No matching GT file found.")
-        return
-    # 7. load GT text before cleaning
-    gt_before = load_text(gt_file_path) # gt char level
-    gt_before_w = load_words(gt_file_path) # gt word level
-    # 8. clean GT text
-    cleaned_gt_path = count_word_and_char(gt_file_path, file_type="gt")
-    # 9. load cleaned GT text
-    gt_after = load_text(cleaned_gt_path) # char level
-    gt_norm = normalize_for_char_metric(gt_after) # normalized char level
-    gt_after_w = load_words(cleaned_gt_path)
-    print(f"GT text before cleaning: {gt_before}")
-    print(f"GT text after cleaning: {gt_after}")
-    print(f"GT text before cleaning (words): {gt_before_w}")
-    print(f"GT text after cleaning (words): {gt_after_w}")
-    # 10. calculate edit distance & ratio
-    char_edit_dist = Levenshtein.distance(gt_after, extracted_after)
-    char_edit_dist_2 = Levenshtein.distance(gt_norm, extracted_norm)
-    print(f"Char edit distance: {char_edit_dist}")
-    print(f"Char edit distance 2: {char_edit_dist_2}")
-    char_ratio = Levenshtein.ratio(gt_after, extracted_after)
-    char_ratio_2 = Levenshtein.ratio(gt_norm, extracted_norm)
-    print(f"Character-level edit distance: {char_edit_dist}")
-    print(f"Levenshtein ratio: {char_ratio}")
-    print(f"Levenshtein ratio: {char_ratio_2}")
-
-    edit_dist_word = Levenshtein.distance(gt_after_w, extracted_after_w)
-    ratio_word = Levenshtein.ratio(gt_after_w, extracted_after_w)
-
-    print(f"word-level edit distance: {edit_dist_word}")
-    print(f"Levenshtein ratio -word level: {ratio_word}")
-
-
-    # wer = calculate_wer(gt_after_w, extracted_after_w)
-    # print(f"wer: {wer}")
-
-    gt_word_count = len(gt_after_w) # length: number of words in gt text
-    wer_manual = calculate_wer_manual(edit_dist_word, gt_word_count)
-    print(f"wer manual: {wer_manual}")
-
-
+#     gt_word_count = len(gt_after_w) # length: number of words in gt text
+#     wer_manual = calculate_wer_manual(edit_dist_word, gt_word_count)
+#     print(f"wer manual: {wer_manual}")
 
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events

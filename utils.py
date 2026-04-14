@@ -103,7 +103,7 @@ def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_tx
     with open(txt_path, "w", encoding="utf-8") as f:
         for line in text_lines:
             f.write(line + "\n")
-    print(f"finished performing OCR on {cropped_img_path}.")
+    print(f"finished OCR on {cropped_img_path}.")
     # print(f"txt path: {txt_path}.") # displayed for debugging
     return txt_path
 
@@ -118,65 +118,6 @@ def get_img_id(path):
     if len(parts) >=2 and parts[0].upper() == "IMG":
         return f"{parts[0]}_{parts[1]}"
     return img_id
-
-# def save_crop_and_start_ocr():
-#     #1. save cropped image
-#     cropped_img_path = save_cropped_img()
-#     print(f"Saved cropped image to {cropped_img_path}.")
-#     if cropped_img_path is None:
-#         return
-#     #2. extract text
-#     # ocr_extracted = perform_ocr_on_single_image(cropped_folder) #folderpath was passed in
-#     ocr_extracted = perform_ocr_on_single_image(cropped_img_path)
-#     if ocr_extracted is not None:
-#         print(f"ocr performed on: {ocr_extracted}") #display the current text file
-#         display_extracted = load_words(ocr_extracted) # display the extracted text before cleaning
-#         print(f"OCR extracted text before cleaning: {display_extracted}")
-#         cleaned_extracted_text = count_word_and_char(ocr_extracted, file_type="ocr") # clean extracted text
-#         display_cleaned_extracted_text = load_words(cleaned_extracted_text) #load cleaned extracted text
-#         print(f"OCR extracted text after cleaning: {display_cleaned_extracted_text}") #display the cleaned extracted text
-#         display_extracted_char_level = load_text(cleaned_extracted_text)  #load the text for character level accuracy
-#         print(f"char level ocr text: {display_extracted_char_level}") # display cleaned extracted text for char level accuracy
-#         print("\n")
-#         # get_img_id(ocr_extracted) #test id function
-#         # print(f"extracted image id {get_img_id(ocr_extracted)}") #test
-#         # get_img_id(cropped_img_path) # test
-#         # print(f"image id {get_img_id(cropped_img_path)}") #test
-#         # go through annotation folder and check each file if it matches with the image id
-#         #if there is a match,
-#         #load that file and display
-#         # clean text and count words, chars in that file
-#         #display it after cleaning
-#         gt_file_path = None
-#         annotation_id = None
-#         ocr_img_id = get_img_id(ocr_extracted)
-#         print(f"OCR img id: {ocr_img_id}")
-#         for root, dirs, files in os.walk(ANNOTATION_FOLDER): # go through root folder path, subfolders and files
-#             for file in files:
-#                 file_path = os.path.join(root, file)
-#                 annotation_id = get_img_id(file_path)
-#                 if annotation_id == ocr_img_id:
-#                     gt_file_path = file_path
-#                     break
-#                 if gt_file_path:
-#                     break
-#         display_gt_text = load_words(gt_file_path)
-#         print(f"gt_text before cleaning: {display_gt_text}")
-#         cleaned_gt_text = count_word_and_char(gt_file_path, file_type="gt")
-#         display_cleaned_gt_text = load_words(cleaned_gt_text)
-#         print(f"gt_text after cleaning: {display_cleaned_gt_text}")
-#         display_gt_char_level = load_text(cleaned_gt_text)
-#         print(f"char level text: {display_gt_char_level}")
-#         char_level_edit_dist = Levenshtein.distance(display_gt_char_level,display_extracted_char_level)
-#         # calculate Levensthein distance
-#         word_level_edit_distance = Levenshtein.distance(display_cleaned_extracted_text,display_cleaned_gt_text) # word level accuracy
-#         print(f"word level edit distance between extracted and gt {ocr_img_id, annotation_id}: {word_level_edit_distance}")
-#         print(f"char level edit distance {char_level_edit_dist}")
-#         print()
-#         lev_ratio_word_level = Levenshtein.ratio(display_cleaned_extracted_text,display_cleaned_gt_text)
-#         lev_ratio_char_level = Levenshtein.ratio(display_gt_char_level, display_extracted_char_level)
-#         print(f"Levenshtein ratio: {lev_ratio_word_level}")
-#         print(f"Levenshtein ratio: {lev_ratio_char_level}")
 
 # function to clean a line of text
 def clean_line(line):
@@ -250,16 +191,6 @@ def load_and_clean_char(txt_input_file):
     print(f"text before cleaning: {word_level_text_before_cleaning}")
     print(f"text after cleaning: {load_cleaned}")
     return cleaned_text
-#not used atm //count_word_and_char() needs a filetype
-# def load_and_clean_word(txt_input_file):
-#     word_level_text_before_cleaning = load_words(txt_input_file) #load text for word level
-#     cleaned_text = count_word_and_char(txt_input_file) #clean and count words
-#     load_cleaned =load_words(cleaned_text)
-#     print(f"text before cleaning: {word_level_text_before_cleaning}")
-#     print(f"text after cleaning: {load_cleaned}")
-#     # cleaned_text = " ".join(cleaned_text)
-#     return cleaned_text
-
 
 def find_matching_gt_file(ocr_file_path):
     ocr_img_id = get_img_id(ocr_file_path)
@@ -270,9 +201,6 @@ def find_matching_gt_file(ocr_file_path):
             if annotation_id == ocr_img_id: #if there is a match
                 return file_path
     return None
-
-def calculate_cer():
-    pass
 
 
 def calculate_wer_manual(word_edit_distance, gt_word_count):
@@ -288,10 +216,28 @@ def calculate_wer_manual(word_edit_distance, gt_word_count):
     wer_value = word_edit_distance / gt_word_count
     return wer_value
 
+def calculate_cer_manual(char_edit_dist_norm, gt_norm):
+    n = len(gt_norm) #total number of characters
+    if n == 0:
+        return 0.0
+    cer_value = char_edit_dist_norm / n
+    return cer_value
 
-def calculate_error_rates():
-    pass
+def calculate_cac(cer_value):
+    #calculate character accuracy
+    cac = 1 - cer_value
+    return cac
 
-# def calculate_wer(gt_text, extracted_text):
+def calculate_wac(wer_value):
+    wac = 1 - wer_value
+    return wac
+
+# def calculate_wer(gt_text, extracted_text): #checking if wer calculation is correct by using jiwer.wer
 #     wer_value = wer(gt_text, extracted_text)
 #     return wer_value
+
+def evaluate_folder(folder_path):
+    #go through files in folder
+    #for every file, do the following
+    #
+    pass
