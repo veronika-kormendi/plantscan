@@ -5,7 +5,7 @@ import os
 from PIL import Image, ImageTk  # for managing images
 from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
                    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
-                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual)
+                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_folder)
 import Levenshtein
 from jiwer import wer
 
@@ -268,6 +268,9 @@ def process_cropped_img():
     cac_rounded = round(cac, 2)*100
     print(f"CAC: {cac}, rounded: {cac_rounded}%")
 
+# evaluate_folder(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv") #causing issue
+
+
 # def process_cropped_img():
 #     """process cropped image:
 #     1. save cropped image
@@ -376,4 +379,10 @@ select_img_btn.pack(pady=6)
 # save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
 save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
 save_btn.pack()
+
+eval_btn = tk.Button(gui_window, text="Evaluate All", padx=10, pady=2,
+                     command=lambda: evaluate_folder(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
+eval_btn.pack(pady=6)
+
+
 canvas.pack()

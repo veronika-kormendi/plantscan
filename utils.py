@@ -3,7 +3,6 @@ from PIL import Image, ImageTk  # for managing images
 import pillow_heif # for HEIC to JPG conversion
 import cv2 as cv # openCV
 from tkinter import filedialog
-
 from jiwer import wer
 from paddleocr import PaddleOCR
 import json
@@ -13,6 +12,7 @@ import Levenshtein
 from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
                     SUPPORTED_IMAGE_TYPES,
                     OCR_SETTINGS, CROPPED_FOLDER, )
+import csv
 
 # step 1 - img conversion: HEIC to JPG
 def heic_to_jpg(input_image_folder_path, output_folder_path):
@@ -236,8 +236,155 @@ def calculate_wac(wer_value):
 #     wer_value = wer(gt_text, extracted_text)
 #     return wer_value
 
-def evaluate_folder(folder_path):
-    #go through files in folder
-    #for every file, do the following
-    #
-    pass
+# ###############################################################################################
+# def evaluate_folder(folder_path, output_csv="ocr_metrics.csv"):
+#     """function to produce metrics of OCR extraction
+#     :param folder_path: folder contents are being evaluated (extracted text vs gt text)
+#     :param output_csv: metric results saved to a csv file"""
+#     results = [] # init results list
+#     for filename in os.listdir(folder_path): # go through files in the folder
+#         if not filename.endswith("_cleaned_ocr.txt"): # find ocr extracted file
+#             continue
+#         ocr_path = os.path.join(folder_path, filename) # get extracted text's filepath
+#         img_id = get_img_id(filename) # extract image ID
+#         gt_path = find_matching_gt_file(ocr_path) # find matching gt file for extracted text file based on the img ID
+#         if not gt_path:
+#             print(f"No GT found for {filename}")
+#             continue
+#         gt_cleaned = count_word_and_char(gt_path, file_type="gt") # get word, char count
+#
+#         # Load OCR cleaned text
+#         ocr_text = load_text(ocr_path)
+#         ocr_norm = normalize_for_char_metric(ocr_text)
+#         ocr_words = load_words(ocr_path)
+#
+#         # Load GT cleaned text
+#         gt_text = load_text(gt_cleaned)
+#         gt_norm = normalize_for_char_metric(gt_text)
+#         gt_words = load_words(gt_cleaned)
+#
+#         # Character-level metrics
+#         char_edit = Levenshtein.distance(gt_text, ocr_text)
+#         char_edit_norm = Levenshtein.distance(gt_norm, ocr_norm)
+#         char_ratio = Levenshtein.ratio(gt_text, ocr_text)
+#         char_ratio_norm = Levenshtein.ratio(gt_norm, ocr_norm)
+#
+#         cer = char_edit_norm / len(gt_norm) if len(gt_norm) > 0 else 0.0
+#         cac = 1 - cer
+#
+#         # Word-level metrics
+#         word_edit = Levenshtein.distance(gt_words, ocr_words)
+#         word_ratio = Levenshtein.ratio(gt_words, ocr_words)
+#
+#         wer = word_edit / len(gt_words) if len(gt_words) > 0 else 0.0
+#         wac = 1 - wer
+#
+#         results.append({
+#             "image": img_id,
+#             "char_edit": char_edit,
+#             "char_edit_norm": char_edit_norm,
+#             "char_ratio": char_ratio,
+#             "char_ratio_norm": char_ratio_norm,
+#             "cer": cer,
+#             "cac": cac,
+#             "word_edit": word_edit,
+#             "word_ratio": word_ratio,
+#             "wer": wer,
+#             "wac": wac,
+#         })
+#
+#     # Save CSV
+#     if results:
+#         keys = results[0].keys()
+#         with open(output_csv, "w", newline="", encoding="utf-8") as f:
+#             writer = csv.DictWriter(f, fieldnames=keys)
+#             writer.writeheader()
+#             writer.writerows(results)
+#
+#     print(f"Metrics saved to {output_csv}")
+#     return results
+
+import os
+import csv
+import Levenshtein
+
+def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
+    results = []
+
+    # Loop through cleaned OCR files
+    for filename in os.listdir(folder_path):
+        if not filename.endswith("_cleaned_ocr.txt"):
+            continue
+
+        ocr_path = os.path.join(folder_path, filename)
+
+        # Derive base id, e.g. IMG_9163 from IMG_9163_cropped_cleaned_ocr.txt
+        img_id = get_img_id(filename)
+
+        # Find matching cleaned GT file in the same folder
+        # e.g. IMG_9163_annotation_cleaned_gt.txt
+        gt_path = None
+        for f in os.listdir(folder_path):
+            if f.endswith("_cleaned_gt.txt") and get_img_id(f) == img_id:
+                gt_path = os.path.join(folder_path, f)
+                break
+
+        if not gt_path:
+            print(f"No cleaned GT found for {filename}")
+            continue
+
+        # --- Load OCR cleaned text ---
+        ocr_text = load_text(ocr_path)
+        ocr_norm = normalize_for_char_metric(ocr_text)
+        ocr_words = load_words(ocr_path)
+
+        # --- Load GT cleaned text ---
+        gt_text = load_text(gt_path)
+        gt_norm = normalize_for_char_metric(gt_text)
+        gt_words = load_words(gt_path)
+
+        # --- Character-level metrics  ---
+        char_edit = Levenshtein.distance(gt_text, ocr_text)
+        char_edit_norm = Levenshtein.distance(gt_norm, ocr_norm)
+        char_ratio = Levenshtein.ratio(gt_text, ocr_text)
+        char_ratio_norm = Levenshtein.ratio(gt_norm, ocr_norm)
+
+        cer = calculate_cer_manual(char_edit_norm, gt_norm)
+        cac = calculate_cac(cer)
+
+        # --- Word-level metrics ---
+        word_edit = Levenshtein.distance(gt_words, ocr_words)
+        gt_word_count = len(gt_words)
+        wer = calculate_wer_manual(word_edit, gt_word_count)
+        wac = calculate_wac(wer)
+
+        # print("\n--- DEBUG OCR TEXT USED BY EVALUATOR ---")
+        # print(ocr_text)
+        #
+        # print("\n--- DEBUG GT TEXT USED BY EVALUATOR ---")
+        # print(gt_text)
+
+        results.append({
+            "image": img_id,
+            "char_edit": char_edit,
+            "char_edit_norm": char_edit_norm,
+            "char_ratio": char_ratio,
+            "char_ratio_norm": char_ratio_norm,
+            "cer": cer,
+            "cac": cac,
+            "word_edit": word_edit,
+            "word_ratio": Levenshtein.ratio(gt_words, ocr_words),
+            "wer": wer,
+            "wac": wac,
+        })
+
+    # Save CSV
+    if results:
+        keys = results[0].keys()
+        with open(output_csv, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=keys)
+            writer.writeheader()
+            writer.writerows(results)
+
+    print(f"Metrics saved to {output_csv}")
+    return results
