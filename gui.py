@@ -5,7 +5,8 @@ import os
 from PIL import Image, ImageTk  # for managing images
 from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
                    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
-                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_folder)
+                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_folder,
+                   each_word_on_new_line, postprocess_text)
 import Levenshtein
 from jiwer import wer
 
@@ -365,6 +366,8 @@ def process_cropped_img():
 #     gt_word_count = len(gt_after_w) # length: number of words in gt text
 #     wer_manual = calculate_wer_manual(edit_dist_word, gt_word_count)
 #     print(f"wer manual: {wer_manual}")
+words_per_line_folder_path = each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
+postprocess_text(words_per_line_folder_path, POSTPROCESS_OUT_FOLDER)
 
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events
@@ -383,6 +386,4 @@ save_btn.pack()
 eval_btn = tk.Button(gui_window, text="Evaluate All", padx=10, pady=2,
                      command=lambda: evaluate_folder(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
 eval_btn.pack(pady=6)
-
-
 canvas.pack()

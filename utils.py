@@ -9,10 +9,17 @@ import json
 import string
 import unicodedata
 import Levenshtein
+# # for testing coloured images with gui2
+# from config import (JPG_OUTPUT_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
+#                     SUPPORTED_IMAGE_TYPES,
+#                     OCR_SETTINGS, CROPPED_FOLDER, )
+
 from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
                     SUPPORTED_IMAGE_TYPES,
                     OCR_SETTINGS, CROPPED_FOLDER, )
 import csv
+from spellchecker import SpellChecker # for postprocessing
+spell = SpellChecker() # load default word frequency list
 
 # step 1 - img conversion: HEIC to JPG
 def heic_to_jpg(input_image_folder_path, output_folder_path):
@@ -304,13 +311,9 @@ def calculate_wac(wer_value):
 #     print(f"Metrics saved to {output_csv}")
 #     return results
 
-import os
-import csv
-import Levenshtein
 
 def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
     results = []
-
     # Loop through cleaned OCR files
     for filename in os.listdir(folder_path):
         if not filename.endswith("_cleaned_ocr.txt"):
@@ -343,7 +346,8 @@ def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
         gt_norm = normalize_for_char_metric(gt_text)
         gt_words = load_words(gt_path)
 
-        # --- Character-level metrics  ---
+        # --- Character-level metrics
+        # ---
         char_edit = Levenshtein.distance(gt_text, ocr_text)
         char_edit_norm = Levenshtein.distance(gt_norm, ocr_norm)
         char_ratio = Levenshtein.ratio(gt_text, ocr_text)
@@ -388,3 +392,50 @@ def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
 
     print(f"Metrics saved to {output_csv}")
     return results
+
+# def each_word_on_new_line(input_folder_path, output_folder_path):
+#     with open(input_folder_path, "r", encoding="utf-8") as f:
+#         text = f.read()
+#     words = text.split()
+#     cleaned = [w.strip() for w in words if w.strip()]
+#     with open(output_folder_path, "w", encoding="utf-8") as f:
+#         for word in cleaned:
+#             f.write(word + "\n")
+
+def each_word_on_new_line(input_folder_path, output_folder_path):
+    os.makedirs(output_folder_path, exist_ok=True) # create output folder
+    for filename in os.listdir(input_folder_path):
+        in_path = os.path.join(input_folder_path, filename)
+        with open(in_path, "r", encoding="utf-8") as f:
+            text = f.read()
+        words = text.split()
+        cleaned = [w.strip() for w in words if w.strip()]
+        out_path = os.path.join(output_folder_path, filename)
+        with open(out_path, "w", encoding="utf-8") as f:
+            for word in cleaned:
+                f.write(word + "\n")
+
+    return output_folder_path
+
+def postprocess_text(input_folder,output_folder):
+    """function to spell check words in extracted text,
+    find candidates for correction, correct words
+    :param input_folder: folder containing extracted text
+    :param output_folder: folder where results will be saved as a .txt file"""
+    os.makedirs(output_folder, exist_ok=True) #create output folder
+    for filename in os.listdir(input_folder):
+        if not filename.endswith("_cleaned_ocr.txt"):
+            continue
+        # misspelt = spell.unknown(load_text(os.path.join(input_folder, filename))) # load the text from the file to find misspelt words
+        # misspelt = spell.unknown(os.path.join(input_folder, filename))
+        misspelt_loaded = load_words(os.path.join(input_folder, filename))
+        misspelt = spell.unknown(misspelt_loaded)
+        print(f" misspelt loaded type: {type(misspelt_loaded)}")
+        print(f"misspelt type: {type(misspelt)}")
+        print(f"filename: {filename}")
+        print(f"Found {len(misspelt)} misspelled words in {filename}")
+        for word in misspelt:
+            print(f" {word}: candidates={spell.candidates(word)}")
+        # print(f"candidates for correction: {spell.candidates(misspelt)}") # .candidates does not accept a list, .unknown does
+        # print(f"candidates for correction: {spell.correction(misspelt_loaded)}")
+        num_of_wrong_words = 0

@@ -1,4 +1,4 @@
 ingredients
-  soya beans water salt
-firmingagents calcium chloridemagesim
+  soya beans water  salt 
+firmingagent calciumchloridemesm
 chloride 
