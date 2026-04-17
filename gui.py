@@ -367,7 +367,9 @@ def process_cropped_img():
 #     wer_manual = calculate_wer_manual(edit_dist_word, gt_word_count)
 #     print(f"wer manual: {wer_manual}")
 words_per_line_folder_path = each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
-postprocess_text(words_per_line_folder_path, POSTPROCESS_OUT_FOLDER)
+# postprocess_text(words_per_line_folder_path, POSTPROCESS_OUT_FOLDER)
+postprocess_text(words_per_line_folder_path, CANDIDATE_WORDS_PATH)
+
 
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events

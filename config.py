@@ -7,6 +7,7 @@ CLEANED_FOLDER_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_fol
 ANNOTATION_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation' # annotated text files can be found here
 CLEANED_2 = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\word_per_line'
 POSTPROCESS_OUT_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed'
+CANDIDATE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan'
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"
 THEME = "vapor"

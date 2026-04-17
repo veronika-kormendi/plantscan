@@ -20,6 +20,12 @@ from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, AN
 import csv
 from spellchecker import SpellChecker # for postprocessing
 spell = SpellChecker() # load default word frequency list
+extra_words = ["flavourings", "sucralose", "colours", "sorbate", "flavour", "guar", "thermophilus",
+               "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "curcumin",
+               "xanthan", "sundried", "crouton", "croutons", "colour", "humectants", "acerola", "pasteurised" ]
+# add extra words to spell checker dictionary
+for word in extra_words:
+    spell.word_frequency.add(word)
 
 # step 1 - img conversion: HEIC to JPG
 def heic_to_jpg(input_image_folder_path, output_folder_path):
@@ -423,19 +429,34 @@ def postprocess_text(input_folder,output_folder):
     :param input_folder: folder containing extracted text
     :param output_folder: folder where results will be saved as a .txt file"""
     os.makedirs(output_folder, exist_ok=True) #create output folder
-    for filename in os.listdir(input_folder):
-        if not filename.endswith("_cleaned_ocr.txt"):
-            continue
-        # misspelt = spell.unknown(load_text(os.path.join(input_folder, filename))) # load the text from the file to find misspelt words
-        # misspelt = spell.unknown(os.path.join(input_folder, filename))
-        misspelt_loaded = load_words(os.path.join(input_folder, filename))
-        misspelt = spell.unknown(misspelt_loaded)
-        print(f" misspelt loaded type: {type(misspelt_loaded)}")
-        print(f"misspelt type: {type(misspelt)}")
-        print(f"filename: {filename}")
-        print(f"Found {len(misspelt)} misspelled words in {filename}")
-        for word in misspelt:
-            print(f" {word}: candidates={spell.candidates(word)}")
-        # print(f"candidates for correction: {spell.candidates(misspelt)}") # .candidates does not accept a list, .unknown does
-        # print(f"candidates for correction: {spell.correction(misspelt_loaded)}")
-        num_of_wrong_words = 0
+    # candidates_csv_path = os.path.join(output_folder, "candidates.csv")
+    candidates_csv_path = os.path.join(output_folder, "candidates_updated_dict.csv")
+    with open(candidates_csv_path, "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["filename", "misspelt_word", "candidates"])
+        for filename in os.listdir(input_folder):
+            if not filename.endswith("_cleaned_ocr.txt"):
+                continue
+            # misspelt = spell.unknown(load_text(os.path.join(input_folder, filename))) # load the text from the file to find misspelt words
+            # misspelt = spell.unknown(os.path.join(input_folder, filename))
+            misspelt_loaded = load_words(os.path.join(input_folder, filename))
+            misspelt = spell.unknown(misspelt_loaded)
+            # print(f" misspelt loaded type: {type(misspelt_loaded)}") # list
+            # print(f"misspelt type: {type(misspelt)}") # set
+            num_of_wrong_words = len(misspelt)
+            print(f"filename: {filename}")
+            print(f"Found {num_of_wrong_words} misspelled words in {filename}")
+            for word in misspelt:
+                candidates = spell.candidates(word)
+                if candidates is None:
+                    candidates_str = ""
+                else:
+                    candidates_str = ",".join(candidates)
+                print(f" {word}: candidates={candidates}")
+            # print(f"candidates for correction: {spell.candidates(misspelt)}") # .candidates does not accept a list, .unknown does
+            # print(f"candidates for correction: {spell.correction(misspelt_loaded)}")
+                #save the filename, misspelt word, candidates into a csv
+                # writer.writerow([filename, word, ",".join(candidates)])
+                writer.writerow([filename, word, candidates_str])
+
+            # remove misspelt words, and replace it with corrected ones, if no candidate, just add the existing word
