@@ -588,3 +588,4 @@ def analyse_metrics():
 # get an overview of the data: min, max, mean for each col
 #count how many of the entries have CER 0.2 or below(good), average: above 0.02 but less than 0.1 and poor: more than 0.1
 #
+    pass
