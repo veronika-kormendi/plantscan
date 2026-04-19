@@ -5,7 +5,8 @@ import os
 from PIL import Image, ImageTk  # for managing images
 from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
                    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
-                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_preprocessed)
+                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_preprocessed,
+                   each_word_on_new_line, postprocess_text)
 import Levenshtein
 from jiwer import wer
 
@@ -157,13 +158,14 @@ def run_img_tasks():
     if extension == "heic":
         jpg_filepath = heic_to_jpg(selected_path, JPG_OUTPUT_FOLDER)  # 2. HEIC conversion
         filename = filename.replace('.heic', '.jpg').replace('HEIC', 'jpg')  # replace extension
-        image_path = jpg_filepath
+        output_path = os.path.join(JPG_OUTPUT_FOLDER, filename)  # add converted file to
     else:
-        image_path = selected_path
-    if not os.path.exists(JPG_OUTPUT_FOLDER):
-        os.makedirs(JPG_OUTPUT_FOLDER, exist_ok=True)
-    output_path = os.path.join(JPG_OUTPUT_FOLDER, filename)
-    pil_img = Image.open(image_path) #opening the coloured image
+        output_path = os.path.join(JPG_OUTPUT_FOLDER, filename)
+        if not os.path.exists(output_path):
+            os.makedirs(output_path, exist_ok=True)
+    filename = os.path.basename(jpg_filepath)
+    gscale_img_path = colour_to_greyscale(JPG_OUTPUT_FOLDER, filename, GREYSCALE_FOLDER)  # 3. greyscale conversion
+    pil_img = Image.open(gscale_img_path)
     resized_image = resize_image(pil_img)
     tk_img = make_tk_img(resized_image)
     display_image(tk_img)
@@ -267,6 +269,11 @@ def process_cropped_img():
     cac_rounded = round(cac, 2)*100
     print(f"CAC: {cac}, rounded: {cac_rounded}%")
 
+words_per_line_folder_path = each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
+# postprocess_text(words_per_line_folder_path, POSTPROCESS_OUT_FOLDER)
+# postprocess_text(words_per_line_folder_path, CANDIDATE_WORDS_PATH) # for saving candidate words to csv
+
+
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events
 
@@ -281,11 +288,16 @@ select_img_btn.pack(pady=6)
 save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
 save_btn.pack()
 
-# eval_btn = tk.Button(gui_window, text="Evaluate All", padx=10, pady=2,
-#                      command=lambda: evaluate_folder(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
-# eval_btn.pack(pady=6)
+eval_btn = tk.Button(gui_window, text="Evaluate Preprocessed", padx=10, pady=2,
+                     command=lambda: evaluate_preprocessed(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
+eval_btn.pack(pady=6)
 
-eval_btn = tk.Button(gui_window, text="Evaluate coloured images", padx=10, pady=2,
-                     command=lambda: evaluate_preprocessed(CLEANED_FOLDER_PATH, "colour_metrics.csv"))
+eval_btn = tk.Button(gui_window, text="postprocess", padx=10, pady=2,
+                     command=lambda: postprocess_text(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
+eval_btn.pack(pady=6)
+
+
+eval_btn = tk.Button(gui_window, text="Evaluate Postprocessed", padx=10, pady=2,
+                     command=lambda: evaluate_preprocessed(words_per_line_folder_path, "postprocessed_metrics.csv"))
 eval_btn.pack(pady=6)
 canvas.pack()

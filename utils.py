@@ -20,9 +20,9 @@ from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, AN
 import csv
 from spellchecker import SpellChecker # for postprocessing
 spell = SpellChecker() # load default word frequency list
-extra_words = ["flavourings", "sucralose", "colours", "sorbate", "flavour", "guar", "thermophilus",
-               "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "curcumin",
-               "xanthan", "sundried", "crouton", "croutons", "colour", "humectants", "acerola", "pasteurised" ]
+extra_words = ["flavouring", "sucralose", "colours", "sorbate", "flavour", "guar", "thermophilus",
+               "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "stabilisers", "curcumin",
+               "xanthan", "sundried", "crouton", "croutons", "colour", "humectants", "acerola", "pasteurised", "coagulans", "flavourings"]
 # add extra words to spell checker dictionary
 for word in extra_words:
     spell.word_frequency.add(word)
@@ -318,7 +318,7 @@ def calculate_wac(wer_value):
 #     return results
 
 
-def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
+def evaluate_preprocessed(folder_path, output_csv="preprocessed_metrics.csv"):
     results = []
     # Loop through cleaned OCR files
     for filename in os.listdir(folder_path):
@@ -399,6 +399,94 @@ def evaluate_folder(folder_path, output_csv="preprocessed_metrics.csv"):
     print(f"Metrics saved to {output_csv}")
     return results
 
+
+
+
+#=--------------------
+def evaluate_postprocessed(folder_path, output_csv="postprocessed_metrics.csv"):
+    results = []
+    # Loop through cleaned OCR files
+    for filename in os.listdir(folder_path):
+        if not filename.endswith("postprocessed.txt"):
+            continue
+
+        ocr_path = os.path.join(folder_path, filename)
+
+        # Derive base id, e.g. IMG_9163 from IMG_9163_cropped_cleaned_ocr.txt
+        img_id = get_img_id(filename)
+
+        # Find matching cleaned GT file in the same folder
+        # e.g. IMG_9163_annotation_cleaned_gt.txt
+        gt_path = None
+        for f in os.listdir(CLEANED_FOLDER_PATH):
+            if f.endswith("_cleaned_gt.txt") and get_img_id(f) == img_id:
+                gt_path = os.path.join(CLEANED_FOLDER_PATH, f)
+                break
+
+        if not gt_path:
+            print(f"No cleaned GT found for {filename}")
+            continue
+
+        # --- Load OCR cleaned text ---
+        ocr_text = load_text(ocr_path)
+        ocr_norm = normalize_for_char_metric(ocr_text)
+        ocr_words = load_words(ocr_path)
+
+        # --- Load GT cleaned text ---
+        gt_text = load_text(gt_path)
+        gt_norm = normalize_for_char_metric(gt_text)
+        gt_words = load_words(gt_path)
+
+        # --- Character-level metrics
+        # ---
+        char_edit = Levenshtein.distance(gt_text, ocr_text)
+        char_edit_norm = Levenshtein.distance(gt_norm, ocr_norm)
+        char_ratio = Levenshtein.ratio(gt_text, ocr_text)
+        char_ratio_norm = Levenshtein.ratio(gt_norm, ocr_norm)
+
+        cer = calculate_cer_manual(char_edit_norm, gt_norm)
+        cac = calculate_cac(cer)
+
+        # --- Word-level metrics ---
+        word_edit = Levenshtein.distance(gt_words, ocr_words)
+        gt_word_count = len(gt_words)
+        wer = calculate_wer_manual(word_edit, gt_word_count)
+        wac = calculate_wac(wer)
+
+        # print("\n--- DEBUG OCR TEXT USED BY EVALUATOR ---")
+        # print(ocr_text)
+        #
+        # print("\n--- DEBUG GT TEXT USED BY EVALUATOR ---")
+        # print(gt_text)
+
+        results.append({
+            "image": img_id,
+            "char_edit": char_edit,
+            "char_edit_norm": char_edit_norm,
+            "char_ratio": char_ratio,
+            "char_ratio_norm": char_ratio_norm,
+            "cer": cer,
+            "cac": cac,
+            "word_edit": word_edit,
+            "word_ratio": Levenshtein.ratio(gt_words, ocr_words),
+            "wer": wer,
+            "wac": wac,
+        })
+
+    # Save CSV
+    if results:
+        keys = results[0].keys()
+        with open(output_csv, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=keys)
+            writer.writeheader()
+            writer.writerows(results)
+
+    print(f"Metrics saved to {output_csv}")
+    return results
+
+
+
+
 # def each_word_on_new_line(input_folder_path, output_folder_path):
 #     with open(input_folder_path, "r", encoding="utf-8") as f:
 #         text = f.read()
@@ -423,40 +511,80 @@ def each_word_on_new_line(input_folder_path, output_folder_path):
 
     return output_folder_path
 
-def postprocess_text(input_folder,output_folder):
-    """function to spell check words in extracted text,
-    find candidates for correction, correct words
-    :param input_folder: folder containing extracted text
-    :param output_folder: folder where results will be saved as a .txt file"""
-    os.makedirs(output_folder, exist_ok=True) #create output folder
-    # candidates_csv_path = os.path.join(output_folder, "candidates.csv")
-    candidates_csv_path = os.path.join(output_folder, "candidates_updated_dict.csv")
-    with open(candidates_csv_path, "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["filename", "misspelt_word", "candidates"])
-        for filename in os.listdir(input_folder):
-            if not filename.endswith("_cleaned_ocr.txt"):
-                continue
-            # misspelt = spell.unknown(load_text(os.path.join(input_folder, filename))) # load the text from the file to find misspelt words
-            # misspelt = spell.unknown(os.path.join(input_folder, filename))
-            misspelt_loaded = load_words(os.path.join(input_folder, filename))
-            misspelt = spell.unknown(misspelt_loaded)
-            # print(f" misspelt loaded type: {type(misspelt_loaded)}") # list
-            # print(f"misspelt type: {type(misspelt)}") # set
-            num_of_wrong_words = len(misspelt)
-            print(f"filename: {filename}")
-            print(f"Found {num_of_wrong_words} misspelled words in {filename}")
-            for word in misspelt:
-                candidates = spell.candidates(word)
-                if candidates is None:
-                    candidates_str = ""
-                else:
-                    candidates_str = ",".join(candidates)
-                print(f" {word}: candidates={candidates}")
-            # print(f"candidates for correction: {spell.candidates(misspelt)}") # .candidates does not accept a list, .unknown does
-            # print(f"candidates for correction: {spell.correction(misspelt_loaded)}")
-                #save the filename, misspelt word, candidates into a csv
-                # writer.writerow([filename, word, ",".join(candidates)])
-                writer.writerow([filename, word, candidates_str])
+# for processing  multiple files in a folder
+# def postprocess_text(input_folder,output_folder):
+#     """function to spell check words in extracted text,
+#     find candidates for correction, correct words
+#     :param input_folder: folder containing extracted text
+#     :param output_folder: folder where results will be saved as a .txt file"""
+#     os.makedirs(output_folder, exist_ok=True) #create output folder
+#     # candidates_csv_path = os.path.join(output_folder, "candidates.csv")
+#     candidates_csv_path = os.path.join(output_folder, "candidates_updated_dict.csv")
+#     with open(candidates_csv_path, "w", newline="", encoding="utf-8") as csvfile:
+#         writer = csv.writer(csvfile)
+#         writer.writerow(["filename", "misspelt_word", "candidates"])
+#         for filename in os.listdir(input_folder):
+#             if not filename.endswith("_cleaned_ocr.txt"):
+#                 continue
+#             loaded_txt_text = load_words(os.path.join(input_folder, filename))
+#             misspelt = spell.unknown(loaded_txt_text) # find and store misspelt words in the loaded text
+#             num_of_wrong_words = len(misspelt)
+#             print(f"filename: {filename}")
+#             print(f"Found {num_of_wrong_words} misspelled words in {filename}")
+#             for word in misspelt:
+#                 candidates = spell.candidates(word)
+#                 if candidates is None:
+#                     candidates_str = ""
+#                 else:
+#                     candidates_str = ",".join(candidates)
+#                 print(f" {word}: candidates={candidates}")
+#                 writer.writerow([filename, word, candidates_str])
+#             # remove misspelt words, and replace it with corrected ones, if no candidate, just add the existing word
+#             # ----- correct ------
+#             corrected_text =[] #list for tracking corrected words
+#             for w in loaded_txt_text: #going through all words in the original text
+#                 if w in misspelt: # if the word is misspelt
+#                     corrected_text.append(spell.correction(w)) #correct the word and add it to the corrected list
+#                 else: corrected_text.append(w) # otherwise add existing to the list
+#             # ------ save to txt ------
+#             base = filename.replace("_cropped_cleaned_ocr.txt", "")
+#             new_filename = f"{base}_postprocessed.txt"
+#             out_path = os.path.join(output_folder, new_filename)
+#             with open(out_path, "w", encoding="utf-8") as f:
+#                 for w in corrected_text:
+#                     f.write(w + "\n")
 
-            # remove misspelt words, and replace it with corrected ones, if no candidate, just add the existing word
+def postprocess_text(input_folder_path, output_folder_path):
+    os.makedirs(output_folder_path, exist_ok=True)
+    for filename in os.listdir(input_folder_path):
+        if not filename.endswith("_cleaned_ocr.txt"):
+            continue
+        input_path = os.path.join(input_folder_path, filename)
+        words = load_words(input_path)
+        misspelt = spell.unknown(words)
+        print(f"\nFile: {filename}")
+        print(f"Found {len(misspelt)} misspelled words")
+        print(f"misspelt: {misspelt}")
+        corrected_text = []
+        for w in words:
+            if w in misspelt:
+                corrected = spell.correction(w)
+                if corrected is None: #if no candidate
+                    corrected = w # use existing word
+                corrected_text.append(corrected)
+            else:
+                corrected_text.append(w)
+        base = filename.replace("_cropped_cleaned_ocr.txt", "")
+        new_filename = f"{base}_postprocessed.txt"
+        out_path = os.path.join(output_folder_path, new_filename)
+        with open(out_path, "w", encoding="utf-8") as f:
+            for w in corrected_text:
+                f.write(w + "\n")
+        print(f"Saved corrected file to: {out_path}")
+    return output_folder_path
+
+def analyse_metrics():
+    #open csv, make id into a dataframe
+# get an overview of the data: min, max, mean for each col
+#count how many of the entries have CER 0.2 or below(good), average: above 0.02 but less than 0.1 and poor: more than 0.1
+#
