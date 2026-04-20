@@ -8,6 +8,10 @@ ANNOTATION_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation' #
 CLEANED_2 = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\word_per_line'
 POSTPROCESS_OUT_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed'
 CANDIDATE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan'
+PREPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_metrics.csv'
+POSTPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_metrics.csv'
+SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_summary.csv'
+SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary.csv'
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"
 THEME = "vapor"

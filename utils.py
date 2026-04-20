@@ -16,9 +16,10 @@ import Levenshtein
 
 from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
                     SUPPORTED_IMAGE_TYPES,
-                    OCR_SETTINGS, CROPPED_FOLDER, )
+                    OCR_SETTINGS, CROPPED_FOLDER )
 import csv
 from spellchecker import SpellChecker # for postprocessing
+import pandas as pd
 spell = SpellChecker() # load default word frequency list
 extra_words = ["flavouring", "sucralose", "colours", "sorbate", "flavour", "guar", "thermophilus",
                "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "stabilisers", "curcumin",
@@ -583,9 +584,84 @@ def postprocess_text(input_folder_path, output_folder_path):
         print(f"Saved corrected file to: {out_path}")
     return output_folder_path
 
-def analyse_metrics():
+def analyse_metrics(csv_in_path, csv_summary_path):
+    """function for summarizing the metrics generated, takes a csv file"""
     #open csv, make id into a dataframe
 # get an overview of the data: min, max, mean for each col
 #count how many of the entries have CER 0.2 or below(good), average: above 0.02 but less than 0.1 and poor: more than 0.1
-#
-    pass
+    #open csv
+    df = pd.read_csv(csv_in_path)
+    df_copy = df.copy()
+    metrics_summary = df_copy.describe()
+    #columns
+    cer_col = df_copy["cer"]
+    cac_col = df_copy["cac"]
+    wer_col = df_copy["wer"]
+    wac_col = df_copy["wac"]
+    w_edit_col = df_copy["word_edit"]
+    #benchmark
+    good_cer = df_copy[cer_col <= 0.02] # if cer is 2% or less
+    avg_cer = df_copy[(cer_col > 0.02) & (cer_col <= 0.1)] # 2-10%
+    poor_cer = df_copy[cer_col > 0.1]
+    good_wer = df_copy[wer_col <= 0.02]
+    avg_wer = df_copy[(wer_col > 0.02) & (wer_col <= 0.1)]
+    poor_wer = df_copy[wer_col > 0.1]
+    good_word_edit_dist = df_copy[w_edit_col <= 3]
+    avg_word_edit_dist = df_copy[(w_edit_col > 3) & (w_edit_col <= 5)]
+    poor_word_edit_dist = df_copy[(w_edit_col > 5)]
+    excellent_word_edit_dist = df_copy[(w_edit_col <= 1)]
+    #how many in each category
+    num_good_cer = len(good_cer)
+    num_avg_cer = len(avg_cer)
+    num_poor_cer = len(poor_cer)
+    num_good_wer = len(good_wer)
+    num_avg_wer = len(avg_wer)
+    num_poor_wer = len(poor_wer)
+    num_excellent_word_edit_dist = len(excellent_word_edit_dist)
+    num_good_word_edit_dist = len(good_word_edit_dist)
+    num_avg_word_edit_dist = len(avg_word_edit_dist)
+    num_poor_word_edit_dist = len(poor_word_edit_dist)
+    print(f"Summary stats: \n{metrics_summary}\n")
+    print(f"Good cer: {good_cer}, avg cer: {avg_cer}, poor cer: {poor_cer}")
+    print(f"Num good cer: {num_good_cer}, avg cer: {num_avg_cer}, poor cer: {num_poor_cer}")
+    print(f"good wer: {good_wer}, avg wer: {avg_wer}, poor wer: {poor_wer}")
+    print(f"num good wer: {num_good_wer}, avg wer: {num_avg_wer}, num poor wer: {num_poor_wer}")
+    print(f"excellent word edit dist count: {num_excellent_word_edit_dist}, good word edit dist count: {num_good_word_edit_dist}, avg edit dist count: {num_avg_word_edit_dist}, poor word edit dist count: {num_poor_word_edit_dist}")
+    analysis_dict = {
+        "mean_cer": cer_col.mean(),
+        "min_cer": cer_col.min(),
+        "max_cer": cer_col.max(),
+        "mean_wer": wer_col.mean(),
+        "min_wer": wer_col.min(),
+        "max_wer": wer_col.max(),
+        "mean_cac": cac_col.mean(),
+        "mean_wac": wac_col.mean(),
+        "mean_word_edit": w_edit_col.mean(),
+        "min_word_edit": w_edit_col.min(),
+        "max_word_edit": w_edit_col.max(),
+        # --- CER categories ---
+        "num_good_cer": num_good_cer,
+        "num_avg_cer": num_avg_cer,
+        "num_poor_cer": num_poor_cer,
+        # --- WER categories ---
+        "num_good_wer": num_good_wer,
+        "num_avg_wer": num_avg_wer,
+        "num_poor_wer": num_poor_wer,
+        # --- Word edit distance categories ---
+        "num_excellent_word_edit": num_excellent_word_edit_dist,
+        "num_good_word_edit": num_good_word_edit_dist,
+        "num_avg_word_edit": num_avg_word_edit_dist,
+        "num_poor_word_edit": num_poor_word_edit_dist,
+        # --- Total samples ---
+        "total_samples": len(df_copy)
+    }
+    analysis_df = pd.DataFrame.from_dict(analysis_dict, orient="index", columns=["value"])
+    summary = df_copy.describe().T
+    summary.insert(0, "metric", summary.index)
+    with open(csv_summary_path, "w", encoding="utf-8") as f:
+        summary.to_csv(f)
+        f.write(f"summary stats")
+        summary.to_csv(f, index=False)
+    print(f"Analysis summary saved to {csv_summary_path}")
+
+

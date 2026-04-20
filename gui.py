@@ -5,8 +5,9 @@ import os
 from PIL import Image, ImageTk  # for managing images
 from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
                    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
-                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_preprocessed, evaluate_postprocessed,
-                   each_word_on_new_line, postprocess_text)
+                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual,
+                   evaluate_preprocessed, evaluate_postprocessed,
+                   each_word_on_new_line, postprocess_text, analyse_metrics)
 import Levenshtein
 from jiwer import wer
 
@@ -369,8 +370,10 @@ def process_cropped_img():
 words_per_line_folder_path = each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
 # postprocess_text(words_per_line_folder_path, POSTPROCESS_OUT_FOLDER)
 # postprocess_text(words_per_line_folder_path, CANDIDATE_WORDS_PATH) # for saving candidate words to csv
-
-
+print(f"preprocessed metrics summary: ")
+analyse_metrics(PREPROCESSED_CSV_PATH,SUMMARY_PREPROC_PATH)
+print(f"postprocessed metrics summary: ")
+analyse_metrics(POSTPROCESSED_CSV_PATH, SUMMARY_POSTPROC_PATH)
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events
 
