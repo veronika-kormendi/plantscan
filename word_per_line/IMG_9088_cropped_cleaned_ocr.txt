@@ -14,8 +14,7 @@ starch
 palm
 oil
 milk
-proteins
-flavouring
+proteinsflavouring
 colours
 beta
 carotene
