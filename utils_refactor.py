@@ -17,56 +17,8 @@ import Levenshtein
 from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
                     SUPPORTED_IMAGE_TYPES,
                     OCR_SETTINGS, CROPPED_FOLDER )
-import csv
-from spellchecker import SpellChecker # for postprocessing
-import pandas as pd
-spell = SpellChecker() # load default word frequency list
-extra_words = ["flavouring", "sucralose", "colours", "sorbate", "flavour", "guar", "thermophilus",
-               "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "stabilisers", "curcumin",
-               "xanthan", "sundried", "crouton", "croutons", "colour", "humectants", "acerola", "pasteurised", "coagulans", "flavourings"]
-# add extra words to spell checker dictionary
-for word in extra_words:
-    spell.word_frequency.add(word)
 
-# step 1 - img conversion: HEIC to JPG
-def heic_to_jpg(input_image_folder_path, output_folder_path):
-    """convert heic to jpg extension
-    :param input_image_folder_path: input image's path
-    :param: output_folder_path: path where to save the jpg image
-    :return: jpg image path"""
-    pillow_heif.register_heif_opener() # to be able to open HEIC files
-    if not os.path.exists(output_folder_path): # if folder does not exist
-        os.makedirs(output_folder_path, exist_ok=True) # create folder
-    filename = os.path.basename(input_image_folder_path) # getting the filename
-    # remove HEIC extension and replace it with jpg
-    jpg_filename = f"{os.path.splitext(filename)[0]}.jpg" # "IMG_7474", ".HEIC" --> IMG_7476.jpg
-    jpg_path = os.path.join(output_folder_path, jpg_filename) #build the jpg path where to save the jpg img
-    try:
-        img = Image.open(input_image_folder_path) # open from input path
-        img.save(jpg_path, format='JPEG') #save jpg
-    except Exception as error: # error handling
-        print(f"HEIC conversion error occured: {error}") # display error message
-        return
-    print(f"HEIC conversion from {filename} to jpg {jpg_filename}") # display output
-    return jpg_path
 
-def colour_to_greyscale(input_folder, coloured_img, output_path):
-    """turn coloured image into greyscale image
-    :param input_folder: input image's folder path
-    :param coloured_img: coloured image
-    :param output_folder_path: the folder where the greyscale image is saved
-    :return: the filepath of the greyscale image"""
-    # path = join input folder & selected coloured image
-    input_img_path = os.path.join(input_folder, coloured_img) # image to greyscale
-    if not os.path.exists(output_path): # if folder does not exist
-        os.makedirs(output_path, exist_ok=True) # make folder & don't throw error if already exist
-    gscale_output_filepath = os.path.join(output_path, coloured_img) # build path where to save the gscale img
-    gscale_filename = os.path.basename(gscale_output_filepath) # get the gscale filename
-    coloured_img = cv.imread(input_img_path) # read image
-    greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY) # turn it to greyscale
-    cv.imwrite(gscale_output_filepath, greyscale_img) # save gscale img to the gscale output folder
-    print(f"Greyscale conversion successful: {gscale_filename} is greyscale now.")
-    return gscale_output_filepath
 
 def select_img_from():
     """Select an image from the input folder to start the pipeline.
@@ -606,7 +558,7 @@ def analyse_metrics(csv_in_path, csv_summary_path):
     good_wer = df_copy[wer_col <= 0.02]
     avg_wer = df_copy[(wer_col > 0.02) & (wer_col <= 0.1)]
     poor_wer = df_copy[wer_col > 0.1]
-    good_word_edit_dist = df_copy[(w_edit_col > 1) & (w_edit_col <= 3)]
+    good_word_edit_dist = df_copy[w_edit_col <= 3]
     avg_word_edit_dist = df_copy[(w_edit_col > 3) & (w_edit_col <= 5)]
     poor_word_edit_dist = df_copy[(w_edit_col > 5)]
     excellent_word_edit_dist = df_copy[(w_edit_col <= 1)]
@@ -665,11 +617,3 @@ def analyse_metrics(csv_in_path, csv_summary_path):
     print(f"Analysis summary saved to {csv_summary_path}")
 
 
-def is_it_plant_based(input_file_path):
-    """this function takes a txt file and checks
-    if any words from the exclude list matches with the currently examined word
-    if there is a match: False -not plant based
-    if there is a match: True - plant based"""
-    words_to_check = load_words(input_file_path)
-    print(f"words_to_check: {words_to_check}")
-    # for word in words_to_check:

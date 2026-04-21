@@ -7,7 +7,7 @@ from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_ima
                    perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
                    find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual,
                    evaluate_preprocessed, evaluate_postprocessed,
-                   each_word_on_new_line, postprocess_text, analyse_metrics)
+                   each_word_on_new_line, postprocess_text, analyse_metrics, is_it_plant_based)
 import Levenshtein
 from jiwer import wer
 
@@ -400,4 +400,5 @@ eval_btn.pack(pady=6)
 eval_btn = tk.Button(gui_window, text="Evaluate Postprocessed", padx=10, pady=2,
                      command=lambda: evaluate_postprocessed(POSTPROCESS_OUT_FOLDER, "postprocessed_metrics.csv"))
 eval_btn.pack(pady=6)
+# is_it_plant_based()
 canvas.pack()
