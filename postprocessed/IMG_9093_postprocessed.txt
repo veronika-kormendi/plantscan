@@ -1,15 +1,5 @@
-ingredients
-heatfloureastextractpotao
-starch
-onionpowder
-iodisedalomao
-puree
-powder
-salt
-sugar
-palmar
+ingredients heatfloureastextractpotao
+starch onionpowder iodisedalomao
+puree powder salt sugar palmar
 caramelsrupmaltodextrnspicebayleaves
-garlic
-flavourings
-ontainceler
-maycontain
+garlic flavourings ontainceler maycontain

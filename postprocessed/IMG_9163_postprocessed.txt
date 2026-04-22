@@ -1,9 +1,3 @@
-wholegrain
-popcorn
-granulated
-sugar
-sunflower
-oil
-salt
-glucose
-honey
+wholegrain popcorn
+granulated sugar sunflower
+oil salt glucose honey

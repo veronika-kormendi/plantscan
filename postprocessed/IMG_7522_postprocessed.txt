@@ -2,7 +2,4 @@ teriyakisauceingredients
 sue
 come
 riceatoc
-ginger
-onions
-garlic
-powder
+ginger onions garlic powder

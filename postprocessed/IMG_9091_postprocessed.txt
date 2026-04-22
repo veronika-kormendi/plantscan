@@ -1,12 +1,5 @@
-ingredients
-cornstarch
-tomato
-puree
-powder
-onionpowder
+ingredients cornstarch tomato puree
+powder onionpowder
 paprikaflaourngastextraclc
 powdersugariodisedsalthatlouin
-oregano
-saltcayenne
-pepper
-pepper
+oregano saltcayenne pepper pepper

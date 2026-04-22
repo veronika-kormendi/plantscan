@@ -1,4 +1,2 @@
-prosciutto
-ingredients
-pork
-salt
+prosciutto ingredients
+pork salt

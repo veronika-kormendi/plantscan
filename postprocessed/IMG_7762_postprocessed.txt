@@ -1,16 +1,5 @@
-gingerbreadflavoursandwich
-biscuitswithavanilla
-cavour
-filling
-ingredient
-hatlourugrrapeseedoillm
-oilwheatstarchglucose
-fructosesrupcolour
-plaicrmel
-raisingagents
-sodiumcarbonatesammoniumcarbonatelt
-emulsifier
-oyalecithins
-flavourings
-cinnamon
-powder
+gingerbreadflavoursandwich biscuitswithavanilla cavour
+filling ingredient hatlourugrrapeseedoillm
+oilwheatstarchglucose fructosesrupcolour plaicrmel
+raisingagents sodiumcarbonatesammoniumcarbonatelt
+emulsifier oyalecithins flavourings cinnamon powder

@@ -1,8 +1,4 @@
 ingredients
-soya
-beans
-water
-salt
-firmingagent
-calciumchloridemesm
+soya beans water salt
+firmingagent calciumchloridemesm
 chloride

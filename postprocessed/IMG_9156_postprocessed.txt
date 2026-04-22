@@ -1,4 +1,1 @@
-irish
-topside
-beef
-joint
+irish topside beef joint

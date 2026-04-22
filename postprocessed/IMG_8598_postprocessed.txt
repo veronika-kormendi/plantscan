@@ -1,25 +1,6 @@
-fresh
-wholemilk
-water
-sugarglucose
-syrup
-cream
-plain
-chocolate
-cocoa
-mass
-star
-cocoabuteremulsifier
-lecithins
-soya
+fresh wholemilk water sugarglucose syrup
+cream plain chocolate cocoa mass star
+cocoabuteremulsifier lecithins soya
 vaillaexrcocoaowderegolknl
-chicory
-lowfatcocoapowder
-natural
-stabiliser
-carob
-seedflour
-may
-contain
-nuts
-andpeanuts
+chicory lowfatcocoapowder natural stabiliser
+carob seedflour may contain nuts andpeanuts

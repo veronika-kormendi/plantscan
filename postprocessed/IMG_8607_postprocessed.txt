@@ -1,23 +1,13 @@
-pea
-protein
-soya
-bacillus
-coagulans
-oxide
-zinc
-oxide
-vitamin
-b
-folic
-acid
-vitamin
+pea protein soya
+bacillus coagulans
+oxide zinc
+oxide vitamin b
+folic acid vitamin
 iron
-sodium
-chloride
+sodium chloride
 b
 natural
 sweetener
 sucralose
 stabiliser
-xanthan
-gum
+xanthan gum

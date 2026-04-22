@@ -1,36 +1,7 @@
-vanilla
-flavour
-ice
-cream
+vanilla flavour ice cream
 ingredients
-partially
-reconstituted
-dried
-skimmed
-milk
-cream
-milk
-sugarcoconut
-oil
-glucose
-syrup
-whey
-powder
-milk
-emulsifier
-mono
-and
-di
-glycerides
-of
-fatty
-acids
-flavouring
-stabilisers
-guar
-gum
-locust
-bean
-gum
-xanthan
-gum
+partially reconstituted dried skimmed milk cream milk
+sugarcoconut oil glucose syrup whey powder
+milk emulsifier mono and di glycerides of fatty
+acids flavouring stabilisers guar gum locust bean
+gum xanthan gum

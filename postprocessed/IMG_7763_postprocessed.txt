@@ -1,13 +1,8 @@
-ingredients
-non
-hydrogenated
-palmfatsu
-coconutowdratsucurryower
-r
+ingredients non hydrogenated palmfatsu
+coconutowdratsucurryower r
 turmecgl
 saltdckpgroe
 weatoureloucciumcro
 andiooeaoextn
 connect
-silicondioxideturmericacid
-citric
+silicondioxideturmericacid citric

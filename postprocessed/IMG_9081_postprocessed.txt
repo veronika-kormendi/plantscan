@@ -1,41 +1,7 @@
-water
-tomato
-puree
-wheat
-flour
-wheat
-flour
-calcium
-carbonate
-iron
-niacin
-thiamin
-beef
-heart
-modified
-maize
-starch
-carrot
-yeast
-extract
-beef
-skirt
-oxtail
-onion
-onion
-powder
-barley
-malt
-extract
-eluargrlic
-ureecoaer
-turmeric
-public
-r
-will
-white
-pepper
-made
-using
-british
-beef
+water tomato puree wheat flour wheat flour
+calcium carbonate iron niacin thiamin beef heart
+modified maize starch carrot yeast extract beef
+skirt oxtail onion onion powder barley malt
+extract eluargrlic ureecoaer
+turmeric public r will
+white pepper made using british beef

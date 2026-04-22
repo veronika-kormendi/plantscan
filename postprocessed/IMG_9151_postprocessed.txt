@@ -1,10 +1,2 @@
-ingredients
-pasteurised
-goats
-milk
-salt
-starter
-culture
-vegetarian
-rennet
-mouldculure
+ingredients pasteurised goats milk salt
+starter culture vegetarian rennet mouldculure

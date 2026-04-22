@@ -1,8 +1,4 @@
-wheatflour
-wheatflour
-calcium
-niacin
-ironthiaminrapeseedoi
+wheatflour wheatflour calcium
+niacin ironthiaminrapeseedoi
 skimmedmilkpowdersaltsuasu
-beet
-fibre
+beet fibre

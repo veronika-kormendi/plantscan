@@ -1,16 +1,4 @@
-liquid
-chicken
-bone
-broth
-ingredients
-water
-meaty
-chicken
-bones
-onion
-carrot
-peasant
-rosemarythyme
-bay
-leafblack
+liquid chicken bone broth
+ingredients water meaty chicken bones onion
+carrot peasant rosemarythyme bay leafblack
 pepper

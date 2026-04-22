@@ -1,5 +1,4 @@
-lingerie
-roster
+lingerie roster
 three
 gesetri
 peppergnole

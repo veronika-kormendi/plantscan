@@ -1,60 +1,18 @@
-pepper
-sauce
-dry
-mix
-fortified
-wheat
-four
-wheat
-flour
-calcium
-carbonate
-iron
-niacin
-thiamin
-maize
-starch
-salt
-potato
-starch
-vegetable
-oils
-palm
-rapeseed
-maltodextrin
-sugar
-tomato
-powder
-onion
-powder
-colours
-plain
-caramel
-beta
-carotene
-riboflavin
-flavourings
-contain
-celery
-pepper
-yeast
-extract
-green
-peppercorns
-aid
-citric
-acid
-emulsifier
-mono
-and
-triglycerides
-of
-fatty
-acids
-garlic
-powder
-parsley
-milk
-proteins
-soya
-flour
+pepper sauce dry mix
+
+fortified wheat four wheat
+flour calcium carbonate iron
+niacin thiamin maize starch
+salt potato starch vegetable
+oils palm rapeseed
+maltodextrin sugar tomato
+powder onion powder
+colours plain caramel
+beta carotene riboflavin
+flavourings contain celery
+pepper yeast extract
+green peppercorns aid
+citric acid emulsifier mono
+and triglycerides of fatty acids
+garlic powder parsley milk
+proteins soya flour

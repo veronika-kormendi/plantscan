@@ -1,18 +1,4 @@
-ingredients
-reconstituted
-oriedskimmed
-milk
-reconstituted
-buttermilk
-powder
-watersugarmodified
-maize
-starch
-palm
-oil
-milk
-proteinsflavouringcolours
-beta
-carotene
-paprika
-extract
+ingredients reconstituted oriedskimmed milk reconstituted
+buttermilk powder watersugarmodified maize starch palm
+oil milk proteinsflavouringcolours beta carotene
+paprika extract

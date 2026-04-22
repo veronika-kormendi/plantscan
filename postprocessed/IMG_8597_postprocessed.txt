@@ -1,8 +1,2 @@
-smoked
-kipper
-herring
-fillets
-fish
-sunflower
-oil
-salt
+smoked kipper herring fillets fish
+sunflower oil salt
