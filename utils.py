@@ -605,10 +605,6 @@ def postprocess_text(input_folder_path, output_folder_path):
 
 def analyse_metrics(csv_in_path, csv_summary_path):
     """function for summarizing the metrics generated, takes a csv file"""
-    #open csv, make id into a dataframe
-# get an overview of the data: min, max, mean for each col
-#count how many of the entries have CER 0.2 or below(good), average: above 0.02 but less than 0.1 and poor: more than 0.1
-    #open csv
     df = pd.read_csv(csv_in_path)
     df_copy = df.copy()
     metrics_summary = df_copy.describe()
@@ -619,33 +615,38 @@ def analyse_metrics(csv_in_path, csv_summary_path):
     wac_col = df_copy["wac"]
     w_edit_col = df_copy["word_edit"]
     #benchmark
-    good_cer = df_copy[cer_col <= 0.02] # if cer is 2% or less
-    avg_cer = df_copy[(cer_col > 0.02) & (cer_col <= 0.1)] # 2-10%
-    poor_cer = df_copy[cer_col > 0.1]
-    good_wer = df_copy[wer_col <= 0.02]
-    avg_wer = df_copy[(wer_col > 0.02) & (wer_col <= 0.1)]
-    poor_wer = df_copy[wer_col > 0.1]
-    good_word_edit_dist = df_copy[(w_edit_col > 1) & (w_edit_col <= 3)]
-    avg_word_edit_dist = df_copy[(w_edit_col > 3) & (w_edit_col <= 5)]
-    poor_word_edit_dist = df_copy[(w_edit_col > 5)]
-    excellent_word_edit_dist = df_copy[(w_edit_col <= 1)]
-    #how many in each category
-    num_good_cer = len(good_cer)
-    num_avg_cer = len(avg_cer)
-    num_poor_cer = len(poor_cer)
-    num_good_wer = len(good_wer)
-    num_avg_wer = len(avg_wer)
-    num_poor_wer = len(poor_wer)
-    num_excellent_word_edit_dist = len(excellent_word_edit_dist)
-    num_good_word_edit_dist = len(good_word_edit_dist)
-    num_avg_word_edit_dist = len(avg_word_edit_dist)
-    num_poor_word_edit_dist = len(poor_word_edit_dist)
+    #-------CER-----
+    excellent_cer = df_copy[cer_col <= 0.02] # if cer is 2% or less
+    good_cer = df_copy[(cer_col > 0.02) & (cer_col <= 0.05)] # 2-5%
+    needs_review_cer = df_copy[(cer_col > 0.05) & (cer_col <= 0.1)] # 5-10% -needs review
+    poor_cer = df_copy[cer_col > 0.1] #above 10%
+    # -------WER----------
+    excellent_wer = df_copy[wer_col <= 0.02] # 2 or less than 2 %
+    good_wer = df_copy[(wer_col > 0.02) & (wer_col <= 0.1)] # 2-10%
+    poor_wer = df_copy[wer_col > 0.1] #above 10%
+    #-----the number of words edited in the text
+    excellent_word_edit_dist = df_copy[w_edit_col <= 1] # 1 or less word edited
+    good_word_edit_dist = df_copy[(w_edit_col > 1) & (w_edit_col <= 3)] #2-3 words edited
+    poor_word_edit_dist = df_copy[w_edit_col > 3] # above 3
+    #------COUNT---------- how many images of the dataset in each category
+    excellent_cer_count = len(excellent_cer)
+    good_cer_count = len(good_cer)
+    needs_review_cer_count = len(needs_review_cer)
+    poor_cer_count = len(poor_cer)
+
+    excellent_wer_count = len(excellent_wer)
+    good_wer_count = len(good_wer)
+    poor_wer_count = len(poor_wer)
+
+    excellent_word_edit_dist_count = len(excellent_word_edit_dist)
+    good_word_edit_dist_count = len(good_word_edit_dist)
+    poor_word_edit_dist_count = len(poor_word_edit_dist)
     print(f"Summary stats: \n{metrics_summary}\n")
-    print(f"Good cer: {good_cer}, avg cer: {avg_cer}, poor cer: {poor_cer}")
-    print(f"Num good cer: {num_good_cer}, avg cer: {num_avg_cer}, poor cer: {num_poor_cer}")
-    print(f"good wer: {good_wer}, avg wer: {avg_wer}, poor wer: {poor_wer}")
-    print(f"num good wer: {num_good_wer}, avg wer: {num_avg_wer}, num poor wer: {num_poor_wer}")
-    print(f"excellent word edit dist count: {num_excellent_word_edit_dist}, good word edit dist count: {num_good_word_edit_dist}, avg edit dist count: {num_avg_word_edit_dist}, poor word edit dist count: {num_poor_word_edit_dist}")
+    print(f"Excellent cer: {excellent_cer}, good cer: {good_cer}, needs review cer: {needs_review_cer}, poor cer: {poor_cer}")
+    print(f"Num excellent cer: {excellent_cer_count}, good cer count: {good_cer_count}, needs review cer count: {needs_review_cer_count}, poor cer: {poor_cer_count}")
+    print(f"good wer: {excellent_wer}, avg wer: {good_wer}, poor wer: {poor_wer}")
+    print(f"num good wer: {excellent_wer_count}, avg wer: {good_wer_count}, num poor wer: {poor_wer_count}")
+    print(f"excellent word edit dist count: {excellent_word_edit_dist_count}, good word edit dist count: {good_word_edit_dist_count},  poor word edit dist count: {poor_word_edit_dist_count}")
     analysis_dict = {
         "mean_cer": cer_col.mean(),
         "min_cer": cer_col.min(),
@@ -659,28 +660,29 @@ def analyse_metrics(csv_in_path, csv_summary_path):
         "min_word_edit": w_edit_col.min(),
         "max_word_edit": w_edit_col.max(),
         # --- CER categories ---
-        "num_good_cer": num_good_cer,
-        "num_avg_cer": num_avg_cer,
-        "num_poor_cer": num_poor_cer,
+        "excellent_cer_count": excellent_cer_count,
+        "good_cer_count": good_cer_count,
+        "needs_review_cer_count": needs_review_cer_count,
+        "poor_cer_count": poor_cer_count,
         # --- WER categories ---
-        "num_good_wer": num_good_wer,
-        "num_avg_wer": num_avg_wer,
-        "num_poor_wer": num_poor_wer,
+        "excellent_wer_count": excellent_wer_count,
+        "good_wer_count": good_wer_count,
+        "poor_wer_count": poor_wer_count,
         # --- Word edit distance categories ---
-        "num_excellent_word_edit": num_excellent_word_edit_dist,
-        "num_good_word_edit": num_good_word_edit_dist,
-        "num_avg_word_edit": num_avg_word_edit_dist,
-        "num_poor_word_edit": num_poor_word_edit_dist,
+        "excellent_word_edit_dist_count": excellent_word_edit_dist_count,
+        "good_word_edit_dist_count": good_word_edit_dist_count,
+        "poor_word_edit_dist_count": poor_word_edit_dist_count,
         # --- Total samples ---
         "total_samples": len(df_copy)
     }
     analysis_df = pd.DataFrame.from_dict(analysis_dict, orient="index", columns=["value"])
-    summary = df_copy.describe().T
-    summary.insert(0, "metric", summary.index)
+    summary_df = df_copy.describe().T
+    # summary.insert(0, "metric", summary.index)
     with open(csv_summary_path, "w", encoding="utf-8") as f:
-        summary.to_csv(f)
-        f.write(f"summary stats")
-        summary.to_csv(f, index=False)
+        f.write("Summary stats: \n")
+        summary_df.to_csv(f)
+        f.write(f"\nanalysis stats\n")
+        analysis_df.to_csv(f)
     print(f"Analysis summary saved to {csv_summary_path}")
 
 
