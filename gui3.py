@@ -8,7 +8,6 @@ from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_ima
                    find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual, evaluate_preprocessed,
                    each_word_on_new_line, postprocess_text)
 import Levenshtein
-from jiwer import wer
 
 start_corner = None # start corner of cropping rectangle
 end_corner = None # end corner of cropping rectangle
