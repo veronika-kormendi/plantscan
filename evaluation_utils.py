@@ -1,36 +1,9 @@
 import os # for file handling
-from PIL import Image, ImageTk  # for managing images
-import pillow_heif # for HEIC to JPG conversion
-import cv2 as cv # openCV
-from tkinter import filedialog
-from jiwer import wer
-from paddleocr import PaddleOCR
-import json
-import string
-import unicodedata
 import Levenshtein
-# # for testing coloured images with gui2
-# from config import (JPG_OUTPUT_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
-#                     SUPPORTED_IMAGE_TYPES,
-#                     OCR_SETTINGS, CROPPED_FOLDER, )
-
-from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
-                    SUPPORTED_IMAGE_TYPES,
-                    OCR_SETTINGS, CROPPED_FOLDER )
+from config import CLEANED_FOLDER_PATH
 import csv
-from spellchecker import SpellChecker # for postprocessing
 import pandas as pd
-
-def find_matching_gt_file(ocr_file_path):
-    ocr_img_id = get_img_id(ocr_file_path)
-    for root, dirs, files in os.walk(ANNOTATION_FOLDER):
-        for file in files:
-            file_path = os.path.join(root, file)
-            annotation_id = get_img_id(file_path)
-            if annotation_id == ocr_img_id: #if there is a match
-                return file_path
-    return None
-
+from text_utils import get_img_id, load_text, load_words, normalize_for_char_metric
 
 def calculate_wer_manual(word_edit_distance, gt_word_count):
     """
@@ -141,9 +114,6 @@ def evaluate_preprocessed(folder_path, output_csv="preprocessed_metrics.csv"):
 
     print(f"Metrics saved to {output_csv}")
     return results
-
-
-
 
 #=--------------------
 def evaluate_postprocessed(folder_path, output_csv="postprocessed_metrics.csv"):

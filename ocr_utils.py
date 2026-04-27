@@ -1,32 +1,6 @@
 import os # for file handling
-from PIL import Image, ImageTk  # for managing images
-import pillow_heif # for HEIC to JPG conversion
-import cv2 as cv # openCV
-from tkinter import filedialog
-from jiwer import wer
 from paddleocr import PaddleOCR
 import json
-import string
-import unicodedata
-import Levenshtein
-# # for testing coloured images with gui2
-# from config import (JPG_OUTPUT_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
-#                     SUPPORTED_IMAGE_TYPES,
-#                     OCR_SETTINGS, CROPPED_FOLDER, )
-
-from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
-                    SUPPORTED_IMAGE_TYPES,
-                    OCR_SETTINGS, CROPPED_FOLDER )
-import csv
-from spellchecker import SpellChecker # for postprocessing
-import pandas as pd
-spell = SpellChecker() # load default word frequency list
-extra_words = ["flavouring", "sucralose", "colours", "sorbate", "sugar", "caramelised", "flavour", "guar", "thermophilus",
-               "bulgaricus", "lecithins", "folic", "fibre", "sucralose", "stabiliser", "stabilisers", "curcumin",
-               "xanthan", "sundried", "crouton", "croutons", "colour", "humectants", "acerola", "pasteurised", "coagulans", "flavourings"]
-# add extra words to spell checker dictionary
-for word in extra_words:
-    spell.word_frequency.add(word)
 
 def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_txt_folder"):
     """Perform OCR on a single image

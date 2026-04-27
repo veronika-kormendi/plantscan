@@ -1,15 +1,13 @@
 import tkinter as tk # for GUI
 import ttkbootstrap as ttk # for modern GUI
-from config import *
+from config_refactor import *
+from postprocess_utils import postprocess_text
+from evaluation_utils import evaluate_preprocessed, evaluate_postprocessed
+from tkinter import filedialog, messagebox
+import pipeline
 import os
 from PIL import Image, ImageTk  # for managing images
-from utils import (select_img_from, heic_to_jpg, colour_to_greyscale, resize_image, make_tk_img, \
-                   perform_ocr_on_single_image, load_words, load_text, count_word_and_char, normalize_for_char_metric,
-                   find_matching_gt_file, calculate_wer_manual, calculate_wac, calculate_cac, calculate_cer_manual,
-                   evaluate_preprocessed, evaluate_postprocessed,
-                   each_word_on_new_line, postprocess_text, analyse_metrics)
-import Levenshtein
-from tkinter import filedialog
+import image_utils as img
 
 start_corner = None # start corner of cropping rectangle
 end_corner = None # end corner of cropping rectangle
@@ -32,7 +30,6 @@ style_obj = ttk.Style(theme=THEME) # applying theme
 width = gui_window.winfo_screenwidth() # set window width
 height = gui_window.winfo_screenheight() # set window height
 gui_window.geometry(f"{width}x{height}+0+0") # window size with width, height, offset, offset
-
 
 def select_img_from():
     """Select an image from the input folder to start the pipeline.
@@ -127,18 +124,74 @@ def shift_coords(x0,y0,x1,y1):
     """shift the crop rectangle coordinates on the canvas from left top corner"""
     return x0-CROP_SHIFT,y0-CROP_SHIFT, x1-CROP_SHIFT, y1-CROP_SHIFT
 
+# def on_select_img():
+#     selected_path = select_img_from()
+#     if not selected_path:
+#         return
+#     pipeline.run_pipeline(selected_path)
+
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events
+
+def run_img_tasks():
+    global resized_image, output_path
+    selected_path = select_img_from()
+    if not selected_path:
+        return
+    gscale_img_path = pipeline.preprocess_image(selected_path)
+    output_path = gscale_img_path
+    pil_img = Image.open(gscale_img_path)
+    resized_image = img.resize_image(pil_img)
+    tk_img = img.make_tk_img(resized_image)
+    display_image(tk_img)
+
+def save_cropped_img():
+    """save cropped image
+    """
+    global resized_image, output_path
+    if resized_image is None:
+        print("No image loaded.")
+        return
+    if output_path is None:
+        print("No output path was provided.")
+        return
+    rect = get_rect_coords()
+    if rect is None:
+        print("No rectangle drawn.")
+        return
+    # canvas coords to image coords since
+    # rectangle is in canvas coords & cropped img is in other coords
+    x0, y0, x1, y1 = shift_coords(*canvas.coords(rect_id))
+    cropped = resized_image.crop((x0, y0, x1, y1))
+    if not os.path.exists(CROPPED_FOLDER): #if it does not exist
+        os.makedirs(CROPPED_FOLDER) # create cropped folder
+    original_name = os.path.basename(output_path) #original name
+    base, _ = os.path.splitext(original_name)
+    new_name = f"{base}_cropped.jpg"
+    save_path = os.path.join(CROPPED_FOLDER, new_name) # where to save the new one
+    if save_path:
+        cropped.save(save_path, format="JPEG")
+        print(f"Saved cropped image ({os.path.basename(save_path)}) to {save_path}.") # Saved cropped image (IMG_7476_cropped.jpg) to
+    return save_path
+
+def get_cropped_img(): # call pipeline
+    """process cropped image"""
+    cropped_img_path = save_cropped_img()
+    if not cropped_img_path:
+        return
+    pipeline.process_cropped_image(cropped_img_path)
 
 # ---------- CANVAS ------------
 canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas to display the image on
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
+# select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=on_select_img)
 select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=run_img_tasks)
 select_img_btn.pack(pady=6)
 # save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
-save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
+# save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
+save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=save_cropped_img)
 save_btn.pack()
 
 eval_btn = tk.Button(gui_window, text="Evaluate Preprocessed", padx=10, pady=2,

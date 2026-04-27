@@ -1,13 +1,9 @@
 import os # for file handling
+from tkinter import filedialog
 from PIL import Image, ImageTk  # for managing images
 import pillow_heif # for HEIC to JPG conversion
 import cv2 as cv # openCV
-from tkinter import filedialog
-import string
-import unicodedata
-from config import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER, CLEANED_FOLDER_PATH, ANNOTATION_FOLDER, DEFAULT_RESIZE_WIDTH,
-                    SUPPORTED_IMAGE_TYPES,
-                    OCR_SETTINGS, CROPPED_FOLDER )
+from config_refactor import DEFAULT_RESIZE_WIDTH
 
 # step 1 - img conversion: HEIC to JPG
 def heic_to_jpg(input_image_folder_path, output_folder_path):
