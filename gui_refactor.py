@@ -191,7 +191,8 @@ select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, com
 select_img_btn.pack(pady=6)
 # save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
 # save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
-save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=save_cropped_img)
+# save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=save_cropped_img)
+save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=get_cropped_img)
 save_btn.pack()
 
 eval_btn = tk.Button(gui_window, text="Evaluate Preprocessed", padx=10, pady=2,

@@ -29,3 +29,4 @@ def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_tx
     print(f"finished OCR on {cropped_img_path}.")
     # print(f"txt path: {txt_path}.") # displayed for debugging
     return txt_path
+
