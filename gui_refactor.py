@@ -1,8 +1,10 @@
 import tkinter as tk # for GUI
 import ttkbootstrap as ttk # for modern GUI
 from config_refactor import *
-from postprocess_utils import postprocess_text
-from evaluation_utils import evaluate_preprocessed, evaluate_postprocessed
+# from postprocess_utils import postprocess_text
+from postprocess_utils_return_filepath import postprocess_text
+# from eval_utils_copy import evaluate_preprocessed
+from eval_utils_copy_postp_return_filepath_not_folder import evaluate_preprocessed, evaluate_postprocessed
 from tkinter import filedialog, messagebox
 import pipeline
 import os
@@ -124,12 +126,6 @@ def shift_coords(x0,y0,x1,y1):
     """shift the crop rectangle coordinates on the canvas from left top corner"""
     return x0-CROP_SHIFT,y0-CROP_SHIFT, x1-CROP_SHIFT, y1-CROP_SHIFT
 
-# def on_select_img():
-#     selected_path = select_img_from()
-#     if not selected_path:
-#         return
-#     pipeline.run_pipeline(selected_path)
-
 def start_gui():
     gui_window.mainloop()  # displaying the window & listen for events
 
@@ -186,25 +182,21 @@ canvas = tk.Canvas(gui_window, width=width, height=height) # creating a canvas t
 canvas.bind("<Button-1>", on_click)
 canvas.bind("<B1-Motion>", drag_rect)
 canvas.bind("<ButtonRelease-1>", on_release)
-# select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=on_select_img)
 select_img_btn = tk.Button(gui_window, text="Select Image", padx=10, pady=2, command=run_img_tasks)
 select_img_btn.pack(pady=6)
-# save_btn = tk.Button(gui_window, text="Save Crop", command=save_cropped_img)
-# save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=process_cropped_img)
-# save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=save_cropped_img)
 save_btn = tk.Button(gui_window, text="Save Crop", padx=10, pady=2, command=get_cropped_img)
 save_btn.pack()
 
-eval_btn = tk.Button(gui_window, text="Evaluate Preprocessed", padx=10, pady=2,
-                     command=lambda: evaluate_preprocessed(CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
-eval_btn.pack(pady=6)
-
-eval_btn = tk.Button(gui_window, text="postprocess", padx=10, pady=2,
-                     command=lambda: postprocess_text(CLEANED_FOLDER_PATH, POSTPROCESS_OUT_FOLDER))
-eval_btn.pack(pady=6)
-
-
-eval_btn = tk.Button(gui_window, text="Evaluate Postprocessed", padx=10, pady=2,
-                     command=lambda: evaluate_postprocessed(POSTPROCESS_OUT_FOLDER, "postprocessed_metrics.csv"))
-eval_btn.pack(pady=6)
+# eval_btn = tk.Button(gui_window, text="Evaluate Preprocessed", padx=10, pady=2,
+#                      command=lambda: evaluate_preprocessed(ocr_extracted, CLEANED_FOLDER_PATH, "preprocessed_metrics.csv"))
+# eval_btn.pack(pady=6)
+#
+# eval_btn = tk.Button(gui_window, text="postprocess", padx=10, pady=2,
+#                      command=lambda: postprocess_text(CLEANED_FOLDER_PATH, POSTPROCESS_OUT_FOLDER))
+# eval_btn.pack(pady=6)
+#
+#
+# eval_btn = tk.Button(gui_window, text="Evaluate Postprocessed", padx=10, pady=2,
+#                      command=lambda: evaluate_postprocessed(POSTPROCESS_OUT_FOLDER, "postprocessed_metrics.csv"))
+# eval_btn.pack(pady=6)
 canvas.pack()

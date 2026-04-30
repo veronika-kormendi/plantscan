@@ -1,7 +1,7 @@
 import os # for file handling
 import string
 import unicodedata
-from config import (CLEANED_FOLDER_PATH, ANNOTATION_FOLDER)
+from config_refactor import (CLEANED_FOLDER_PATH, ANNOTATION_FOLDER)
 
 # function to clean a line of text
 def clean_line(line):
@@ -87,6 +87,21 @@ def get_img_id(path):
     if len(parts) >=2 and parts[0].upper() == "IMG":
         return f"{parts[0]}_{parts[1]}"
     return img_id
+
+# def each_word_on_new_line(input_folder_path, output_folder_path):
+#     os.makedirs(output_folder_path, exist_ok=True) # create output folder
+#     for filename in os.listdir(input_folder_path):
+#         in_path = os.path.join(input_folder_path, filename)
+#         with open(in_path, "r", encoding="utf-8") as f:
+#             text = f.read()
+#         words = text.split()
+#         cleaned = [w.strip() for w in words if w.strip()]
+#         out_path = os.path.join(output_folder_path, filename)
+#         with open(out_path, "w", encoding="utf-8") as f:
+#             for word in cleaned:
+#                 f.write(word + "\n")
+#
+#     return output_folder_path
 
 def each_word_on_new_line(input_folder_path, output_folder_path):
     os.makedirs(output_folder_path, exist_ok=True) # create output folder

@@ -2,7 +2,8 @@ import os # for file handling
 from paddleocr import PaddleOCR
 import json
 
-def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_txt_folder"):
+# def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_txt_folder"):
+def perform_ocr_on_single_image(cropped_img_path, ocr_output_folder_path="ocr_txt_folder_refactor"):
     """Perform OCR on a single image
     :param cropped_img_path: path to cropped image
     :param ocr_output_folder_path:

@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_8579_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                11,
+                8
+            ],
+            [
+                351,
+                21
+            ],
+            [
+                350,
+                37
+            ],
+            [
+                10,
+                24
+            ]
+        ],
+        [
+            [
+                10,
+                23
+            ],
+            [
+                337,
+                37
+            ],
+            [
+                336,
+                54
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                11,
+                39
+            ],
+            [
+                314,
+                52
+            ],
+            [
+                314,
+                68
+            ],
+            [
+                10,
+                55
+            ]
+        ],
+        [
+            [
+                10,
+                55
+            ],
+            [
+                329,
+                67
+            ],
+            [
+                328,
+                83
+            ],
+            [
+                9,
+                71
+            ]
+        ],
+        [
+            [
+                11,
+                69
+            ],
+            [
+                136,
+                75
+            ],
+            [
+                135,
+                91
+            ],
+            [
+                10,
+                86
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Partially Reconstituted Dried Skimmed Milk.Cream (Milk",
+        "(12%),Sugar.Coconut Oil,Glucose Syrup.Whey Powder",
+        "（Milk).Emulsifier(Mono-and Di-Glycerides of Fatty",
+        "Acids),Flavouring,Stabilisers (Guar Gum,Locust Bean",
+        "Gum,Xanthan Gum)."
+    ],
+    "rec_scores": [
+        0.917206346988678,
+        0.8960970640182495,
+        0.930846631526947,
+        0.913814902305603,
+        0.9597469568252563
+    ],
+    "rec_polys": [
+        [
+            [
+                11,
+                8
+            ],
+            [
+                351,
+                21
+            ],
+            [
+                350,
+                37
+            ],
+            [
+                10,
+                24
+            ]
+        ],
+        [
+            [
+                10,
+                23
+            ],
+            [
+                337,
+                37
+            ],
+            [
+                336,
+                54
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                11,
+                39
+            ],
+            [
+                314,
+                52
+            ],
+            [
+                314,
+                68
+            ],
+            [
+                10,
+                55
+            ]
+        ],
+        [
+            [
+                10,
+                55
+            ],
+            [
+                329,
+                67
+            ],
+            [
+                328,
+                83
+            ],
+            [
+                9,
+                71
+            ]
+        ],
+        [
+            [
+                11,
+                69
+            ],
+            [
+                136,
+                75
+            ],
+            [
+                135,
+                91
+            ],
+            [
+                10,
+                86
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            10,
+            8,
+            351,
+            37
+        ],
+        [
+            9,
+            23,
+            337,
+            54
+        ],
+        [
+            10,
+            39,
+            314,
+            68
+        ],
+        [
+            9,
+            55,
+            329,
+            83
+        ],
+        [
+            10,
+            69,
+            136,
+            91
+        ]
+    ]
+}

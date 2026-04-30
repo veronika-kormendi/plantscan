@@ -1,5 +1,4 @@
 import os # for file handling
-from tkinter import filedialog
 from PIL import Image, ImageTk  # for managing images
 import pillow_heif # for HEIC to JPG conversion
 import cv2 as cv # openCV
@@ -27,23 +26,18 @@ def heic_to_jpg(input_image_folder_path, output_folder_path):
     print(f"HEIC conversion from {filename} to jpg {jpg_filename}") # display output
     return jpg_path
 
-def colour_to_greyscale(input_folder, coloured_img, output_path):
-    """turn coloured image into greyscale image
-    :param input_folder: input image's folder path
-    :param coloured_img: coloured image
-    :param output_folder_path: the folder where the greyscale image is saved
-    :return: the filepath of the greyscale image"""
-    # path = join input folder & selected coloured image
-    input_img_path = os.path.join(input_folder, coloured_img) # image to greyscale
-    if not os.path.exists(output_path): # if folder does not exist
-        os.makedirs(output_path, exist_ok=True) # make folder & don't throw error if already exist
-    gscale_output_filepath = os.path.join(output_path, coloured_img) # build path where to save the gscale img
-    gscale_filename = os.path.basename(gscale_output_filepath) # get the gscale filename
-    coloured_img = cv.imread(input_img_path) # read image
-    greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY) # turn it to greyscale
-    cv.imwrite(gscale_output_filepath, greyscale_img) # save gscale img to the gscale output folder
-    print(f"Greyscale conversion successful: {gscale_filename} is greyscale now.")
-    return gscale_output_filepath
+def colour_to_greyscale(coloured_img_path, output_path): #takes image path
+    os.makedirs(output_path, exist_ok=True)  # make folder & don't throw error if already exist
+    filename = os.path.basename(coloured_img_path)
+    gscale_output_path = os.path.join(output_path, filename)
+    coloured_img = cv.imread(coloured_img_path)  # read image
+    if coloured_img is None:
+        print(f"could not read image:{coloured_img}")
+        return None
+    greyscale_img = cv.cvtColor(coloured_img, cv.COLOR_BGR2GRAY)  # turn it to greyscale
+    cv.imwrite(gscale_output_path, greyscale_img)  # save gscale img to the gscale output folder
+    print(f"Greyscale conversion successful: {filename} is greyscale now.")
+    return gscale_output_path
 
 def resize_image(image, new_w=DEFAULT_RESIZE_WIDTH):
     """Resize an image to a new width and height.

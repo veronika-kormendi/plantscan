@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_7762_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                11,
+                18
+            ],
+            [
+                579,
+                0
+            ],
+            [
+                580,
+                24
+            ],
+            [
+                11,
+                45
+            ]
+        ],
+        [
+            [
+                11,
+                43
+            ],
+            [
+                580,
+                23
+            ],
+            [
+                581,
+                54
+            ],
+            [
+                11,
+                73
+            ]
+        ],
+        [
+            [
+                13,
+                69
+            ],
+            [
+                560,
+                49
+            ],
+            [
+                561,
+                80
+            ],
+            [
+                13,
+                99
+            ]
+        ],
+        [
+            [
+                16,
+                97
+            ],
+            [
+                556,
+                77
+            ],
+            [
+                557,
+                103
+            ],
+            [
+                16,
+                123
+            ]
+        ],
+        [
+            [
+                18,
+                119
+            ],
+            [
+                506,
+                103
+            ],
+            [
+                507,
+                130
+            ],
+            [
+                19,
+                144
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Gingerbreadflavoursandwich biscuitswitha vanilla Havour",
+        "filling%).Ingredients:HATfloursugarrapeseedoilpalm",
+        "oilHTsarchgucoseructoseruolour(laicarml",
+        "raising agents(sodiumcarbonates,ammoniumcarbonates)alt,",
+        "emulsifier(oYAlecithin),flavouringscinnamon powder."
+    ],
+    "rec_scores": [
+        0.937218964099884,
+        0.7505330443382263,
+        0.6371799111366272,
+        0.8630474209785461,
+        0.8023219108581543
+    ],
+    "rec_polys": [
+        [
+            [
+                11,
+                18
+            ],
+            [
+                579,
+                0
+            ],
+            [
+                580,
+                24
+            ],
+            [
+                11,
+                45
+            ]
+        ],
+        [
+            [
+                11,
+                43
+            ],
+            [
+                580,
+                23
+            ],
+            [
+                581,
+                54
+            ],
+            [
+                11,
+                73
+            ]
+        ],
+        [
+            [
+                13,
+                69
+            ],
+            [
+                560,
+                49
+            ],
+            [
+                561,
+                80
+            ],
+            [
+                13,
+                99
+            ]
+        ],
+        [
+            [
+                16,
+                97
+            ],
+            [
+                556,
+                77
+            ],
+            [
+                557,
+                103
+            ],
+            [
+                16,
+                123
+            ]
+        ],
+        [
+            [
+                18,
+                119
+            ],
+            [
+                506,
+                103
+            ],
+            [
+                507,
+                130
+            ],
+            [
+                19,
+                144
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            11,
+            0,
+            580,
+            45
+        ],
+        [
+            11,
+            23,
+            581,
+            73
+        ],
+        [
+            13,
+            49,
+            561,
+            99
+        ],
+        [
+            16,
+            77,
+            557,
+            123
+        ],
+        [
+            18,
+            103,
+            507,
+            144
+        ]
+    ]
+}

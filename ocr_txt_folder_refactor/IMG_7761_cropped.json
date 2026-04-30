@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_7761_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                95,
+                34
+            ],
+            [
+                460,
+                27
+            ],
+            [
+                460,
+                50
+            ],
+            [
+                95,
+                57
+            ]
+        ],
+        [
+            [
+                22,
+                65
+            ],
+            [
+                534,
+                56
+            ],
+            [
+                535,
+                82
+            ],
+            [
+                22,
+                91
+            ]
+        ],
+        [
+            [
+                29,
+                90
+            ],
+            [
+                530,
+                81
+            ],
+            [
+                531,
+                106
+            ],
+            [
+                30,
+                115
+            ]
+        ],
+        [
+            [
+                50,
+                112
+            ],
+            [
+                508,
+                105
+            ],
+            [
+                508,
+                131
+            ],
+            [
+                51,
+                138
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "THEORIGINAL CARAMELISED BISCUIT",
+        "Ingredients: Wheatflour,sugar,vegetable oils (palm",
+        "rapeseed)candy sugar syrup, raising agent (sodium",
+        "hydrogen carbonate),soya flour, salt,cinnamon."
+    ],
+    "rec_scores": [
+        0.970027506351471,
+        0.9349722862243652,
+        0.9393254518508911,
+        0.9084210395812988
+    ],
+    "rec_polys": [
+        [
+            [
+                95,
+                34
+            ],
+            [
+                460,
+                27
+            ],
+            [
+                460,
+                50
+            ],
+            [
+                95,
+                57
+            ]
+        ],
+        [
+            [
+                22,
+                65
+            ],
+            [
+                534,
+                56
+            ],
+            [
+                535,
+                82
+            ],
+            [
+                22,
+                91
+            ]
+        ],
+        [
+            [
+                29,
+                90
+            ],
+            [
+                530,
+                81
+            ],
+            [
+                531,
+                106
+            ],
+            [
+                30,
+                115
+            ]
+        ],
+        [
+            [
+                50,
+                112
+            ],
+            [
+                508,
+                105
+            ],
+            [
+                508,
+                131
+            ],
+            [
+                51,
+                138
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            95,
+            27,
+            460,
+            57
+        ],
+        [
+            22,
+            56,
+            535,
+            91
+        ],
+        [
+            29,
+            81,
+            531,
+            115
+        ],
+        [
+            50,
+            105,
+            508,
+            138
+        ]
+    ]
+}
