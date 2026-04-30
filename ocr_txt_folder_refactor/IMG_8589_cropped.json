@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_8589_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                7,
+                12
+            ],
+            [
+                264,
+                5
+            ],
+            [
+                264,
+                25
+            ],
+            [
+                7,
+                32
+            ]
+        ],
+        [
+            [
+                8,
+                27
+            ],
+            [
+                567,
+                11
+            ],
+            [
+                568,
+                31
+            ],
+            [
+                8,
+                48
+            ]
+        ],
+        [
+            [
+                8,
+                44
+            ],
+            [
+                550,
+                27
+            ],
+            [
+                550,
+                46
+            ],
+            [
+                8,
+                63
+            ]
+        ],
+        [
+            [
+                9,
+                57
+            ],
+            [
+                559,
+                41
+            ],
+            [
+                560,
+                62
+            ],
+            [
+                9,
+                76
+            ]
+        ],
+        [
+            [
+                392,
+                62
+            ],
+            [
+                565,
+                57
+            ],
+            [
+                566,
+                74
+            ],
+            [
+                392,
+                76
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Veganpepperonifiavourdelslices,madewithmycoprotein",
+        "Noroaroer",
+        "StarchCcChodeCCoorcroir",
+        "SoraeGeaa",
+        "made with a member of thefungi/mould"
+    ],
+    "rec_scores": [
+        0.8711561560630798,
+        0.5164832472801208,
+        0.5157565474510193,
+        0.5100024938583374,
+        0.9054161906242371
+    ],
+    "rec_polys": [
+        [
+            [
+                7,
+                12
+            ],
+            [
+                264,
+                5
+            ],
+            [
+                264,
+                25
+            ],
+            [
+                7,
+                32
+            ]
+        ],
+        [
+            [
+                8,
+                27
+            ],
+            [
+                567,
+                11
+            ],
+            [
+                568,
+                31
+            ],
+            [
+                8,
+                48
+            ]
+        ],
+        [
+            [
+                8,
+                44
+            ],
+            [
+                550,
+                27
+            ],
+            [
+                550,
+                46
+            ],
+            [
+                8,
+                63
+            ]
+        ],
+        [
+            [
+                9,
+                57
+            ],
+            [
+                559,
+                41
+            ],
+            [
+                560,
+                62
+            ],
+            [
+                9,
+                76
+            ]
+        ],
+        [
+            [
+                392,
+                62
+            ],
+            [
+                565,
+                57
+            ],
+            [
+                566,
+                74
+            ],
+            [
+                392,
+                76
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            7,
+            5,
+            264,
+            32
+        ],
+        [
+            8,
+            11,
+            568,
+            48
+        ],
+        [
+            8,
+            27,
+            550,
+            63
+        ],
+        [
+            9,
+            41,
+            560,
+            76
+        ],
+        [
+            392,
+            57,
+            566,
+            76
+        ]
+    ]
+}

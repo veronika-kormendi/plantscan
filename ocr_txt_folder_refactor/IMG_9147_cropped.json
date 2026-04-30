@@ -1,0 +1,175 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_9147_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                6,
+                1
+            ],
+            [
+                432,
+                4
+            ],
+            [
+                432,
+                28
+            ],
+            [
+                6,
+                24
+            ]
+        ],
+        [
+            [
+                6,
+                23
+            ],
+            [
+                427,
+                24
+            ],
+            [
+                427,
+                48
+            ],
+            [
+                6,
+                47
+            ]
+        ],
+        [
+            [
+                6,
+                44
+            ],
+            [
+                415,
+                46
+            ],
+            [
+                415,
+                69
+            ],
+            [
+                6,
+                68
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Mushrooms（88%)Garlic&HerbButter（12%）（Salted",
+        "Butter（Milk）（84%）,Garlic（Garlic，GarlicDriedGarlic",
+        "Granulate)(13%)，Mixed Herbs(2%),Black Pepper"
+    ],
+    "rec_scores": [
+        0.8676047325134277,
+        0.8205365538597107,
+        0.8787046670913696
+    ],
+    "rec_polys": [
+        [
+            [
+                6,
+                1
+            ],
+            [
+                432,
+                4
+            ],
+            [
+                432,
+                28
+            ],
+            [
+                6,
+                24
+            ]
+        ],
+        [
+            [
+                6,
+                23
+            ],
+            [
+                427,
+                24
+            ],
+            [
+                427,
+                48
+            ],
+            [
+                6,
+                47
+            ]
+        ],
+        [
+            [
+                6,
+                44
+            ],
+            [
+                415,
+                46
+            ],
+            [
+                415,
+                69
+            ],
+            [
+                6,
+                68
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            6,
+            1,
+            432,
+            28
+        ],
+        [
+            6,
+            23,
+            427,
+            48
+        ],
+        [
+            6,
+            44,
+            415,
+            69
+        ]
+    ]
+}

@@ -1,3 +1,4 @@
-Ingredients 57% Soya Beans,Water,Sal,
-FirmingAgents:Calcium ChlorideMagesim
+Ingredients
+57% Soya Beans,Water, Salt,
+Firming Agents: Calcium Chloride,Manesium
 Chloride.

@@ -1,6 +1,7 @@
 import csv
 import text_utils as txt
 from config_refactor import EXCLUDE_WORDS_PATH
+import os
 
 def make_cvs_to_dict(csv_filepath):
     categories = {}
@@ -53,10 +54,43 @@ def is_it_plant_based(input_file_path, exclude_words_path):
     for word in words_to_check: # check for match
         if word in exclude_words:
             print(f"Product is NOT plant-based (contains: {word})")
-            return False  # stop immediately
+            return False, word  # return the word as well
 
     print("Product is plant-based")   # if no matches found
-    return True
+    return True, None
 
 # is_it_plant_based('C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_single\\IMG_7476_cropped_cleaned_ocr.txt', EXCLUDE_WORDS_PATH) #test
 # is_it_plant_based('C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_single\\IMG_8579_cropped_cleaned_ocr.txt', EXCLUDE_WORDS_PATH) #test
+
+def count_pb_identified(input_folder_path, exclude_words_path, output_csv_path):
+    results = []
+    pb_identified_count = 0
+    for filename in os.listdir(input_folder_path):
+        if filename.endswith("_cleaned_ocr.txt"):
+            file_path = os.path.join(input_folder_path, filename)
+
+            is_pb, matched_word = is_it_plant_based(file_path, exclude_words_path)
+
+            if is_pb:
+                result_msg = "plant-based"
+                pb_identified_count += 1
+            else:
+                result_msg = f"NOT plant-based (contains: {matched_word})"
+
+            results.append({
+                "img_id": filename.replace("_cleaned_ocr.txt", ""),
+                "result": result_msg,
+                "matched_word": matched_word if matched_word else ""
+            })
+
+        # Write CSV
+    with open(output_csv_path, "w", newline="", encoding="utf-8") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=["img_id", "result", "matched_word"])
+        writer.writeheader()
+        writer.writerows(results)
+
+    print(f"Total plant-based products: {pb_identified_count}")
+    print(f"CSV saved to: {output_csv_path}")
+
+    # return pb_identified_count
+

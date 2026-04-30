@@ -13,6 +13,7 @@ POSTPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postproc
 SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_summary_single.csv'
 SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary_single.csv'
 EXCLUDE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\exclude_list.csv'
+PB_COUNT_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\pb_count.csv'
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"
 THEME = "vapor"

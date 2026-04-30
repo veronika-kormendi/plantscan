@@ -1,0 +1,130 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_8596_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                13,
+                7
+            ],
+            [
+                459,
+                12
+            ],
+            [
+                459,
+                36
+            ],
+            [
+                12,
+                31
+            ]
+        ],
+        [
+            [
+                12,
+                30
+            ],
+            [
+                184,
+                30
+            ],
+            [
+                184,
+                53
+            ],
+            [
+                12,
+                53
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Sardines(71%),Water,Concentrated Tomato",
+        "Paste(11%),Salt."
+    ],
+    "rec_scores": [
+        0.9311427474021912,
+        0.96104496717453
+    ],
+    "rec_polys": [
+        [
+            [
+                13,
+                7
+            ],
+            [
+                459,
+                12
+            ],
+            [
+                459,
+                36
+            ],
+            [
+                12,
+                31
+            ]
+        ],
+        [
+            [
+                12,
+                30
+            ],
+            [
+                184,
+                30
+            ],
+            [
+                184,
+                53
+            ],
+            [
+                12,
+                53
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            12,
+            7,
+            459,
+            36
+        ],
+        [
+            12,
+            30,
+            184,
+            53
+        ]
+    ]
+}

@@ -7,7 +7,7 @@ from config_refactor import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER,
                              CLEANED_FOLDER_PATH, POSTPROCESS_OUT_FOLDER,
                              PREPROCESSED_CSV_PATH, POSTPROCESSED_CSV_PATH,
                              SUMMARY_PREPROC_PATH, SUMMARY_POSTPROC_PATH,
-                             CLEANED_2, CANDIDATE_WORDS_PATH, EXCLUDE_WORDS_PATH)
+                             CLEANED_2, CANDIDATE_WORDS_PATH, EXCLUDE_WORDS_PATH, PB_COUNT_CSV_PATH)
 import os
 import Levenshtein
 # import postprocess_utils as postp
@@ -88,3 +88,4 @@ def process_cropped_image(cropped_img_path):
     eval.analyse_metrics(POSTPROCESSED_CSV_PATH, SUMMARY_POSTPROC_PATH)
     # words_per_line_folder_path = txt.each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
     pb.is_it_plant_based(cleaned_extracted_path,EXCLUDE_WORDS_PATH)
+    pb.count_pb_identified(CLEANED_FOLDER_PATH, EXCLUDE_WORDS_PATH,PB_COUNT_CSV_PATH)

@@ -1,0 +1,355 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_9081_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                16,
+                2
+            ],
+            [
+                502,
+                12
+            ],
+            [
+                502,
+                38
+            ],
+            [
+                15,
+                28
+            ]
+        ],
+        [
+            [
+                16,
+                31
+            ],
+            [
+                540,
+                41
+            ],
+            [
+                539,
+                67
+            ],
+            [
+                15,
+                57
+            ]
+        ],
+        [
+            [
+                15,
+                58
+            ],
+            [
+                512,
+                67
+            ],
+            [
+                511,
+                95
+            ],
+            [
+                14,
+                86
+            ]
+        ],
+        [
+            [
+                15,
+                84
+            ],
+            [
+                519,
+                95
+            ],
+            [
+                518,
+                125
+            ],
+            [
+                14,
+                114
+            ]
+        ],
+        [
+            [
+                12,
+                108
+            ],
+            [
+                542,
+                120
+            ],
+            [
+                541,
+                159
+            ],
+            [
+                11,
+                147
+            ]
+        ],
+        [
+            [
+                13,
+                136
+            ],
+            [
+                544,
+                145
+            ],
+            [
+                543,
+                183
+            ],
+            [
+                12,
+                174
+            ]
+        ],
+        [
+            [
+                14,
+                163
+            ],
+            [
+                408,
+                177
+            ],
+            [
+                407,
+                212
+            ],
+            [
+                13,
+                198
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Water,Tomato Puree,WheatFlour[Wheat Flour,",
+        "Calcium Carbonate,Iron,Niacin,Thiamin]Beef Heart.",
+        "Modified Maize Starch,Carrot,Yeast Extract,Bef",
+        "Skirt,Oxtail(1%),Onion,OnionPowder, Barley Malt",
+        "Extracte elurGicueeCoaer",
+        "TurmericNulir,Fll,",
+        "White Pepper. Made using British beef."
+    ],
+    "rec_scores": [
+        0.9176491498947144,
+        0.8888302445411682,
+        0.9068881273269653,
+        0.8318933248519897,
+        0.6485009789466858,
+        0.6534056067466736,
+        0.9327822327613831
+    ],
+    "rec_polys": [
+        [
+            [
+                16,
+                2
+            ],
+            [
+                502,
+                12
+            ],
+            [
+                502,
+                38
+            ],
+            [
+                15,
+                28
+            ]
+        ],
+        [
+            [
+                16,
+                31
+            ],
+            [
+                540,
+                41
+            ],
+            [
+                539,
+                67
+            ],
+            [
+                15,
+                57
+            ]
+        ],
+        [
+            [
+                15,
+                58
+            ],
+            [
+                512,
+                67
+            ],
+            [
+                511,
+                95
+            ],
+            [
+                14,
+                86
+            ]
+        ],
+        [
+            [
+                15,
+                84
+            ],
+            [
+                519,
+                95
+            ],
+            [
+                518,
+                125
+            ],
+            [
+                14,
+                114
+            ]
+        ],
+        [
+            [
+                12,
+                108
+            ],
+            [
+                542,
+                120
+            ],
+            [
+                541,
+                159
+            ],
+            [
+                11,
+                147
+            ]
+        ],
+        [
+            [
+                13,
+                136
+            ],
+            [
+                544,
+                145
+            ],
+            [
+                543,
+                183
+            ],
+            [
+                12,
+                174
+            ]
+        ],
+        [
+            [
+                14,
+                163
+            ],
+            [
+                408,
+                177
+            ],
+            [
+                407,
+                212
+            ],
+            [
+                13,
+                198
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            15,
+            2,
+            502,
+            38
+        ],
+        [
+            15,
+            31,
+            540,
+            67
+        ],
+        [
+            14,
+            58,
+            512,
+            95
+        ],
+        [
+            14,
+            84,
+            519,
+            125
+        ],
+        [
+            11,
+            108,
+            542,
+            159
+        ],
+        [
+            12,
+            136,
+            544,
+            183
+        ],
+        [
+            13,
+            163,
+            408,
+            212
+        ]
+    ]
+}

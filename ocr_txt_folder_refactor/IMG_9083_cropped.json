@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_9083_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                9,
+                10
+            ],
+            [
+                319,
+                12
+            ],
+            [
+                319,
+                43
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                10,
+                47
+            ],
+            [
+                572,
+                48
+            ],
+            [
+                572,
+                79
+            ],
+            [
+                10,
+                78
+            ]
+        ],
+        [
+            [
+                12,
+                79
+            ],
+            [
+                546,
+                79
+            ],
+            [
+                546,
+                106
+            ],
+            [
+                12,
+                106
+            ]
+        ],
+        [
+            [
+                11,
+                110
+            ],
+            [
+                107,
+                110
+            ],
+            [
+                107,
+                138
+            ],
+            [
+                11,
+                138
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Liquid Chicken Bone Broth",
+        "Ingredients: Water,meaty chicken bones*, onion,",
+        "carrot, sea salt,rosemary,thyme,bayleafblack",
+        "pepper."
+    ],
+    "rec_scores": [
+        0.9252586364746094,
+        0.9461411237716675,
+        0.871027410030365,
+        0.9944137930870056
+    ],
+    "rec_polys": [
+        [
+            [
+                9,
+                10
+            ],
+            [
+                319,
+                12
+            ],
+            [
+                319,
+                43
+            ],
+            [
+                9,
+                40
+            ]
+        ],
+        [
+            [
+                10,
+                47
+            ],
+            [
+                572,
+                48
+            ],
+            [
+                572,
+                79
+            ],
+            [
+                10,
+                78
+            ]
+        ],
+        [
+            [
+                12,
+                79
+            ],
+            [
+                546,
+                79
+            ],
+            [
+                546,
+                106
+            ],
+            [
+                12,
+                106
+            ]
+        ],
+        [
+            [
+                11,
+                110
+            ],
+            [
+                107,
+                110
+            ],
+            [
+                107,
+                138
+            ],
+            [
+                11,
+                138
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            9,
+            10,
+            319,
+            43
+        ],
+        [
+            10,
+            47,
+            572,
+            79
+        ],
+        [
+            12,
+            79,
+            546,
+            106
+        ],
+        [
+            11,
+            110,
+            107,
+            138
+        ]
+    ]
+}

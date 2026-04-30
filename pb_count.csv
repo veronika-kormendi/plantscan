@@ -1,0 +1,63 @@
+img_id,result,matched_word
+IMG_7476_cropped,plant-based,
+IMG_7522_cropped,plant-based,
+IMG_7760_cropped,plant-based,
+IMG_7761_cropped,plant-based,
+IMG_7762_cropped,plant-based,
+IMG_7763_cropped,plant-based,
+IMG_7766_cropped,plant-based,
+IMG_8579_cropped,NOT plant-based (contains: milk),milk
+IMG_8580_cropped,plant-based,
+IMG_8581_cropped,plant-based,
+IMG_8582_cropped,plant-based,
+IMG_8583_cropped,plant-based,
+IMG_8586_cropped,plant-based,
+IMG_8587_cropped,plant-based,
+IMG_8588_cropped,plant-based,
+IMG_8589_cropped,plant-based,
+IMG_8590_cropped,plant-based,
+IMG_8591_cropped,plant-based,
+IMG_8593_cropped,plant-based,
+IMG_8594_cropped,plant-based,
+IMG_8595_cropped,plant-based,
+IMG_8596_cropped,NOT plant-based (contains: sardines),sardines
+IMG_8597_cropped,NOT plant-based (contains: kipper),kipper
+IMG_8598_cropped,NOT plant-based (contains: milk),milk
+IMG_8599_cropped,plant-based,
+IMG_8601_cropped,plant-based,
+IMG_8602_cropped,plant-based,
+IMG_8603_cropped,plant-based,
+IMG_8604_cropped,plant-based,
+IMG_8605_cropped,plant-based,
+IMG_8606_cropped,plant-based,
+IMG_8607_cropped,plant-based,
+IMG_8608_cropped,plant-based,
+IMG_8610_cropped,plant-based,
+IMG_8611_cropped,plant-based,
+IMG_8614_cropped,plant-based,
+IMG_9077_cropped,NOT plant-based (contains: fish),fish
+IMG_9078_cropped,NOT plant-based (contains: milk),milk
+IMG_9079_cropped,plant-based,
+IMG_9080_cropped,NOT plant-based (contains: milk),milk
+IMG_9081_cropped,NOT plant-based (contains: beef),beef
+IMG_9082_cropped,NOT plant-based (contains: milk),milk
+IMG_9083_cropped,NOT plant-based (contains: chicken),chicken
+IMG_9084_cropped,plant-based,
+IMG_9086_cropped,NOT plant-based (contains: tuna),tuna
+IMG_9087_cropped,NOT plant-based (contains: milk),milk
+IMG_9088_cropped,NOT plant-based (contains: milk),milk
+IMG_9089_cropped,plant-based,
+IMG_9091_cropped,plant-based,
+IMG_9093_cropped,plant-based,
+IMG_9094_cropped,NOT plant-based (contains: pork),pork
+IMG_9096_cropped,plant-based,
+IMG_9099_cropped,plant-based,
+IMG_9140_cropped,NOT plant-based (contains: milk),milk
+IMG_9141_cropped,plant-based,
+IMG_9147_cropped,NOT plant-based (contains: milk),milk
+IMG_9148_cropped,NOT plant-based (contains: egg),egg
+IMG_9151_cropped,NOT plant-based (contains: milk),milk
+IMG_9155_cropped,NOT plant-based (contains: pork),pork
+IMG_9156_cropped,NOT plant-based (contains: beef),beef
+IMG_9163_cropped,NOT plant-based (contains: honey),honey
+IMG_9164_cropped,plant-based,

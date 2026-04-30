@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_8591_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                6,
+                7
+            ],
+            [
+                331,
+                1
+            ],
+            [
+                331,
+                32
+            ],
+            [
+                6,
+                38
+            ]
+        ],
+        [
+            [
+                439,
+                21
+            ],
+            [
+                476,
+                31
+            ],
+            [
+                475,
+                56
+            ],
+            [
+                434,
+                47
+            ]
+        ],
+        [
+            [
+                10,
+                34
+            ],
+            [
+                153,
+                24
+            ],
+            [
+                154,
+                45
+            ],
+            [
+                11,
+                54
+            ]
+        ],
+        [
+            [
+                80,
+                126
+            ],
+            [
+                320,
+                127
+            ],
+            [
+                320,
+                143
+            ],
+            [
+                80,
+                142
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Strawberry fatfreeyogurt withsweetenerand",
+        "121134M",
+        "added vitamins B6&D",
+        "Contains asource of Phenylalanine"
+    ],
+    "rec_scores": [
+        0.8661301136016846,
+        0.9652328491210938,
+        0.9456931948661804,
+        0.9498409628868103
+    ],
+    "rec_polys": [
+        [
+            [
+                6,
+                7
+            ],
+            [
+                331,
+                1
+            ],
+            [
+                331,
+                32
+            ],
+            [
+                6,
+                38
+            ]
+        ],
+        [
+            [
+                439,
+                21
+            ],
+            [
+                476,
+                31
+            ],
+            [
+                475,
+                56
+            ],
+            [
+                434,
+                47
+            ]
+        ],
+        [
+            [
+                10,
+                34
+            ],
+            [
+                153,
+                24
+            ],
+            [
+                154,
+                45
+            ],
+            [
+                11,
+                54
+            ]
+        ],
+        [
+            [
+                80,
+                126
+            ],
+            [
+                320,
+                127
+            ],
+            [
+                320,
+                143
+            ],
+            [
+                80,
+                142
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            6,
+            1,
+            331,
+            38
+        ],
+        [
+            434,
+            21,
+            476,
+            56
+        ],
+        [
+            10,
+            24,
+            154,
+            54
+        ],
+        [
+            80,
+            126,
+            320,
+            143
+        ]
+    ]
+}

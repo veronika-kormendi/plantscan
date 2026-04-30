@@ -1,0 +1,265 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_9091_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                19,
+                10
+            ],
+            [
+                286,
+                19
+            ],
+            [
+                285,
+                46
+            ],
+            [
+                18,
+                37
+            ]
+        ],
+        [
+            [
+                18,
+                34
+            ],
+            [
+                298,
+                44
+            ],
+            [
+                297,
+                71
+            ],
+            [
+                17,
+                61
+            ]
+        ],
+        [
+            [
+                19,
+                60
+            ],
+            [
+                348,
+                71
+            ],
+            [
+                347,
+                96
+            ],
+            [
+                18,
+                86
+            ]
+        ],
+        [
+            [
+                20,
+                84
+            ],
+            [
+                352,
+                94
+            ],
+            [
+                351,
+                121
+            ],
+            [
+                19,
+                110
+            ]
+        ],
+        [
+            [
+                21,
+                108
+            ],
+            [
+                287,
+                120
+            ],
+            [
+                286,
+                143
+            ],
+            [
+                20,
+                134
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Ingredients:Cornstarchtomatopuree",
+        "powder（19.3%)onionpowder（11.5%）",
+        "paprikaourgeastec",
+        "powdergrioisedalTlo",
+        "oregano,saltcayennepepper,pepper."
+    ],
+    "rec_scores": [
+        0.893519937992096,
+        0.9052841663360596,
+        0.6240209937095642,
+        0.5971662402153015,
+        0.8393058776855469
+    ],
+    "rec_polys": [
+        [
+            [
+                19,
+                10
+            ],
+            [
+                286,
+                19
+            ],
+            [
+                285,
+                46
+            ],
+            [
+                18,
+                37
+            ]
+        ],
+        [
+            [
+                18,
+                34
+            ],
+            [
+                298,
+                44
+            ],
+            [
+                297,
+                71
+            ],
+            [
+                17,
+                61
+            ]
+        ],
+        [
+            [
+                19,
+                60
+            ],
+            [
+                348,
+                71
+            ],
+            [
+                347,
+                96
+            ],
+            [
+                18,
+                86
+            ]
+        ],
+        [
+            [
+                20,
+                84
+            ],
+            [
+                352,
+                94
+            ],
+            [
+                351,
+                121
+            ],
+            [
+                19,
+                110
+            ]
+        ],
+        [
+            [
+                21,
+                108
+            ],
+            [
+                287,
+                120
+            ],
+            [
+                286,
+                143
+            ],
+            [
+                20,
+                134
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            18,
+            10,
+            286,
+            46
+        ],
+        [
+            17,
+            34,
+            298,
+            71
+        ],
+        [
+            18,
+            60,
+            348,
+            96
+        ],
+        [
+            19,
+            84,
+            352,
+            121
+        ],
+        [
+            20,
+            108,
+            287,
+            143
+        ]
+    ]
+}

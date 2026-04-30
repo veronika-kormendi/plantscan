@@ -1,0 +1,310 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single\\IMG_8610_cropped.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                12,
+                1
+            ],
+            [
+                271,
+                0
+            ],
+            [
+                271,
+                19
+            ],
+            [
+                12,
+                20
+            ]
+        ],
+        [
+            [
+                12,
+                19
+            ],
+            [
+                281,
+                16
+            ],
+            [
+                281,
+                34
+            ],
+            [
+                12,
+                36
+            ]
+        ],
+        [
+            [
+                13,
+                34
+            ],
+            [
+                275,
+                34
+            ],
+            [
+                275,
+                52
+            ],
+            [
+                13,
+                52
+            ]
+        ],
+        [
+            [
+                15,
+                52
+            ],
+            [
+                271,
+                52
+            ],
+            [
+                271,
+                66
+            ],
+            [
+                15,
+                66
+            ]
+        ],
+        [
+            [
+                15,
+                66
+            ],
+            [
+                270,
+                66
+            ],
+            [
+                270,
+                84
+            ],
+            [
+                15,
+                84
+            ]
+        ],
+        [
+            [
+                14,
+                81
+            ],
+            [
+                274,
+                80
+            ],
+            [
+                274,
+                98
+            ],
+            [
+                14,
+                99
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "INGREDIENTSWater,MustardFlour(11%),Sugar",
+        "Glucose-FructoseSyrup,Acidity Regulator（Aceti",
+        "Acid）,MustardBran(3%)Salt，TurmericPowder,",
+        "Stabiliser（XanthanGum）Cinnamon,Curcumin",
+        "Preservative(PotassiumSorbate)Clove,Garlic",
+        "Powder,Flavouring.Allergy AdviceFor allergens"
+    ],
+    "rec_scores": [
+        0.9248136281967163,
+        0.9310513138771057,
+        0.8907554149627686,
+        0.9373742341995239,
+        0.9114276170730591,
+        0.9409597516059875
+    ],
+    "rec_polys": [
+        [
+            [
+                12,
+                1
+            ],
+            [
+                271,
+                0
+            ],
+            [
+                271,
+                19
+            ],
+            [
+                12,
+                20
+            ]
+        ],
+        [
+            [
+                12,
+                19
+            ],
+            [
+                281,
+                16
+            ],
+            [
+                281,
+                34
+            ],
+            [
+                12,
+                36
+            ]
+        ],
+        [
+            [
+                13,
+                34
+            ],
+            [
+                275,
+                34
+            ],
+            [
+                275,
+                52
+            ],
+            [
+                13,
+                52
+            ]
+        ],
+        [
+            [
+                15,
+                52
+            ],
+            [
+                271,
+                52
+            ],
+            [
+                271,
+                66
+            ],
+            [
+                15,
+                66
+            ]
+        ],
+        [
+            [
+                15,
+                66
+            ],
+            [
+                270,
+                66
+            ],
+            [
+                270,
+                84
+            ],
+            [
+                15,
+                84
+            ]
+        ],
+        [
+            [
+                14,
+                81
+            ],
+            [
+                274,
+                80
+            ],
+            [
+                274,
+                98
+            ],
+            [
+                14,
+                99
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            12,
+            0,
+            271,
+            20
+        ],
+        [
+            12,
+            16,
+            281,
+            36
+        ],
+        [
+            13,
+            34,
+            275,
+            52
+        ],
+        [
+            15,
+            52,
+            271,
+            66
+        ],
+        [
+            15,
+            66,
+            270,
+            84
+        ],
+        [
+            14,
+            80,
+            274,
+            99
+        ]
+    ]
+}
