@@ -1,3 +1,9 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
+SLACK_CHANNEL_ID = os.getenv('SLACK_CHANNEL_ID')
+
 # folder paths
 INPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process' # input_image_folder_path for heitc_to_jpg() function
 JPG_OUTPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\jpg_folder2_single' # output_folder_path for heic_to_jpg() function
