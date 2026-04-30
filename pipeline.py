@@ -7,7 +7,7 @@ from config_refactor import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER,
                              CLEANED_FOLDER_PATH, POSTPROCESS_OUT_FOLDER,
                              PREPROCESSED_CSV_PATH, POSTPROCESSED_CSV_PATH,
                              SUMMARY_PREPROC_PATH, SUMMARY_POSTPROC_PATH,
-                             CLEANED_2, CANDIDATE_WORDS_PATH, EXCLUDE_WORDS_PATH, PB_COUNT_CSV_PATH)
+                             CLEANED_2, CANDIDATE_WORDS_PATH, EXCLUDE_WORDS_PATH, PB_COUNT_CSV_PATH, SLACK_CHANNEL_ID)
 import os
 import Levenshtein
 # import postprocess_utils as postp
@@ -87,5 +87,13 @@ def process_cropped_image(cropped_img_path):
     print(f"postprocessed metrics summary: ")
     eval.analyse_metrics(POSTPROCESSED_CSV_PATH, SUMMARY_POSTPROC_PATH)
     # words_per_line_folder_path = txt.each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
-    pb.is_it_plant_based(cleaned_extracted_path,EXCLUDE_WORDS_PATH)
+    # pb_result = pb.is_it_plant_based(cleaned_extracted_path,EXCLUDE_WORDS_PATH)
+    # pb.count_pb_identified(CLEANED_FOLDER_PATH, EXCLUDE_WORDS_PATH,PB_COUNT_CSV_PATH)
+    # msg.send_slack_message(f"isItPlantBased? result: {pb_result}", SLACK_CHANNEL_ID)
+    is_pb, matched_word = pb.is_it_plant_based(cleaned_extracted_path,EXCLUDE_WORDS_PATH)
+    if is_pb: #if it is plant-based, tailor message accordingly
+        result_message = f"This product is plant-based."
+    else: # non-plant-based scenario
+        result_message = f"Sorry, not a plant-based product. It contains {matched_word}."
     pb.count_pb_identified(CLEANED_FOLDER_PATH, EXCLUDE_WORDS_PATH,PB_COUNT_CSV_PATH)
+    msg.send_slack_message(f"isItPlantBased? result: {result_message}", SLACK_CHANNEL_ID)

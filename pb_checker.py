@@ -54,10 +54,10 @@ def is_it_plant_based(input_file_path, exclude_words_path):
     for word in words_to_check: # check for match
         if word in exclude_words:
             print(f"Product is NOT plant-based (contains: {word})")
-            return False, word  # return the word as well
+            return False, word  # return false i.e. non-plant-based, plus the word as well
 
     print("Product is plant-based")   # if no matches found
-    return True, None
+    return True, None # return true & none, i.e. plant-based & no matching ingredient in the exclude list
 
 # is_it_plant_based('C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_single\\IMG_7476_cropped_cleaned_ocr.txt', EXCLUDE_WORDS_PATH) #test
 # is_it_plant_based('C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_single\\IMG_8579_cropped_cleaned_ocr.txt', EXCLUDE_WORDS_PATH) #test
