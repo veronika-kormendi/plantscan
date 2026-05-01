@@ -20,6 +20,7 @@ SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocess
 SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary_single.csv'
 EXCLUDE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\exclude_list.csv'
 PB_COUNT_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\pb_count.csv'
+FOLDER_TO_WATCH = 'G:\\My Drive\\folder_to_watch'
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"
 THEME = "vapor"
