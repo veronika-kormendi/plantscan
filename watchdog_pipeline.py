@@ -54,8 +54,8 @@ def process_cropped_image(gscale_path):
     gt_before = txt.load_text(gt_file_path)
     gt_before_w = txt.load_words(gt_file_path)
     print("\n--- GT TEXT BEFORE CLEANING ---")
-    # print(gt_before)
-    # print("GT words:", gt_before_w)
+    print(gt_before)
+    print("GT words:", gt_before_w)
 
     cleaned_gt_path = txt.count_word_and_char(gt_file_path, file_type="gt")  # clean gt text
     cleaned_extracted_path = txt.count_word_and_char(ocr_extracted, file_type="ocr")  # clean ocr text

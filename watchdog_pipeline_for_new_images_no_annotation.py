@@ -9,6 +9,8 @@
 #send result
 #end
 
+#comment out gt related code if analysing a new file
+
 import image_utils as img
 import ocr_utils as ocr
 import text_utils as txt
@@ -22,8 +24,6 @@ from config_refactor import (JPG_OUTPUT_FOLDER, GREYSCALE_FOLDER,
 import postprocess_utils_return_filepath as postp
 import pb_checker as pb
 import messaging_utils as msg
-
-
 
 def preprocess_cropped_image(image_path):
     """takes the newly uploaded image and start preprocessing: heic to jpg, greyscale conversion"""
@@ -56,7 +56,7 @@ def process_cropped_image(gscale_path):
     # print("\n--- GT TEXT BEFORE CLEANING ---")
     # print(gt_before)
     # print("GT words:", gt_before_w)
-
+    #
     # cleaned_gt_path = txt.count_word_and_char(gt_file_path, file_type="gt")  # clean gt text
     cleaned_extracted_path = txt.count_word_and_char(ocr_extracted, file_type="ocr")  # clean ocr text
     # print(f"debug {cleaned_gt_path}")
