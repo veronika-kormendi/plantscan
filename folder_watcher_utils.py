@@ -10,7 +10,7 @@ import watchdog_pipeline_for_new_images_no_annotation as w_pipe
 class Handler(watchdog.events.PatternMatchingEventHandler):
     def __init__(self):
         # Set the patterns for PatternMatchingEventHandler
-        watchdog.events.PatternMatchingEventHandler.__init__(self, patterns=['*.HEIC'],
+        watchdog.events.PatternMatchingEventHandler.__init__(self, patterns=['*.HEIC', '*.jpg', '*jpeg'],
                                                              ignore_directories=True, case_sensitive=False)
 #when new file is added to the folder
     def on_created(self, event):

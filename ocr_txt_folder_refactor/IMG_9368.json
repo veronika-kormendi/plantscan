@@ -1,0 +1,175 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog\\IMG_9368.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                139,
+                0
+            ],
+            [
+                1697,
+                69
+            ],
+            [
+                1686,
+                279
+            ],
+            [
+                128,
+                197
+            ]
+        ],
+        [
+            [
+                154,
+                296
+            ],
+            [
+                726,
+                304
+            ],
+            [
+                724,
+                468
+            ],
+            [
+                152,
+                460
+            ]
+        ],
+        [
+            [
+                144,
+                582
+            ],
+            [
+                913,
+                593
+            ],
+            [
+                910,
+                788
+            ],
+            [
+                142,
+                777
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "PUF",
+        "INGREDIENTS",
+        "Com (99%),Sea Salt"
+    ],
+    "rec_scores": [
+        0.5656389594078064,
+        0.9863231778144836,
+        0.837887704372406
+    ],
+    "rec_polys": [
+        [
+            [
+                139,
+                0
+            ],
+            [
+                1697,
+                69
+            ],
+            [
+                1686,
+                279
+            ],
+            [
+                128,
+                197
+            ]
+        ],
+        [
+            [
+                154,
+                296
+            ],
+            [
+                726,
+                304
+            ],
+            [
+                724,
+                468
+            ],
+            [
+                152,
+                460
+            ]
+        ],
+        [
+            [
+                144,
+                582
+            ],
+            [
+                913,
+                593
+            ],
+            [
+                910,
+                788
+            ],
+            [
+                142,
+                777
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            128,
+            0,
+            1697,
+            279
+        ],
+        [
+            152,
+            296,
+            726,
+            468
+        ],
+        [
+            142,
+            582,
+            913,
+            788
+        ]
+    ]
+}
