@@ -2,7 +2,10 @@ import watchdog.events
 import watchdog.observers
 import time
 import config_refactor as config
-import watchdog_pipeline as w_pipe
+# use this for annotated images
+# import watchdog_pipeline as w_pipe
+# use this for new images to identify
+import watchdog_pipeline_for_new_images_no_annotation as w_pipe
 
 class Handler(watchdog.events.PatternMatchingEventHandler):
     def __init__(self):

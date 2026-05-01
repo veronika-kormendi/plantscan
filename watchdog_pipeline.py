@@ -77,21 +77,21 @@ def process_cropped_image(gscale_path):
     print(gt_after)
     print("GT words:", gt_after_w)
     #------comment this out for new images - no annotated text--------
-    preprocessed_evaluated_result = eval.evaluate_preprocessed(cleaned_extracted_path,
-                                                               CLEANED_FOLDER_PATH,
-                                                               "preprocessed_metrics_watchdog.csv"
-                                                               )
-    # return preprocessed_evaluated_result
-    print(f"preprocessed evaluated - result: {preprocessed_evaluated_result}")
-    postprocessed_text_path = postp.postprocess_text(cleaned_extracted_path, POSTPROCESS_OUT_FOLDER)
-    print(f" ------------ postprocessing done")
-    postprocessed_evaluated_result = eval.evaluate_postprocessed(postprocessed_text_path,
-                                                                 "postprocessed_metrics_watchdog.csv")
-    print(f" postprocessed evaluated - result: {postprocessed_evaluated_result}")
-    print(f"preprocessed metrics summary: ")
-    eval.analyse_metrics(PREPROCESSED_CSV_PATH, SUMMARY_PREPROC_PATH)
-    print(f"postprocessed metrics summary: ")
-    eval.analyse_metrics(POSTPROCESSED_CSV_PATH, SUMMARY_POSTPROC_PATH)
+    # preprocessed_evaluated_result = eval.evaluate_preprocessed(cleaned_extracted_path,
+    #                                                            CLEANED_FOLDER_PATH,
+    #                                                            "preprocessed_metrics_watchdog.csv"
+    #                                                            )
+    # # return preprocessed_evaluated_result
+    # print(f"preprocessed evaluated - result: {preprocessed_evaluated_result}")
+    # postprocessed_text_path = postp.postprocess_text(cleaned_extracted_path, POSTPROCESS_OUT_FOLDER)
+    # print(f" ------------ postprocessing done")
+    # postprocessed_evaluated_result = eval.evaluate_postprocessed(postprocessed_text_path,
+    #                                                              "postprocessed_metrics_watchdog.csv")
+    # print(f" postprocessed evaluated - result: {postprocessed_evaluated_result}")
+    # print(f"preprocessed metrics summary: ")
+    # eval.analyse_metrics(PREPROCESSED_CSV_PATH, SUMMARY_PREPROC_PATH)
+    # print(f"postprocessed metrics summary: ")
+    # eval.analyse_metrics(POSTPROCESSED_CSV_PATH, SUMMARY_POSTPROC_PATH)
     #----------commented out end-----------------
     # words_per_line_folder_path = txt.each_word_on_new_line(CLEANED_FOLDER_PATH, CLEANED_2)
     # pb_result = pb.is_it_plant_based(cleaned_extracted_path,EXCLUDE_WORDS_PATH)

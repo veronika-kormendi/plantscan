@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog\\IMG_9146.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                917,
+                46
+            ],
+            [
+                1641,
+                56
+            ],
+            [
+                1640,
+                187
+            ],
+            [
+                915,
+                176
+            ]
+        ],
+        [
+            [
+                175,
+                76
+            ],
+            [
+                468,
+                67
+            ],
+            [
+                471,
+                172
+            ],
+            [
+                178,
+                181
+            ]
+        ],
+        [
+            [
+                415,
+                70
+            ],
+            [
+                943,
+                67
+            ],
+            [
+                944,
+                166
+            ],
+            [
+                415,
+                170
+            ]
+        ],
+        [
+            [
+                259,
+                202
+            ],
+            [
+                1567,
+                176
+            ],
+            [
+                1569,
+                288
+            ],
+            [
+                261,
+                314
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Kievs(MILK).",
+        "irish",
+        "chicken",
+        "'MEATORIGIN IRELAND'"
+    ],
+    "rec_scores": [
+        0.943842887878418,
+        0.9993330240249634,
+        0.9983472228050232,
+        0.9354544878005981
+    ],
+    "rec_polys": [
+        [
+            [
+                917,
+                46
+            ],
+            [
+                1641,
+                56
+            ],
+            [
+                1640,
+                187
+            ],
+            [
+                915,
+                176
+            ]
+        ],
+        [
+            [
+                175,
+                76
+            ],
+            [
+                468,
+                67
+            ],
+            [
+                471,
+                172
+            ],
+            [
+                178,
+                181
+            ]
+        ],
+        [
+            [
+                415,
+                70
+            ],
+            [
+                943,
+                67
+            ],
+            [
+                944,
+                166
+            ],
+            [
+                415,
+                170
+            ]
+        ],
+        [
+            [
+                259,
+                202
+            ],
+            [
+                1567,
+                176
+            ],
+            [
+                1569,
+                288
+            ],
+            [
+                261,
+                314
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            915,
+            46,
+            1641,
+            187
+        ],
+        [
+            175,
+            67,
+            471,
+            181
+        ],
+        [
+            415,
+            67,
+            944,
+            170
+        ],
+        [
+            259,
+            176,
+            1569,
+            314
+        ]
+    ]
+}
