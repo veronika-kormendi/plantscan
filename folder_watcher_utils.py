@@ -2,6 +2,7 @@ import watchdog.events
 import watchdog.observers
 import time
 import config_refactor as config
+import watchdog_pipeline as w_pipe
 
 class Handler(watchdog.events.PatternMatchingEventHandler):
     def __init__(self):
@@ -13,11 +14,11 @@ class Handler(watchdog.events.PatternMatchingEventHandler):
         uploaded_filepath = event.src_path
         print("Watchdog received created event, new file is saved to the folder - % s" % event.src_path)
         # call watchdog pipeline code here
+        gscale_path = w_pipe.preprocess_cropped_image(uploaded_filepath) #get the image preprocessed
+        w_pipe.process_cropped_image(gscale_path) # continue with pipeline tasks
 
     def on_modified(self, event):
         print("Watchdog received modified event - % s." % event.src_path)
-        # Event is modified, you can process it now
-
 
 def start_folder_watcher():
     src_path = config.FOLDER_TO_WATCH

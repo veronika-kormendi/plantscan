@@ -6,20 +6,20 @@ SLACK_CHANNEL_ID = os.getenv('SLACK_CHANNEL_ID')
 
 # folder paths
 INPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process' # input_image_folder_path for heitc_to_jpg() function
-JPG_OUTPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\jpg_folder2_single' # output_folder_path for heic_to_jpg() function
-GREYSCALE_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_single' # output_folder_path for gscale images
-CROPPED_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_single' # cropped images to be saved here
-CLEANED_FOLDER_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_single' #new folder for cleaned files
+JPG_OUTPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\jpg_folder2_watchdog' # output_folder_path for heic_to_jpg() function
+GREYSCALE_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog' # output_folder_path for gscale images
+CROPPED_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_watchdog' # cropped images to be saved here
+CLEANED_FOLDER_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_watchdog' #new folder for cleaned files
 ANNOTATION_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation' # annotated text files can be found here
-CLEANED_2 = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\word_per_line_single'
-POSTPROCESS_OUT_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_single'
-CANDIDATE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\refactor_single'
-PREPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_metrics_single.csv'
-POSTPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_metrics_single.csv'
-SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_summary_single.csv'
-SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary_single.csv'
+CLEANED_2 = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\word_per_line_watchdog'
+POSTPROCESS_OUT_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_watchdog'
+CANDIDATE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\refactor_watchdog'
+PREPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_metrics_watchdog.csv'
+POSTPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_metrics_watchdog.csv'
+SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_summary_watchdog.csv'
+SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary_watchdog.csv'
 EXCLUDE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\exclude_list.csv'
-PB_COUNT_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\pb_count.csv'
+PB_COUNT_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\pb_count_watchdog.csv'
 FOLDER_TO_WATCH = 'G:\\My Drive\\folder_to_watch'
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"

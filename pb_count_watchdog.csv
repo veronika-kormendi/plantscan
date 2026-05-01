@@ -1,0 +1,4 @@
+img_id,result,matched_word
+IMG_8588,plant-based,
+IMG_9147,NOT plant-based (contains: milk),milk
+IMG_9148,NOT plant-based (contains: egg),egg
