@@ -5,7 +5,7 @@ import datetime
 
 def send_slack_message(message, channel_id):
     client = WebClient(token=SLACK_BOT_TOKEN)
-    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    timestamp = datetime.datetime.now().strftime("date: %Y-%m-%d time: %H:%M:%S")
 
     message_with_timestamp = f"{message} message was sent at {timestamp}"
     try:

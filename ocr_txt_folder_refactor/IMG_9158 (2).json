@@ -1,0 +1,220 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog\\IMG_9158 (2).jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                997,
+                163
+            ],
+            [
+                1735,
+                127
+            ],
+            [
+                1744,
+                319
+            ],
+            [
+                1006,
+                356
+            ]
+        ],
+        [
+            [
+                712,
+                360
+            ],
+            [
+                2034,
+                260
+            ],
+            [
+                2050,
+                461
+            ],
+            [
+                728,
+                561
+            ]
+        ],
+        [
+            [
+                400,
+                629
+            ],
+            [
+                2367,
+                472
+            ],
+            [
+                2380,
+                628
+            ],
+            [
+                413,
+                766
+            ]
+        ],
+        [
+            [
+                1706,
+                653
+            ],
+            [
+                2403,
+                647
+            ],
+            [
+                2404,
+                766
+            ],
+            [
+                1707,
+                766
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "Sour cream",
+        "SVALYA 30% milk fat",
+        "Inedecrc",
+        "Production date,"
+    ],
+    "rec_scores": [
+        0.9419460296630859,
+        0.9201169013977051,
+        0.5811133980751038,
+        0.9336198568344116
+    ],
+    "rec_polys": [
+        [
+            [
+                997,
+                163
+            ],
+            [
+                1735,
+                127
+            ],
+            [
+                1744,
+                319
+            ],
+            [
+                1006,
+                356
+            ]
+        ],
+        [
+            [
+                712,
+                360
+            ],
+            [
+                2034,
+                260
+            ],
+            [
+                2050,
+                461
+            ],
+            [
+                728,
+                561
+            ]
+        ],
+        [
+            [
+                400,
+                629
+            ],
+            [
+                2367,
+                472
+            ],
+            [
+                2380,
+                628
+            ],
+            [
+                413,
+                766
+            ]
+        ],
+        [
+            [
+                1706,
+                653
+            ],
+            [
+                2403,
+                647
+            ],
+            [
+                2404,
+                766
+            ],
+            [
+                1707,
+                766
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            997,
+            127,
+            1744,
+            356
+        ],
+        [
+            712,
+            260,
+            2050,
+            561
+        ],
+        [
+            400,
+            472,
+            2380,
+            766
+        ],
+        [
+            1706,
+            647,
+            2404,
+            766
+        ]
+    ]
+}
