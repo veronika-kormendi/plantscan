@@ -1,0 +1,355 @@
+{
+    "input_path": "G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog\\IMG_0577D058-2432-4D92-95FE-1CF57CAFBC8A.jpg",
+    "page_index": null,
+    "model_settings": {
+        "use_doc_preprocessor": true,
+        "use_textline_orientation": false
+    },
+    "doc_preprocessor_res": {
+        "input_path": null,
+        "page_index": null,
+        "model_settings": {
+            "use_doc_orientation_classify": true,
+            "use_doc_unwarping": false
+        },
+        "angle": 0
+    },
+    "dt_polys": [
+        [
+            [
+                44,
+                49
+            ],
+            [
+                2246,
+                28
+            ],
+            [
+                2246,
+                129
+            ],
+            [
+                45,
+                149
+            ]
+        ],
+        [
+            [
+                1068,
+                137
+            ],
+            [
+                1401,
+                132
+            ],
+            [
+                1402,
+                207
+            ],
+            [
+                1069,
+                212
+            ]
+        ],
+        [
+            [
+                1355,
+                129
+            ],
+            [
+                2249,
+                117
+            ],
+            [
+                2250,
+                208
+            ],
+            [
+                1356,
+                220
+            ]
+        ],
+        [
+            [
+                51,
+                139
+            ],
+            [
+                1097,
+                129
+            ],
+            [
+                1098,
+                215
+            ],
+            [
+                51,
+                225
+            ]
+        ],
+        [
+            [
+                55,
+                218
+            ],
+            [
+                2268,
+                199
+            ],
+            [
+                2268,
+                292
+            ],
+            [
+                55,
+                311
+            ]
+        ],
+        [
+            [
+                63,
+                298
+            ],
+            [
+                2265,
+                276
+            ],
+            [
+                2266,
+                376
+            ],
+            [
+                64,
+                398
+            ]
+        ],
+        [
+            [
+                74,
+                381
+            ],
+            [
+                1585,
+                374
+            ],
+            [
+                1585,
+                463
+            ],
+            [
+                74,
+                471
+            ]
+        ]
+    ],
+    "text_det_params": {
+        "limit_side_len": 64,
+        "limit_type": "min",
+        "thresh": 0.3,
+        "max_side_limit": 4000,
+        "box_thresh": 0.6,
+        "unclip_ratio": 1.5
+    },
+    "text_type": "general",
+    "textline_orientation_angles": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+    ],
+    "text_rec_score_thresh": 0.0,
+    "return_word_box": false,
+    "rec_texts": [
+        "AlaskaPollock（Theragra chalcogramma)(Fish)(55%),Wheat",
+        "Calcium",
+        "nCarbonate,IronNiacin,",
+        "Flour(contains:Wheat Flour,",
+        "Folic Acid,ThiaminWaterRapeseedOilaltOliveOlat",
+        "Extract,WheatStarch,GarlicPowderOnionPowderMustard",
+        "Powder,Pepper Natural Flavourings,Yeast."
+    ],
+    "rec_scores": [
+        0.8778290748596191,
+        0.9816017150878906,
+        0.9005857110023499,
+        0.9575154781341553,
+        0.7537254691123962,
+        0.804780125617981,
+        0.9023661613464355
+    ],
+    "rec_polys": [
+        [
+            [
+                44,
+                49
+            ],
+            [
+                2246,
+                28
+            ],
+            [
+                2246,
+                129
+            ],
+            [
+                45,
+                149
+            ]
+        ],
+        [
+            [
+                1068,
+                137
+            ],
+            [
+                1401,
+                132
+            ],
+            [
+                1402,
+                207
+            ],
+            [
+                1069,
+                212
+            ]
+        ],
+        [
+            [
+                1355,
+                129
+            ],
+            [
+                2249,
+                117
+            ],
+            [
+                2250,
+                208
+            ],
+            [
+                1356,
+                220
+            ]
+        ],
+        [
+            [
+                51,
+                139
+            ],
+            [
+                1097,
+                129
+            ],
+            [
+                1098,
+                215
+            ],
+            [
+                51,
+                225
+            ]
+        ],
+        [
+            [
+                55,
+                218
+            ],
+            [
+                2268,
+                199
+            ],
+            [
+                2268,
+                292
+            ],
+            [
+                55,
+                311
+            ]
+        ],
+        [
+            [
+                63,
+                298
+            ],
+            [
+                2265,
+                276
+            ],
+            [
+                2266,
+                376
+            ],
+            [
+                64,
+                398
+            ]
+        ],
+        [
+            [
+                74,
+                381
+            ],
+            [
+                1585,
+                374
+            ],
+            [
+                1585,
+                463
+            ],
+            [
+                74,
+                471
+            ]
+        ]
+    ],
+    "rec_boxes": [
+        [
+            44,
+            28,
+            2246,
+            149
+        ],
+        [
+            1068,
+            132,
+            1402,
+            212
+        ],
+        [
+            1355,
+            117,
+            2250,
+            220
+        ],
+        [
+            51,
+            129,
+            1098,
+            225
+        ],
+        [
+            55,
+            199,
+            2268,
+            311
+        ],
+        [
+            63,
+            276,
+            2266,
+            398
+        ],
+        [
+            74,
+            374,
+            1585,
+            471
+        ]
+    ]
+}

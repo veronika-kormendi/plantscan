@@ -3,6 +3,7 @@ import text_utils as txt
 from config_refactor import EXCLUDE_WORDS_PATH
 import os
 
+
 def make_cvs_to_dict(csv_filepath):
     categories = {}
     with open(csv_filepath, newline='', encoding='utf-8') as csvfile:
