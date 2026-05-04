@@ -3,6 +3,9 @@ soya
 beans
 water
 salt
-firmingagent
-calciumchloridemesm
+firming
+agents
+calcium
+chloride
+manesium
 chloride

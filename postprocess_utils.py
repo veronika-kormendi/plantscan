@@ -7,6 +7,8 @@ extra_words = ["flavouring", "sucralose", "colours", "sorbate", "sugar", "carame
 # add extra words to spell checker dictionary
 for word in extra_words:
     spell.word_frequency.add(word)
+default_distance = spell.distance
+print(f"default_distance: {default_distance}")
 
 def postprocess_text(input_folder_path, output_folder_path):
     """Postprocess multiple cleaned OCR text files while preserving line structure."""
@@ -53,3 +55,6 @@ def postprocess_text(input_folder_path, output_folder_path):
         print(f"Saved corrected file to: {out_path}")
 
     return output_folder_path
+#double check edit distance
+# if __name__ == "__main__":
+#     print(f"default_distance: {default_distance}")
