@@ -5,26 +5,26 @@ SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
 SLACK_CHANNEL_ID = os.getenv('SLACK_CHANNEL_ID')
 
 # folder paths
-INPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process' # input_image_folder_path for heitc_to_jpg() function
-JPG_OUTPUT_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\jpg_folder2_watchdog' # output_folder_path for heic_to_jpg() function
-GREYSCALE_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\gscale_folder2_watchdog' # output_folder_path for gscale images
-CROPPED_FOLDER = 'G:\\My Drive\\plantscan_photos_to_process\\cropped_images_folder2_watchdog' # cropped images to be saved here
-CLEANED_FOLDER_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\cleaned_folder_watchdog' #new folder for cleaned files
-ANNOTATION_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\annotation' # annotated text files can be found here
-CLEANED_2 = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\word_per_line_watchdog'
-POSTPROCESS_OUT_FOLDER = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_watchdog'
-CANDIDATE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\refactor_watchdog'
-PREPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_metrics_watchdog.csv'
-POSTPROCESSED_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_metrics_watchdog.csv'
-SUMMARY_PREPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\preprocessed_summary_watchdog.csv'
-SUMMARY_POSTPROC_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\postprocessed_summary_watchdog.csv'
-EXCLUDE_WORDS_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\exclude_list.csv'
-PB_COUNT_CSV_PATH = 'C:\\Users\\veron\\PycharmProjects\\plantscan\\pb_count_watchdog.csv'
-FOLDER_TO_WATCH = 'G:\\My Drive\\folder_to_watch'
+INPUT_FOLDER = os.getenv("INPUT_FOLDER") # input_image_folder_path for heitc_to_jpg() function
+JPG_OUTPUT_FOLDER = os.getenv("JPG_OUTPUT_FOLDER") # output_folder_path for heic_to_jpg() function
+GREYSCALE_FOLDER = os.getenv("GREYSCALE_FOLDER") # output_folder_path for gscale images
+CROPPED_FOLDER = os.getenv("CROPPED_FOLDER") # cropped images to be saved here
+CLEANED_FOLDER_PATH = os.getenv("CLEANED_FOLDER_PATH") #new folder for cleaned files
+ANNOTATION_FOLDER = os.getenv("ANNOTATION_FOLDER") # annotated text files can be found here
+CLEANED_2 = os.getenv('CLEANED_2')
+POSTPROCESS_OUT_FOLDER = os.getenv('POSTPROCESS_OUT_FOLDER')
+CANDIDATE_WORDS_PATH = os.getenv('CANDIDATE_WORDS_PATH')
+PREPROCESSED_CSV_PATH = os.getenv('PREPROCESSED_CSV_PATH')
+POSTPROCESSED_CSV_PATH = os.getenv('POSTPROCESSED_CSV_PATH')
+SUMMARY_PREPROC_PATH = os.getenv('SUMMARY_PREPROC_PATH')
+SUMMARY_POSTPROC_PATH = os.getenv('SUMMARY_POSTPROC_PATH')
+EXCLUDE_WORDS_PATH = os.getenv('EXCLUDE_WORDS_PATH')
+PB_COUNT_CSV_PATH = os.getenv('PB_COUNT_CSV_PATH')
+FOLDER_TO_WATCH = os.getenv('FOLDER_TO_WATCH')
 # GUI settings
 WINDOW_TITLE = "is_it_plant_based?"
 THEME = "vapor"
-ICON_PATH = 'C:\\Users\\veron\\Downloads\\isitpb.ico'
+ICON_PATH = os.getenv("ICON_PATH")
 DEFAULT_RESIZE_WIDTH = 600
 CROP_SHIFT = 12
 # File dialog settings
