@@ -23,9 +23,10 @@ The project was evaluated using a balanced dataset of **60 images**.
 - Deliver the classification result automatically through Slack.
 - Evaluate OCR performance before and after postprocessing.
 
-## System Overview
+## System Overview and Flowchart
 
-![SystemDesign](system_overview.png)
+![SystemDesign](docs/system_overview.png)
+![FlowChart](docs/process_pipeline_flowchart.png)
 
 ## Processing Pipeline
 
